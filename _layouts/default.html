@@ -30,9 +30,22 @@
                 <p><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
                 {% endif %}
                 <ul class="list-inline social-buttons">
-                    {% for network in page.social %}
-                    <li><a href="{{ network.url }}"><i class="fa fa-{{ network.title }} fa-fw"></i></a></li>
-                    {% endfor %}
+                  {% for network in page.social %}
+                    <li>
+                      <a href="{{ network.url }}">
+                        {% if network.icon == "kaggle" %}
+                          <!-- Kaggle SVG icon -->
+                          <svg width="20" height="20" viewBox="0 0 32 32" style="vertical-align:middle;" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                              <path d="M6.5 6.5v19h3v-7.5l3.5 4.5h3.5l-5-6.5 5-6.5h-3.5l-3.5 4.5v-7.5h-3zm19 0l-6.5 9 6.5 10h-3.5l-5-7.5v7.5h-3v-19h3v7.5l5-7.5h3.5z" fill="#20BEFF"/>
+                            </g>
+                          </svg>
+                        {% else %}
+                          <i class="fa {{ network.icon }} fa-fw"></i>
+                        {% endif %}
+                      </a>
+                    </li>
+                  {% endfor %}
                 </ul>
               </div>
           </div>
