@@ -1,0 +1,53 @@
+- kind: "job"
+  title: "Software Engineer Intern"
+  company: "Globant"
+  location: "Central London"
+  start: "2024-06-15"
+  end: "2024-08-01"
+  achievements: 
+    - Collaborated to deliver an automated meeting-to-PowerPoint conversion system for the discovery phase.
+    - Researched AutoGen and LangChain frameworks, identified production limitations through prototyping.
+    - Wrote a Python solution from scratch, integrating ChatGPT's API with error handling for reliability.
+    - Coordinated autonomous agents for transcription analysis, content structuring, and presentation generation.
+    - Presented the prototype to internal-stakeholders, informing Globant's first commercial AI agent product.
+    - Learned frameworks (AutoGen, LangChain, python-pptx) to use the optimal tools for production requirements.
+  story:
+
+- kind: "education"
+  title: "BSc Computer Science and Mathematics"
+  company: "Queen Mary, University of London"
+  location: "Central London"
+  start: "2022-09-15"
+  end: "2025-07-15"
+  achievements:
+    - First Class with Honours (81.0%).
+    - Big Data Processing (97.5%), Software Engineering (80.17%), Distributed Systems (78.8%), Algorithms and Data Structures (92.4%), Security Engineering (76.7%), and Neural Networks and Deep Learning (77.0%).
+  story:
+
+- kind: "project"
+  title: "Handling Randomness in Multi-Agent Scenarios"
+  company: "Final Year Project"
+  location: "Central London"
+  start: "2024-10-15"
+  end: "2025-05-15"
+  achievements:
+    - Wrote a 10,000 word Dissertation, gave a 10 minute presentation and built learning agents: achieving a First.
+    - Researched how multi-agent reinforcement learning handles decision making in unpredictable situations.
+    - Implemented Proximal Policy Optimization, for efficient and stable training.
+    - Developed a neural-network in PyTorch and a system for agents to learn with practice, using Gymnasium.
+    - Designed a visual behaviour framework, representing greater depth than similar research.
+  story:
+
+- kind: "project"
+  title: "Big Data Analysis Using Apache Spark"
+  company: "Big Data Processing Module"
+  location: "Central London"
+  start: "2025-10-15"
+  end: "2025-12-9"
+  achievements:
+    - Analysed transportation and financial datasets with up to 20+ million records each using PySpark.
+    - Built data pipelines for connecting to AWS cloud storage and parallel processing across distributed systems.
+    -Applied Spark Graph Analysis to model spatial relationships and route patterns in transportation networks.
+    - Processed NASA server logs using structured streaming, for continuous data flow analysis.
+    - Achieved 95% for the clarity of the report ( 4k words), visual representations (Matplotlib) and quality of code.
+  story:
