@@ -47,7 +47,7 @@
   achievements:
     - Analysed transportation and financial datasets with up to 20+ million records each using PySpark.
     - Built data pipelines for connecting to AWS cloud storage and parallel processing across distributed systems.
-    -Applied Spark Graph Analysis to model spatial relationships and route patterns in transportation networks.
+    - Applied Spark Graph Analysis to model spatial relationships and route patterns in transportation networks.
     - Processed NASA server logs using structured streaming, for continuous data flow analysis.
     - Achieved 95% for the clarity of the report ( 4k words), visual representations (Matplotlib) and quality of code.
   story:
