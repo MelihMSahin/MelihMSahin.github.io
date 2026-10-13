@@ -16,7 +16,7 @@ Secondary audiences are technical peers who want to explore his projects and app
 
 ## Positioning
 
-Present Melih as a technically strong, curious engineer who learns through practice, takes ownership, and is preparing for an AI-shaped software industry. He is interested in engineering roles involving AI-enabled systems, AI tools or agents, and evolving AI-native engineering practices. The exact role title and emphasis are not yet settled; the site should communicate this direction without claiming expertise that the evidence does not support.
+Present Melih as a technically strong, curious engineer who learns through practice and takes ownership. He is interested in software architecture and systems design, AI engineering, and roles that bring the two together. AI is an important part of his direction, but should have equal weight with the broader goal of designing and building software systems. The exact role title and emphasis are not yet settled; the site should communicate this direction without claiming expertise that the evidence does not support.
 
 The site should demonstrate technical depth, learning ability, delivery, thoughtful use of AI, and collaboration. Their relative priority still needs to be decided so the message does not become a list of equally weighted traits.
 
