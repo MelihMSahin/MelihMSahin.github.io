@@ -1,0 +1,345 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Mehmet Melih Sahin's CV},
+    pdfauthor={Mehmet Melih Sahin},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=blue
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in July 2024}\hspace{\widthof{Last updated in July 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont Mehmet Melih Sahin
+
+        \vspace{5 pt}
+
+        \normalsize
+        \mbox{\faMapMarker\space Surrey, KT2}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{mailto:EMAIL_REDACTED}{\faEnvelope\space EMAIL_REDACTED}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{tel:PHONE_REDACTED}{\faPhone\space PHONE_REDACTED}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://melihmsahin.github.io/MelihMSahin/}{\faGoogle\space Personal Website}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/melih-sahin-b33193215/}{\faLinkedin\space LinkedIn}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://github.com/MelihMSahin}{\faGithub\space GitHub}}%
+    \end{header}
+
+    \vspace{5 pt - 0.3 cm}
+
+    \section{PERSONAL PROFILE}
+        \begin{onecolentry}
+            A results oriented, enthusiastic and practical individual, who came to the UK from Turkey in 2016 for a better education and job opportunities. With a passion for computer science, I especially enjoy algorithmic problem solving not only within my course projects but also in my daily life and when programming my own games. My free time is mainly spent playing board games, studying game design, and exploring artificial intelligence.
+        \end{onecolentry}
+    
+    
+    
+    \section{EDUCATION}
+        \input{education}
+    
+    \section{WORK EXPERIENCE}
+        
+        \vspace{0.18cm}
+        \begin{twocolentry}{
+            Sept. 2026 – Present
+        }
+            \textbf{Graduate Software Engineer}: Deloitte
+        \end{twocolentry}
+        \begin{highlights}
+            \item Building fullstack applications with Angular, C\# and Azure to complete tax obligations.
+        \end{highlights}
+
+        \vspace{0.18cm}
+        \begin{twocolentry}{
+            Feb. 2026 – Aug. 2026
+        }
+            \textbf{Developer}: Sprift
+        \end{twocolentry}
+        \begin{highlights}
+            \item Ship full-stack features in JavaScript and PHP across a platform serving 30M+ UK properties.
+            \item Build interactive and PDF property reports end-to-end, from data to client-ready output.
+            \item Engineer REST API endpoints on AWS serverless infrastructure (Lambda, OpenSearch, MySQL).
+            \item Refactor legacy code and review changes with senior engineers and the CTO in an agile team.
+        \end{highlights}
+
+        \vspace{0.2cm}
+        \begin{twocolentry} {
+            Aug. 2025 - Sept. 2025
+        }
+            \textbf{Site Manager}: Balans International Ltd in London, UK
+        \end{twocolentry}
+        \begin{onecolentry}
+            Managed end-to-end logistics for a domestic flat redevelopment in Victoria, including coordinating equipment and furniture deliveries, organising provisions for the team, maintaining health and safety standards on site, and liaising with residents to minimise disruption.
+        \end{onecolentry}
+        
+        \input{globant}
+
+        \vspace{0.18cm} 
+        \begin{twocolentry}{
+            Sept. 2023 – May 2025
+        }
+            \textbf{Course Rep \& Lab Demonstrator}: Queen Mary, University of London
+        \end{twocolentry}
+        \begin{highlights}
+            \item Communicated feedback from 60+ students to faculty as Course Rep, resolving issues collaboratively.
+            \item Explained complex algorithms to 20+ students as a Lab Demonstrator, selected on a 92.4\% module grade.
+            \item Gathered feedback through surveys and worked with teaching staff to agree and action improvements.
+        \end{highlights}
+        
+        \vspace{0.2cm}
+         \begin{twocolentry}
+            {Sept. 2024 – Dec. 2024}
+            \textbf{Algorithms and Data Structures Lab Demonstrator}: Queen Mary, University of London in London, UK
+        \end{twocolentry}
+        \begin{highlights}
+            \item Appointed for outstanding performance in the second year-module: Algorithms and Data Structures.
+            \item Supervised, guided and evaluated second-year Computer Science students during their lab sessions.
+            \item Fostered understanding by clarifying complex concepts, as reflected in positive student feedback.
+        \end{highlights}
+        
+        \vspace{0.2cm}
+        \begin{twocolentry}
+            {Sept. 2024 – May 2025}
+            \textbf{Student Ambassador}: Queen Mary, University of London in London, UK
+        \end{twocolentry}
+        \begin{onecolentry}
+            Represented QMUL at on-campus events by welcoming prospective students and families, providing tailored guidance and insights based on my own academic journey. Strengthened communication skills while helping students make informed choices and contributing to a positive university image.  
+        \end{onecolentry}
+        
+        \vspace{0.2cm}
+        \begin{twocolentry}
+            {Sept. 2023 – Dec. 2023}
+            \textbf{Procedural Programming Lab Demonstrator}: Queen Mary, University of London in London, UK
+        \end{twocolentry}
+        \begin{highlights}
+            \item Supervised, guided, assessed, and marked first-year Computer Science students as one of the selected second-year students.
+            \item Allocated about 10 students, each with weekly assignments and a mini-project.
+            \item Learned about different attitudes toward work and how to encourage students to make more progress.
+        \end{highlights}
+        
+        \vspace{0.2cm}
+        \begin{twocolentry}{
+            Aug. 2021 – Sept. 2021
+        }
+            \textbf{Director’s Assistant}: Balans International Ltd in London, UK
+        \end{twocolentry}
+        \begin{onecolentry}
+            As assistant to the Managing Director, I helped organise the pay for the workers as well as managing outgoing invoices and incoming payments. This involved using online accounting tools and Excel spreadsheets, exercising care to identify and report any accounting inconsistencies.
+        \end{onecolentry}
+    
+    
+    \section{VOLUNTEER EXPERIENCE}
+        \begin{twocolentry}{
+            Oct. 2023 – June 2025
+            }
+            \textbf{Course Representative}, QMUL
+        \end{twocolentry}
+        \begin{highlights}
+            \item Elected by peers for two consecutive academic years to represent the cohort in discussions with teaching staff, addressing course-related issues by investigating concerns, evaluating the impact, and proposing actionable solutions.
+            \item Resolved dissatisfaction in the cohort through directly and persistently communicating with professors.
+        \end{highlights}
+
+        \vspace{0.2cm}
+        \begin{twocolentry}{
+            Sept. 2023 – May 2025
+            }
+            \textbf{Events Organiser}, Mathematics Society QMSU
+        \end{twocolentry}
+        \begin{onecolentry}
+            My role covers the completion of administrations required by The Students Union before they approve any society event, including a full event description, a risk assessment and a summary of financial or other needs to support the event delivery. If approved, I am also responsible for booking the venue and all related event publicity. 
+        \end{onecolentry}
+
+    
+    
+    \section{HOBBIES \& INTERESTS}
+        \begin{onecolentry}
+            \textbf{Game Development}
+        \end{onecolentry}
+        \begin{onecolentry}
+            In both 2022 (6,000 entrants) and 2023 (23,000 entrants) I participated in the GMTK YouTube gaming competitions developing “Reverse Escort Mission” and “Roll of the Dice” games, thereby acquiring proficiency in collaboration with teammates on Unity through GitHub and learning the vital importance of thorough testing.
+        \end{onecolentry}
+
+        \vspace{0.2cm}
+        \begin{onecolentry}
+            \textbf{High Intensity Interval Training (HIIT)} 
+        \end{onecolentry}
+        \begin{onecolentry}
+            Dynamic, instructor-led workouts that combine mixed martial arts, intense cardio, and strength training.
+        \end{onecolentry}
+        
+        \vspace{0.2 cm}
+        \begin{onecolentry}
+            \textbf{Art}
+        \end{onecolentry}
+        \begin{onecolentry}
+            Starting with acrylic paint my interest shifted into pixel and digital art so I can enhance my own computer games.
+        \end{onecolentry}
+
+
+    
+    \section{SKILLS}
+        \input{skills}
+\end{document}
