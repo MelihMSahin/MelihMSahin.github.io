@@ -1,0 +1,38 @@
+# First-Release MoSCoW
+
+**Status:** Provisional; revisit after the bounded content inventory.  
+**Scope:** Initial public portfolio release.
+
+This list sets discovery boundaries, not a final implementation contract. Promote items to Must only when they are necessary to meet the project goals.
+
+## Must Have
+
+- A concise homepage that presents Melih's direction across software architecture/systems design and AI engineering without over-weighting either.
+- Clear, direct paths to professional contact details and the current CV.
+- Selected, verified evidence of engineering work that explains context, contribution, decisions, and outcomes or learning.
+- A dated timeline that communicates high-level progression and provides a clear way to reach deeper milestone details.
+- Clear navigation and readable, keyboard-accessible layouts that work on mobile and desktop.
+- Public content checked for accuracy and sensitive personal information before release.
+
+## Should Have
+
+- More than one project or experience story, if the inventory supports distinct, useful examples.
+- A restrained personal profile that adds context beyond professional history.
+- Timeline groupings or categories, if they make the verified milestones easier to understand.
+- A straightforward content update workflow suited to the chosen hosting approach.
+
+## Could Have
+
+- A map-like, zoomable, or spatial timeline interaction, if it improves understanding over a simpler expandable timeline.
+- Subtle game-inspired details or richer interactions in deeper sections.
+- Links between projects, timeline milestones, learning, and personal interests.
+
+## Won't Have in the First Release
+
+- A full copy of the CV or LinkedIn profile presented with every item at equal prominence.
+- Site-wide search, user accounts, or a private authenticated archive.
+- A complex custom timeline visualization or decorative interaction that is not supported by the content or usability testing.
+
+## Completion Check
+
+The first release is complete when a recruiter can quickly understand Melih's engineering direction, review credible examples of his work, and reach his CV or contact details; the timeline gives a clear overview with accessible deeper detail; and the site remains concise, accurate, and usable across screen sizes.
