@@ -65,6 +65,9 @@ Do not begin with a LinkedIn clone, a complete CV transcribed onto one page, a c
 5. How prominent should contact, CV download, and project exploration be relative to one another?
 6. What visual references, accessibility requirements, and content-update workflow should guide implementation?
 
-## Recommended Next Step
+## Next Steps
 
-Build a verified content inventory from the LinkedIn PDF and long-form CV: list candidate projects, roles, education, milestones, dates, links, and personal details; flag conflicts and stale information for Melih to confirm. Use that inventory to choose the first featured project, timeline chapters, and recruiter-facing proof points before committing to the final visual concept.
+1. Start with the provisional first-release priorities in [MOSCOW.md](MOSCOW.md). They set boundaries for discovery; they are not yet a final implementation contract.
+2. Build a time-boxed content inventory from the LinkedIn PDF and long-form CV. Capture only candidate projects, roles, education, dated milestones, relevant personal context, and links needed to test the Must-haves. Record sources and flag conflicts or stale details for Melih to verify; do not transcribe every fact by default.
+3. Use the inventory to select the strongest project evidence and recruiter-facing priorities, and to decide how much timeline depth the content supports. Resolve the remaining positioning, timeline interaction, calls to action, and content-maintenance questions.
+4. Revise MoSCoW into the agreed first-release scope with clear completion criteria before implementation. Keep optional visual and interaction ideas out of Must unless discovery shows they are necessary.
