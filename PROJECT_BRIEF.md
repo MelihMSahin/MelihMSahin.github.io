@@ -68,6 +68,6 @@ Do not begin with a LinkedIn clone, a complete CV transcribed onto one page, a c
 ## Next Steps
 
 1. Start with the provisional first-release priorities in [MOSCOW.md](MOSCOW.md). They set boundaries for discovery; they are not yet a final implementation contract.
-2. Build a time-boxed content inventory from the LinkedIn PDF and long-form CV. Capture only candidate projects, roles, education, dated milestones, relevant personal context, and links needed to test the Must-haves. Record sources and flag conflicts or stale details for Melih to verify; do not transcribe every fact by default.
-3. Use the inventory to select the strongest project evidence and recruiter-facing priorities, and to decide how much timeline depth the content supports. Resolve the remaining positioning, timeline interaction, calls to action, and content-maintenance questions.
+2. Review and verify the draft [content inventory](CONTENT_INVENTORY.md): confirm conflicts and outcomes, correct stale dates, and identify publishable examples—especially evidence for reliability/platform engineering.
+3. Use the verified inventory to select the strongest STAR stories and recruiter-facing proof points, and decide how much timeline depth the content supports. Resolve the remaining timeline interaction, calls to action, and content-maintenance questions.
 4. Revise MoSCoW into the agreed first-release scope with clear completion criteria before implementation. Keep optional visual and interaction ideas out of Must unless discovery shows they are necessary.
