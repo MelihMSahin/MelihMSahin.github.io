@@ -31,7 +31,7 @@ The site should demonstrate technical depth, learning ability, delivery, thought
 
 The first impression should be clear and professional for recruiters, with a distinct note of curiosity and playfulness. The homepage should behave like a concise portfolio; deeper pages can become more interactive and carry subtle influences from strategy games and exploration. The visual language may evolve with depth, but clarity and consistent navigation take priority over novelty.
 
-Keep the top level brief. Put detail behind intentional links, expandable layers, or dedicated pages so visitors choose how deep to go. Make contact and CV access easy to find. Exact calls to action and the visual treatment remain open decisions.
+Design mobile-first, using a 390 CSS-pixel-wide iPhone-class viewport as an initial reference rather than a fixed canvas. Ensure layouts adapt to narrower and wider phones, then scale up thoughtfully for desktop. Keep the top level brief. Put detail behind intentional links, expandable layers, or dedicated pages so visitors choose how deep to go. Make contact and CV access easy to find. Exact calls to action and the visual treatment remain open decisions.
 
 ## Content and Editorial Rules
 
@@ -54,7 +54,7 @@ Do not begin with a LinkedIn clone, a complete CV transcribed onto one page, a c
 - The timeline communicates progression at a glance and supports deliberate movement into more detailed milestones.
 - Project content explains contribution and reasoning, not only technologies used.
 - Personal content adds recognizable human context without diluting the professional message.
-- The experience remains readable, keyboard-accessible, and usable on mobile as well as desktop.
+- The experience is designed and verified mobile-first, remains readable and keyboard-accessible across phone sizes, and scales well to desktop.
 
 ## Decisions to Resolve
 

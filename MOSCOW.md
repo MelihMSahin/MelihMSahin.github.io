@@ -11,7 +11,7 @@ This list sets discovery boundaries, not a final implementation contract. Promot
 - Clear, direct paths to professional contact details and the current CV.
 - Selected, verified evidence of engineering work that explains context, contribution, decisions, and outcomes or learning.
 - A dated timeline that communicates high-level progression and provides a clear way to reach deeper milestone details.
-- Clear navigation and readable, keyboard-accessible layouts that work on mobile and desktop.
+- A mobile-first, responsive experience, using a 390 CSS-pixel-wide iPhone-class viewport as a reference while supporting other phone sizes and desktop; navigation and content must remain readable and keyboard-accessible.
 - Public content checked for accuracy and sensitive personal information before release.
 
 ## Should Have
