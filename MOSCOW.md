@@ -7,9 +7,9 @@ This list sets discovery boundaries, not a final implementation contract. Promot
 
 ## Must Have
 
-- A concise homepage that presents Melih's direction across software architecture/systems design and AI engineering without over-weighting either.
+- A clean, concise, scannable homepage that presents Melih's direction across system design, ML/AI systems engineering, and reliability/platform engineering.
 - Clear, direct paths to professional contact details and the current CV.
-- Selected, verified evidence of engineering work that explains context, contribution, decisions, and outcomes or learning.
+- Selected, verified engineering examples presented in STAR format: situation, task, action (including contribution and decisions), and results and/or learning.
 - A dated timeline that communicates high-level progression and provides a clear way to reach deeper milestone details.
 - A mobile-first, responsive experience, using a 390 CSS-pixel-wide iPhone-class viewport as a reference while supporting other phone sizes and desktop; navigation and content must remain readable and keyboard-accessible.
 - Public content checked for accuracy and sensitive personal information before release.
