@@ -70,7 +70,9 @@ Do not begin with a LinkedIn clone, a complete CV transcribed onto one page, a c
 - **Content:** Markdown for project stories and longer text; structured data (JSON or YAML) for dated timeline entries and their relationships, kept in the repository. No CMS or backend.
 - **Hosting:** GitHub Pages, deployed with GitHub Actions.
 - **Prototype:** Build a static HTML/CSS/JavaScript prototype at the 390px mobile width to test timeline scannability and zoom levels before implementation. Its markup and styles should be easy to port into Astro components.
-- **Not decided:** Literal zoom versus a simpler interaction, and the visual design.
+- **Prototype feedback:** The first two prototypes (button zoom; single winding map) were rejected: the map looked sparse, labels overlapped, and it was not distinctive. Next direction: a game-style overworld of authored regions, with the three engineering directions as connecting "constellations", and detail in a panel rather than on the map.
+- **Layout principle:** Design the phone layout first, then compose a deliberate desktop layout (for example a persistent detail panel and a deeper level of detail) rather than stretching the mobile column.
+- **Not decided:** Visual style, and whether the overworld is freely pannable or uses tap-to-enter zones.
 
 ## Next Steps
 
