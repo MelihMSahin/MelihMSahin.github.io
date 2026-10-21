@@ -97,7 +97,7 @@ The portfolio should present Melih's interest in **system design**, **ML/AI syst
 
 ## Timeline (Approved Entries)
 
-**Agreed initial view:** Moved to the UK; Kingston Academy; Queen Mary degree; Globant internship; final-year project; Sprift unified API; current Deloitte role (title and start date only). Show milestone titles and dates for easy scanning. Zoom out once to group them into major life chapters (moving to the UK, university and graduation, early engineering career); zoom in for activity and story details. PetMinder, Big Data, GMTK, and university activities may appear in the same view if it remains scannable, or deeper under relevant education and project milestones. Whether this is implemented as a literal zoomable map remains open.
+**Agreed initial milestones:** Moved to the UK; Kingston Academy; Queen Mary degree; Globant internship; final-year project; Sprift unified API; current Deloitte role (title and start date only). Show milestone titles and dates for easy scanning. The preferred metaphor to prototype is an overworld: broad life chapters are lands, the move to the UK can be a starter circle, milestones are structures, and deeper details are rooms within those structures. PetMinder, Big Data, GMTK, and university activities may appear in the same view if it remains scannable, or deeper under relevant education and project milestones. Bold, graphic game-inspired styling is preferred; exact aesthetic and interaction are still open.
 
 - **2016:** Moved from Turkey to the UK.
 - **2017-2022:** The Kingston Academy; A levels and GCSEs per the long CV.
@@ -137,7 +137,9 @@ The original README and long CV mention mathematics and patterns, board/strategy
 - **Reliability/platform engineering (decided):** Present as a growing interest with supporting examples (Sprift backward compatibility, final-year project debugging), not a lead story.
 - **Supporting layer (decided):** PetMinder and Big Data Analysis.
 - **Public content (decided):** Facts and personal context in this inventory may be public; exclude personal email, phone number, and home address.
-- **Timeline hierarchy (decided):** The initial view includes seven agreed milestones; zoom out once for major life chapters and zoom in for activity and story details. Keep key role and project names visible in the initial view.
+- **Timeline content (decided):** The initial view includes seven agreed milestones; keep key role and project names visible for scanning.
+- **Overworld concept (to prototype):** Chapter lands contain milestone structures; structures lead to detail rooms. The arrival in the UK may be a starter circle. This is a conceptual direction, not a settled implementation.
+- **Visual direction (decided):** Bold, graphic game-inspired style. Exact map aesthetic remains open.
 
 ## Still Open
 

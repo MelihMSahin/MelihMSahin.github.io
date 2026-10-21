@@ -70,12 +70,14 @@ Do not begin with a LinkedIn clone, a complete CV transcribed onto one page, a c
 - **Content:** Markdown for project stories and longer text; structured data (JSON or YAML) for dated timeline entries and their relationships, kept in the repository. No CMS or backend.
 - **Hosting:** GitHub Pages, deployed with GitHub Actions.
 - **Prototype:** Build a static HTML/CSS/JavaScript prototype at the 390px mobile width to test timeline scannability and zoom levels before implementation. Its markup and styles should be easy to port into Astro components.
-- **Prototype feedback:** The first two prototypes (button zoom; single winding map) were rejected: the map looked sparse, labels overlapped, and it was not distinctive. Next direction: a game-style overworld of authored regions, with the three engineering directions as connecting "constellations", and detail in a panel rather than on the map.
+- **Prototype feedback:** Button-based level switching felt like extending a dropdown. The constellation concept was rejected. The overworld concept remains preferred; the first map layout needs a more considered shape, spacing, and label placement.
+- **Overworld metaphor to prototype:** Broad life chapters are lands; the move to the UK can be a starter circle; dated milestones are structures within the lands; deeper detail is explored as rooms within those structures. This is a conceptual hierarchy, not a committed map layout or interaction model.
+- **Visual direction:** Bold, graphic game-inspired style is preferred. The specific overworld aesthetic, region shapes, and landmark treatment remain open for iteration.
 - **Layout principle:** Design the phone layout first, then compose a deliberate desktop layout (for example a persistent detail panel and a deeper level of detail) rather than stretching the mobile column.
-- **Not decided:** Visual style, and whether the overworld is freely pannable or uses tap-to-enter zones.
+- **Not decided:** Whether the map uses free panning, zoom, tap-to-enter lands or structures, or another accessible interaction. Details may be shown in a panel or inside a structure; test these options.
 
 ## Next Steps
 
 1. Verify the selected profile links and create a professional forwarding email alias before launch.
-2. Prototype the agreed timeline hierarchy and mobile-first homepage; decide whether literal zoom interaction improves scannability and accessibility.
+2. Prototype the overworld metaphor at phone and desktop sizes; test whether chapters-as-lands, milestones-as-structures, and detail-as-rooms stay scannable and accessible.
 3. Implement the finalized first-release priorities in [MOSCOW.md](MOSCOW.md), using verified content from the [inventory](CONTENT_INVENTORY.md).
