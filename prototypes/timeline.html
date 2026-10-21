@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timeline prototype | Melih Sahin</title>
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --surface: #ffffff;
+      --ink: #1f2430;
+      --muted: #5b6475;
+      --accent: #c2410c;
+      --accent-soft: #fde8dc;
+      --line: #d9d3c7;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .page {
+      max-width: 40rem;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3rem;
+    }
+
+    header h1 { margin: 0; font-size: 1.5rem; }
+    header p { margin: 0.25rem 0 0; color: var(--muted); }
+
+    .zoom {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      margin: 1.25rem -1rem 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .zoom-label {
+      margin: 0 0 0.5rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .zoom-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    .zoom button {
+      min-height: 44px;
+      padding: 0.5rem;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .zoom button[aria-pressed="true"] {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 1.25rem;
+      border-left: 3px solid var(--line);
+    }
+
+    .entry {
+      position: relative;
+      margin: 0 0 1rem;
+      padding: 0.75rem 0.9rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .entry::before {
+      content: "";
+      position: absolute;
+      left: calc(-1.25rem - 8.5px);
+      top: 1.1rem;
+      width: 14px;
+      height: 14px;
+      border: 3px solid var(--accent);
+      border-radius: 50%;
+      background: var(--bg);
+    }
+
+    .date {
+      margin: 0;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .entry h2 { margin: 0.1rem 0 0; font-size: 1.05rem; }
+    .entry p { margin: 0.35rem 0 0; color: var(--muted); }
+
+    .extras {
+      margin: 0.75rem 0 0;
+      padding: 0.5rem 0 0 0;
+      list-style: none;
+      border-top: 1px dashed var(--line);
+    }
+
+    .extras li { margin: 0.6rem 0 0; }
+    .extras .date { color: var(--muted); }
+    .extras strong { display: block; font-size: 0.95rem; }
+    .extras span { font-size: 0.9rem; color: var(--muted); }
+
+    .note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    @media (min-width: 48rem) {
+      .page { padding-top: 2.5rem; }
+      .zoom { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .entry { transition: border-color 0.15s ease; }
+      .entry:hover { border-color: var(--accent); }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>Melih Sahin</h1>
+      <p>System design, ML/AI systems engineering, and reliability/platform engineering.</p>
+    </header>
+
+    <section class="zoom" aria-labelledby="zoom-heading">
+      <p class="zoom-label" id="zoom-heading">Timeline view</p>
+      <div class="zoom-buttons" role="group" aria-labelledby="zoom-heading">
+        <button type="button" data-level="chapters" aria-pressed="false">Chapters</button>
+        <button type="button" data-level="milestones" aria-pressed="true">Milestones</button>
+        <button type="button" data-level="detail" aria-pressed="false">Detail</button>
+      </div>
+    </section>
+
+    <ol class="timeline" id="timeline" aria-live="polite"></ol>
+
+    <p class="note">Prototype only. Content is drawn from the content inventory and is not final copy.</p>
+  </main>
+
+  <script>
+    const chapters = [
+      { date: "2016", title: "Arrival in the UK", summary: "Moved from Turkey to the UK." },
+      { date: "2017 - 2022", title: "School", summary: "The Kingston Academy: A levels in Mathematics, Further Mathematics, Physics, and Computer Science." },
+      { date: "2022 - 2025", title: "University", summary: "BSc Computer Science and Mathematics at Queen Mary University of London, First Class with Honours." },
+      { date: "2024 - present", title: "Early engineering career", summary: "From an AI prototype internship to full-stack engineering at Sprift and Deloitte." }
+    ];
+
+    const milestones = [
+      {
+        date: "2016",
+        title: "Moved from Turkey to the UK",
+        summary: "Moved to the UK for education and job opportunities.",
+        extras: []
+      },
+      {
+        date: "2017 - 2022",
+        title: "The Kingston Academy",
+        summary: "A levels: Mathematics (A*), Further Mathematics (A), Physics (B), Computer Science (B).",
+        extras: []
+      },
+      {
+        date: "2022 - 2025",
+        title: "BSc Computer Science and Mathematics, Queen Mary",
+        summary: "First Class with Honours (81.0%).",
+        extras: [
+          { date: "2022 and 2023", title: "GMTK game jams", text: "Entered with the games \"Reverse Escort Mission\" and \"Roll of the Dice\"." },
+          { date: "2023 - 2025", title: "Course representative", text: "Represented 60+ students in discussions with teaching staff." },
+          { date: "2023 - 2025", title: "Lab demonstrator", text: "Supported first- and second-year Computer Science students." },
+          { date: "2023 - 2025", title: "Mathematics Society events organiser", text: "Handled event approvals, venues, and publicity." },
+          { date: "Jan - Apr 2024", title: "PetMinder", text: "Part of a seven-person team; voted the best PetMinder project among the teams." },
+          { date: "Oct - Dec 2024", title: "Big Data Analysis with Apache Spark", text: "Analysed datasets of 20M+ records with PySpark." },
+          { date: "2024 - 2025", title: "Student Ambassador", text: "Welcomed prospective students and families at university events." }
+        ]
+      },
+      {
+        date: "Jun - Aug 2024",
+        title: "Software Engineer Intern, Globant",
+        summary: "Led a team building a functional multi-agent AI prototype that informed an early commercial AI-agent product.",
+        extras: []
+      },
+      {
+        date: "Oct 2024 - May 2025",
+        title: "Final-year project: Handling Randomness in Multi-Agent Scenarios",
+        summary: "Built reinforcement-learning agents for a five-player card game and evaluated what they learned.",
+        extras: []
+      },
+      {
+        date: "Aug - Sep 2025",
+        title: "Onsite Manager, Balans International",
+        summary: "Managed logistics for a domestic flat redevelopment in London.",
+        detailOnly: true,
+        extras: []
+      },
+      {
+        date: "Feb - Aug 2026",
+        title: "Sprift: unified property API",
+        summary: "Designed one API for all property types while keeping two existing endpoints working.",
+        extras: [
+          { date: "2026", title: "Full-stack engineering", text: "Worked across the stack, including a lot of UI updates." },
+          { date: "2026", title: "Light-mode refresh", text: "Changed the website from dark mode to light mode and turned Figma and HTML designs into code." }
+        ]
+      },
+      {
+        date: "Sep 2026 - present",
+        title: "Graduate Software Engineer, Deloitte",
+        summary: "",
+        extras: []
+      }
+    ];
+
+    const timeline = document.getElementById("timeline");
+    const buttons = document.querySelectorAll("[data-level]");
+
+    function entry({ date, title, summary, extras = [] }, showExtras) {
+      const li = document.createElement("li");
+      li.className = "entry";
+
+      const dateEl = document.createElement("p");
+      dateEl.className = "date";
+      dateEl.textContent = date;
+      li.append(dateEl);
+
+      const heading = document.createElement("h2");
+      heading.textContent = title;
+      li.append(heading);
+
+      if (summary) {
+        const text = document.createElement("p");
+        text.textContent = summary;
+        li.append(text);
+      }
+
+      if (showExtras && extras.length) {
+        const list = document.createElement("ul");
+        list.className = "extras";
+        for (const item of extras) {
+          const row = document.createElement("li");
+          const rowDate = document.createElement("span");
+          rowDate.className = "date";
+          rowDate.textContent = item.date;
+          const rowTitle = document.createElement("strong");
+          rowTitle.textContent = item.title;
+          const rowText = document.createElement("span");
+          rowText.textContent = item.text;
+          row.append(rowDate, rowTitle, rowText);
+          list.append(row);
+        }
+        li.append(list);
+      }
+
+      return li;
+    }
+
+    function render(level) {
+      timeline.replaceChildren();
+      const items = level === "chapters"
+        ? chapters
+        : milestones.filter((item) => level === "detail" || !item.detailOnly);
+      for (const item of items) {
+        timeline.append(entry(item, level === "detail"));
+      }
+      for (const button of buttons) {
+        button.setAttribute("aria-pressed", String(button.dataset.level === level));
+      }
+    }
+
+    for (const button of buttons) {
+      button.addEventListener("click", () => render(button.dataset.level));
+    }
+
+    render("milestones");
+  </script>
+</body>
+</html>
