@@ -60,9 +60,17 @@ Do not begin with a LinkedIn clone, a complete CV transcribed onto one page, a c
 
 1. Which locations and company types should the site target first?
 2. How should the three engineering directions and supporting strengths be balanced in the recruiter-facing narrative?
-3. Should the timeline hierarchy use literal zoom, or a simpler interaction that preserves the same overview and detail levels?
+3. Should the timeline hierarchy use literal zoom, or a simpler interaction that preserves the same overview and detail levels? An HTML prototype will inform this.
 4. How should contact, CV access, and project stories be prioritized on the homepage?
 5. What visual direction and content-update workflow should guide implementation?
+
+## Technical Direction
+
+- **Framework:** Astro with TypeScript, producing a static site with reusable components. A Node-based build workflow is acceptable.
+- **Content:** Markdown for project stories and longer text; structured data (JSON or YAML) for dated timeline entries and their relationships, kept in the repository. No CMS or backend.
+- **Hosting:** GitHub Pages, deployed with GitHub Actions.
+- **Prototype:** Build a static HTML/CSS/JavaScript prototype at the 390px mobile width to test timeline scannability and zoom levels before implementation. Its markup and styles should be easy to port into Astro components.
+- **Not decided:** Literal zoom versus a simpler interaction, and the visual design.
 
 ## Next Steps
 
