@@ -17,7 +17,43 @@
       --gold: #f3ca49;
       --white: #fffbea;
       --muted: #596764;
+      --region-crossing: #f3ca49;
+      --region-school: #84c9b0;
+      --region-university: #62b8cc;
+      --region-work: #f4775d;
       --outline: 3px solid var(--ink);
+    }
+
+    body[data-theme="inked"] {
+      --ink: #494439;
+      --paper: #f1eadb;
+      --map: #e7e4d2;
+      --mint: #c4c9ae;
+      --water: #aec4bf;
+      --coral: #b87c61;
+      --gold: #d7c18a;
+      --white: #faf6e9;
+      --muted: #726b5c;
+      --region-crossing: #dbc99f;
+      --region-school: #c4c9ae;
+      --region-university: #aec4bf;
+      --region-work: #c89579;
+    }
+
+    body[data-theme="hybrid"] {
+      --ink: #173c45;
+      --paper: #f2f5ef;
+      --map: #dce9d7;
+      --mint: #77c4ae;
+      --water: #66b9cb;
+      --coral: #ed795f;
+      --gold: #f3c845;
+      --white: #fffef8;
+      --muted: #4d6463;
+      --region-crossing: #f3d873;
+      --region-school: #b7d8a7;
+      --region-university: #7fc8bf;
+      --region-work: #efa08a;
     }
 
     * { box-sizing: border-box; }
@@ -33,14 +69,42 @@
     button { color: inherit; font: inherit; }
 
     .site-header {
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(10rem, 1fr) auto minmax(12rem, 1fr);
       align-items: end;
-      justify-content: space-between;
       gap: 1rem;
       max-width: 1500px;
       margin: 0 auto;
       padding: 1.25rem clamp(1rem, 3vw, 2.75rem) 1rem;
     }
+
+    .style-picker {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem;
+      border: 2px solid var(--ink);
+      border-radius: 5px;
+      background: var(--white);
+    }
+
+    .style-picker button {
+      min-height: 36px;
+      padding: 0.35rem 0.6rem;
+      border: 0;
+      border-radius: 3px;
+      background: transparent;
+      font-size: 0.72rem;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .style-picker button[aria-pressed="true"] {
+      background: var(--gold);
+      box-shadow: inset 0 0 0 1px var(--ink);
+    }
+
+    .style-picker button:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
 
     .eyebrow {
       display: block;
@@ -59,6 +123,7 @@
     }
 
     .site-header p {
+      justify-self: end;
       max-width: 19rem;
       margin: 0;
       color: var(--muted);
@@ -100,6 +165,13 @@
       opacity: 0.32;
     }
 
+    body[data-theme="inked"] .map-wrap::after {
+      background-image: repeating-linear-gradient(14deg, rgba(73, 68, 57, 0.08) 0 1px, transparent 1px 8px);
+      opacity: 0.55;
+    }
+
+    body[data-theme="hybrid"] .map-wrap::after { opacity: 0.14; }
+
     .map-stage {
       position: absolute;
       inset: 0;
@@ -134,6 +206,13 @@
       vector-effect: non-scaling-stroke;
     }
 
+    body[data-theme="inked"] .land {
+      stroke-dasharray: 1 1.5;
+      stroke-width: 4;
+    }
+
+    body[data-theme="hybrid"] .land { stroke-width: 4; }
+
     .region-name {
       fill: var(--ink);
       font-family: system-ui, sans-serif;
@@ -141,6 +220,25 @@
       font-weight: 900;
       letter-spacing: 1.5px;
       opacity: 0.62;
+    }
+
+    body[data-theme="inked"] .region-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.7px;
+      opacity: 0.72;
+    }
+
+    .ink-landmark { display: none; }
+    body[data-theme="inked"] .ink-landmark { display: inline; }
+    .ink-landmark path, .ink-landmark rect, .ink-landmark line {
+      fill: none;
+      stroke: var(--ink);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
     }
 
     .road-edge, .road, .road-dash {
@@ -209,6 +307,44 @@
     .poi.selected .marker { background: var(--gold); transform: translate(-50%, -50%) rotate(0) scale(1.18); }
     .marker:hover { transform: translate(-50%, -50%) rotate(0) scale(1.18); }
     .marker:focus-visible { outline: 4px solid var(--white); outline-offset: 4px; }
+
+    body[data-theme="inked"] .marker {
+      border-radius: 50%;
+      box-shadow: 1px 1px 0 var(--ink);
+    }
+
+    body[data-theme="inked"] .poi-label {
+      border-width: 1px;
+      border-radius: 2px;
+      box-shadow: 1px 2px 3px rgba(73, 68, 57, 0.16);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+    }
+
+    body[data-theme="hybrid"] .marker {
+      border-radius: 50%;
+      box-shadow: 0 2px 0 var(--ink);
+    }
+
+    body[data-theme="hybrid"] .poi-label {
+      border-radius: 8px;
+      box-shadow: 0 3px 0 var(--ink);
+    }
+
+    body[data-theme="hybrid"] .poi.selected .marker::after {
+      position: absolute;
+      inset: -8px;
+      border: 2px solid var(--coral);
+      border-radius: 50%;
+      content: "";
+      animation: node-unlock 700ms ease-out both;
+      pointer-events: none;
+    }
+
+    @keyframes node-unlock {
+      from { opacity: 0.85; transform: scale(0.75); }
+      to { opacity: 0; transform: scale(1.8); }
+    }
 
     .pin-number {
       position: absolute;
@@ -414,7 +550,9 @@
     }
 
     @media (max-width: 760px) {
-      .site-header { align-items: start; padding-top: 1rem; }
+      .site-header { grid-template-columns: minmax(0, 1fr) auto; align-items: start; padding-top: 1rem; }
+      .style-picker { grid-column: 1 / -1; grid-row: 2; justify-self: start; }
+      .style-picker button { min-height: 40px; }
       .site-header p { max-width: 11rem; font-size: 0.75rem; }
       .atlas { display: flex; flex-direction: column; gap: 1.5rem; padding-bottom: 2rem; }
       .map-wrap { min-height: 0; height: min(68svh, 570px); box-shadow: 5px 5px 0 var(--ink); }
@@ -434,15 +572,24 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      body[data-theme="hybrid"] .poi.selected .marker::after { animation: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div>
+    <div class="brand">
       <span class="eyebrow">Career atlas / 2016 — now</span>
       <h1>Melih Sahin</h1>
+    </div>
+    <div class="style-picker" role="group" aria-label="Map style">
+      <button type="button" data-theme-option="bold" aria-pressed="true">Bold</button>
+      <button type="button" data-theme-option="inked" aria-pressed="false">Inked</button>
+      <button type="button" data-theme-option="hybrid" aria-pressed="false">Hybrid</button>
     </div>
     <p>System design · ML/AI systems · Reliability &amp; platforms</p>
   </header>
@@ -456,18 +603,18 @@
           <svg class="world-art" viewBox="0 0 1000 700" aria-hidden="true">
             <defs>
               <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
-                <circle cx="3" cy="3" r="1.7" fill="#17292c" opacity=".2" />
+                <circle cx="3" cy="3" r="1.7" fill="var(--ink)" opacity=".2" />
               </pattern>
               <pattern id="stripes" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
-                <rect width="5" height="14" fill="#17292c" opacity=".12" />
+                <rect width="5" height="14" fill="var(--ink)" opacity=".12" />
               </pattern>
             </defs>
-            <rect width="1000" height="700" fill="#d8e9a8" />
+            <rect width="1000" height="700" fill="var(--map)" />
             <rect width="1000" height="700" fill="url(#dots)" />
-            <path class="land" fill="#f3ca49" d="M20 160 Q80 65 205 80 Q270 22 357 75 Q430 63 459 155 Q504 214 456 291 Q413 342 306 314 Q219 365 124 311 Q43 301 20 224Z" />
-            <path class="land" fill="#84c9b0" d="M167 364 Q201 297 302 315 Q385 286 443 342 Q513 366 497 449 Q480 514 391 525 Q331 587 251 541 Q171 546 147 469Z" />
-            <path class="land" fill="#62b8cc" d="M400 421 Q443 351 545 383 Q619 351 676 405 Q744 438 719 520 Q707 584 610 588 Q549 636 469 591 Q396 570 384 504Z" />
-            <path class="land" fill="#f4775d" d="M555 126 Q624 66 712 102 Q789 45 871 100 Q968 105 977 194 Q996 269 918 309 Q858 356 774 311 Q689 346 625 289 Q551 250 555 126Z" />
+            <path class="land" fill="var(--region-crossing)" d="M20 160 Q80 65 205 80 Q270 22 357 75 Q430 63 459 155 Q504 214 456 291 Q413 342 306 314 Q219 365 124 311 Q43 301 20 224Z" />
+            <path class="land" fill="var(--region-school)" d="M167 364 Q201 297 302 315 Q385 286 443 342 Q513 366 497 449 Q480 514 391 525 Q331 587 251 541 Q171 546 147 469Z" />
+            <path class="land" fill="var(--region-university)" d="M400 421 Q443 351 545 383 Q619 351 676 405 Q744 438 719 520 Q707 584 610 588 Q549 636 469 591 Q396 570 384 504Z" />
+            <path class="land" fill="var(--region-work)" d="M555 126 Q624 66 712 102 Q789 45 871 100 Q968 105 977 194 Q996 269 918 309 Q858 356 774 311 Q689 346 625 289 Q551 250 555 126Z" />
             <path fill="url(#stripes)" d="M20 160 Q80 65 205 80 Q270 22 357 75 Q430 63 459 155 Q504 214 456 291 Q413 342 306 314 Q219 365 124 311 Q43 301 20 224Z" />
             <path fill="url(#stripes)" d="M555 126 Q624 66 712 102 Q789 45 871 100 Q968 105 977 194 Q996 269 918 309 Q858 356 774 311 Q689 346 625 289 Q551 250 555 126Z" />
             <text class="region-name" x="72" y="122">THE CROSSING</text>
@@ -475,6 +622,11 @@
             <text class="region-name" x="454" y="466">UNIVERSITY QUAD</text>
             <text class="region-name" x="707" y="153">FIELDWORK</text>
             <text class="region-name" x="803" y="284">THE WORKSHOP</text>
+            <g class="ink-landmark" aria-hidden="true">
+              <path d="M188 288h42v34h-42z M182 288l27-24 27 24 M198 322v-18h12v18 M218 296h5v7h-5z" />
+              <path d="M486 591h54v-28h-54z M480 563l33-27 33 27 M497 591v-18h10v18 M519 591v-18h10v18" />
+              <path d="M826 340h40v31h-40z M820 340l26-21 26 21 M837 371v-17h11v17 M853 348h7v7h-7z" />
+            </g>
             <path id="trail-edge" class="road-edge"></path>
             <path id="trail" class="road"></path>
             <path id="trail-dash" class="road-dash"></path>
@@ -565,6 +717,16 @@
     let lastGesture = 0;
     const pointers = new Map();
     let pinch = null;
+
+    for (const button of document.querySelectorAll("[data-theme-option]")) {
+      button.addEventListener("click", () => {
+        const theme = button.dataset.themeOption;
+        document.body.dataset.theme = theme;
+        for (const option of document.querySelectorAll("[data-theme-option]")) {
+          option.setAttribute("aria-pressed", String(option === button));
+        }
+      });
+    }
 
     const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
     const fade = (value, from, to) => clamp((value - from) / (to - from), 0, 1);
