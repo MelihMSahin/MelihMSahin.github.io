@@ -1,24 +1,24 @@
 # First-Release MoSCoW
 
-**Status:** Provisional; revisit after the bounded content inventory.  
+**Status:** Finalized first-release priorities; 2026-10-21.  
 **Scope:** Initial public portfolio release.
 
-This list sets discovery boundaries, not a final implementation contract. Promote items to Must only when they are necessary to meet the project goals.
+This is the agreed first-release scope. The public email alias and current profile links are launch details to verify; they do not change these priorities.
 
 ## Must Have
 
-- A clean, concise, scannable homepage that presents Melih's direction across system design, ML/AI systems engineering, and reliability/platform engineering.
-- Clear, direct paths to professional contact details and the current CV.
-- Selected, verified engineering examples presented in STAR format: situation, task, action (including contribution and decisions), and results and/or learning.
-- A dated timeline whose initial view makes milestone titles (including roles and projects) easy to scan; one step out groups them into major life chapters, while zooming in reveals more detail.
+- A clean, concise, scannable homepage that presents Melih's direction across system design, ML/AI systems engineering, and reliability/platform engineering. Present reliability/platform engineering as a growing interest, not proven impact.
+- Clear, direct paths to the current CV and professional contact using a forwarding email alias; do not publish personal email, phone number, or home address.
+- Selected, verified engineering examples in STAR format (situation, task, action, result and/or learning), distinguishing Melih's contribution from team outcomes. The lead examples are Sprift full-stack work (including the unified API and UI updates), the final-year project, and the Globant AI prototype.
+- A dated timeline whose initial view clearly shows these milestones: moved to the UK; Kingston Academy; Queen Mary degree; Globant internship; final-year project; Sprift unified API; and current Deloitte role (title and start date only). One step out groups milestones into major life chapters; zooming in reveals more detail.
 - A mobile-first, responsive experience, using a 390 CSS-pixel-wide iPhone-class viewport as a reference while supporting other phone sizes and desktop; navigation and content must remain readable and keyboard-accessible.
-- Public content checked for accuracy and sensitive personal information before release.
+- Public content checked for accuracy; personal email, phone number, and home address remain private.
 
 ## Should Have
 
-- More than one project or experience story, if the inventory supports distinct, useful examples.
+- Supporting timeline entries for PetMinder, Big Data Analysis, GMTK, and university activities, either in the initial view if they remain scannable or nested under related education/project milestones.
 - A restrained personal profile that adds context beyond professional history.
-- Timeline groupings or categories, if they make the verified milestones easier to understand.
+- Selected current profile links (such as LinkedIn, GitHub, Kaggle, or TryHackMe) after verification.
 - A straightforward content update workflow suited to the chosen hosting approach.
 
 ## Could Have
@@ -32,7 +32,8 @@ This list sets discovery boundaries, not a final implementation contract. Promot
 - A full copy of the CV or LinkedIn profile presented with every item at equal prominence.
 - Site-wide search, user accounts, or a private authenticated archive.
 - A complex custom timeline visualization or decorative interaction that is not supported by the content or usability testing.
+- Claims that Melih personally caused the decrease in Sprift downtime or that the Globant prototype saved time or was used in production.
 
 ## Completion Check
 
-The first release is complete when a recruiter can quickly understand Melih's engineering direction, review credible examples of his work, and reach his CV or contact details; the timeline's initial view makes key milestones easy to scan and supports broader and deeper views; and the site remains concise, accurate, and usable across screen sizes.
+The first release is complete when a recruiter can quickly understand Melih's engineering direction, review the selected credible examples, and reach his CV or professional contact; the initial timeline view makes all seven agreed milestones easy to scan and supports broader and deeper views; and the site is accurate, keyboard-accessible, mobile-first, and usable on desktop.

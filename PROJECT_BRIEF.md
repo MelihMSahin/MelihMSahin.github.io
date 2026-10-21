@@ -58,16 +58,14 @@ Do not begin with a LinkedIn clone, a complete CV transcribed onto one page, a c
 
 ## Decisions to Resolve
 
-1. Which specific roles, locations, and company types should the site target first?
-2. Which project or experience best proves fit for AI-era engineering, and what evidence should lead the story?
-3. Which strengths should be the top two or three priorities in the recruiter-facing narrative?
-4. Should the timeline be a conventional expandable timeline, a spatial/map-like canvas, or another interaction that conveys zooming without sacrificing clarity?
-5. How prominent should contact, CV download, and project exploration be relative to one another?
-6. What visual references, accessibility requirements, and content-update workflow should guide implementation?
+1. Which locations and company types should the site target first?
+2. How should the three engineering directions and supporting strengths be balanced in the recruiter-facing narrative?
+3. Should the timeline hierarchy use literal zoom, or a simpler interaction that preserves the same overview and detail levels?
+4. How should contact, CV access, and project stories be prioritized on the homepage?
+5. What visual direction and content-update workflow should guide implementation?
 
 ## Next Steps
 
-1. Start with the provisional first-release priorities in [MOSCOW.md](MOSCOW.md). They set boundaries for discovery; they are not yet a final implementation contract.
-2. Review and verify the draft [content inventory](CONTENT_INVENTORY.md): confirm conflicts and outcomes, correct stale dates, and identify publishable examples—especially evidence for reliability/platform engineering.
-3. Use the verified inventory to select the strongest STAR stories and recruiter-facing proof points, and decide how much timeline depth the content supports. Resolve the remaining timeline interaction, calls to action, and content-maintenance questions.
-4. Revise MoSCoW into the agreed first-release scope with clear completion criteria before implementation. Keep optional visual and interaction ideas out of Must unless discovery shows they are necessary.
+1. Verify the selected profile links and create a professional forwarding email alias before launch.
+2. Prototype the agreed timeline hierarchy and mobile-first homepage; decide whether literal zoom interaction improves scannability and accessibility.
+3. Implement the finalized first-release priorities in [MOSCOW.md](MOSCOW.md), using verified content from the [inventory](CONTENT_INVENTORY.md).
