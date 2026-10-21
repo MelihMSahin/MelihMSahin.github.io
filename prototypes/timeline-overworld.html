@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f0d5">
+  <title>Career Atlas | Melih Sahin</title>
+  <style>
+    :root {
+      --ink: #17292c;
+      --paper: #f4f0d5;
+      --map: #d8e9a8;
+      --grass: #acd371;
+      --mint: #84c9b0;
+      --water: #62b8cc;
+      --coral: #f4775d;
+      --gold: #f3ca49;
+      --white: #fffbea;
+      --muted: #596764;
+      --outline: 3px solid var(--ink);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-height: 100%; margin: 0; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    button { color: inherit; font: inherit; }
+
+    .site-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 1.25rem clamp(1rem, 3vw, 2.75rem) 1rem;
+    }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.72rem;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .site-header h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.5rem, 4vw, 2.3rem);
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .site-header p {
+      max-width: 19rem;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: right;
+    }
+
+    .atlas {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(19rem, 0.75fr);
+      gap: clamp(1rem, 2vw, 2rem);
+      align-items: stretch;
+      max-width: 1500px;
+      min-height: min(76vh, 800px);
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3vw, 2.75rem) 2rem;
+    }
+
+    .map-wrap {
+      position: relative;
+      min-width: 0;
+      min-height: 620px;
+      overflow: hidden;
+      border: var(--outline);
+      border-radius: 8px;
+      background: var(--map);
+      box-shadow: 8px 8px 0 var(--ink);
+    }
+
+    .map-wrap::after {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      content: "";
+      pointer-events: none;
+      background-image: radial-gradient(rgba(23, 41, 44, 0.18) 1px, transparent 1.5px);
+      background-size: 16px 16px;
+      mix-blend-mode: multiply;
+      opacity: 0.32;
+    }
+
+    .map-stage {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    .map-stage.dragging { cursor: grabbing; }
+    .map-stage:focus-visible { outline: 4px solid var(--coral); outline-offset: -7px; }
+
+    .world {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1000px;
+      height: 700px;
+      transform-origin: 0 0;
+      will-change: transform;
+    }
+
+    .world-art {
+      position: absolute;
+      inset: 0;
+      overflow: visible;
+    }
+
+    .land {
+      stroke: var(--ink);
+      stroke-width: 5;
+      stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .region-name {
+      fill: var(--ink);
+      font-family: system-ui, sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      opacity: 0.62;
+    }
+
+    .road-edge, .road, .road-dash {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .road-edge { stroke: var(--ink); stroke-width: 25px; }
+    .road { stroke: var(--white); stroke-width: 17px; }
+    .road-dash { stroke: var(--coral); stroke-width: 3px; stroke-dasharray: 2 12; }
+    .detail-road { fill: none; stroke: var(--ink); stroke-width: 5px; stroke-dasharray: 3 9; opacity: 0; vector-effect: non-scaling-stroke; }
+
+    .map-stamp {
+      position: absolute;
+      z-index: 1;
+      padding: 0.4rem 0.7rem;
+      border: 2px solid var(--ink);
+      border-radius: 3px;
+      background: var(--gold);
+      box-shadow: 3px 3px 0 var(--ink);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      pointer-events: none;
+      transform: rotate(-4deg);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .poi {
+      position: absolute;
+      z-index: 2;
+      width: 0;
+      height: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 180ms ease;
+    }
+
+    .poi[data-kind="chapter"] { --dot: 30px; }
+    .poi[data-kind="milestone"] { --dot: 23px; }
+    .poi[data-kind="detail"] { --dot: 16px; }
+
+    .marker {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--dot);
+      height: var(--dot);
+      padding: 0;
+      border: 3px solid var(--ink);
+      border-radius: 40% 60% 48% 52%;
+      background: var(--coral);
+      box-shadow: 3px 3px 0 var(--ink);
+      cursor: pointer;
+      transform: translate(-50%, -50%) rotate(-8deg);
+      transition: transform 140ms ease, background 140ms ease;
+    }
+
+    .poi[data-kind="chapter"] .marker { background: var(--gold); }
+    .poi[data-kind="milestone"] .marker { background: var(--water); }
+    .poi[data-kind="detail"] .marker { background: var(--coral); }
+    .poi.selected .marker { background: var(--gold); transform: translate(-50%, -50%) rotate(0) scale(1.18); }
+    .marker:hover { transform: translate(-50%, -50%) rotate(0) scale(1.18); }
+    .marker:focus-visible { outline: 4px solid var(--white); outline-offset: 4px; }
+
+    .pin-number {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 0.72rem;
+      font-weight: 900;
+    }
+
+    .poi-label {
+      position: absolute;
+      top: 0;
+      display: block;
+      width: 210px;
+      padding: 0.35rem 0.5rem;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      background: var(--white);
+      box-shadow: 3px 3px 0 var(--ink);
+      color: var(--ink);
+      font-size: 20px;
+      font-weight: 850;
+      line-height: 1.12;
+      text-align: left;
+      cursor: pointer;
+      transform: translateY(-50%);
+    }
+
+    .poi[data-side="right"] .poi-label { left: 25px; }
+    .poi[data-side="left"] .poi-label { right: 25px; text-align: right; }
+    .poi[data-kind="chapter"] .poi-label { background: var(--gold); }
+    .poi[data-kind="detail"] .poi-label { width: 185px; font-size: 17px; }
+    .poi.selected .poi-label { background: var(--gold); }
+
+    .map-topline {
+      position: absolute;
+      z-index: 4;
+      top: 1rem;
+      left: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .map-topline span {
+      padding: 0.4rem 0.65rem;
+      border: 2px solid var(--ink);
+      border-radius: 3px;
+      background: var(--white);
+      font-size: 0.7rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .map-topline span:last-child { background: var(--coral); }
+
+    .map-controls {
+      position: absolute;
+      z-index: 4;
+      right: 1rem;
+      bottom: 1rem;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .map-controls button {
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      background: var(--white);
+      box-shadow: 3px 3px 0 var(--ink);
+      font-size: 1.5rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .map-controls button:active { box-shadow: 1px 1px 0 var(--ink); transform: translate(2px, 2px); }
+    .map-controls button:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+
+    .north {
+      position: absolute;
+      z-index: 3;
+      right: 1.1rem;
+      top: 1rem;
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 46px;
+      color: var(--ink);
+      font-weight: 950;
+      pointer-events: none;
+    }
+
+    .north span { font-size: 1.5rem; line-height: 1; }
+    .north small { font-size: 0.62rem; }
+
+    .detail-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      border-left: 5px solid var(--ink);
+    }
+
+    .detail-content { padding: 0.75rem 0; }
+
+    .detail-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .detail-top span {
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .detail-date {
+      display: inline-block;
+      margin: 0 0 0.75rem;
+      padding: 0.35rem 0.6rem;
+      border: 2px solid var(--ink);
+      background: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 850;
+    }
+
+    .detail-panel h2 {
+      max-width: 12ch;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 3.8vw, 3.8rem);
+      line-height: 0.98;
+    }
+
+    .detail-type {
+      display: inline-block;
+      margin: 1rem 0 0;
+      color: #a63825;
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .detail-text {
+      max-width: 40ch;
+      margin: 1rem 0 0;
+      color: #3e4b49;
+      font-size: 1rem;
+    }
+
+    .detail-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--ink);
+    }
+
+    .tag {
+      padding: 0.35rem 0.55rem;
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      background: var(--mint);
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 750;
+    }
+
+    .legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+    .swatch { width: 11px; height: 11px; border: 1.5px solid var(--ink); border-radius: 2px; background: var(--gold); }
+    .swatch.blue { background: var(--water); }
+    .swatch.coral { background: var(--coral); }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 760px) {
+      .site-header { align-items: start; padding-top: 1rem; }
+      .site-header p { max-width: 11rem; font-size: 0.75rem; }
+      .atlas { display: flex; flex-direction: column; gap: 1.5rem; padding-bottom: 2rem; }
+      .map-wrap { min-height: 0; height: min(68svh, 570px); box-shadow: 5px 5px 0 var(--ink); }
+      .detail-panel { min-height: 260px; padding: 0.25rem 0 0; border-left: 0; border-top: 5px solid var(--ink); }
+      .detail-top { margin-bottom: 1.25rem; }
+      .detail-content { padding-top: 0.75rem; }
+      .detail-panel h2 { max-width: 14ch; font-size: clamp(2.2rem, 11vw, 3rem); }
+      .poi-label { width: 175px; padding: 0.25rem 0.35rem; font-size: 29px; }
+      .poi[data-kind="detail"] .poi-label { width: 155px; font-size: 25px; }
+      .poi[data-side="right"] .poi-label { left: 22px; }
+      .poi[data-side="left"] .poi-label { right: 22px; }
+      .poi[data-kind="chapter"] .poi-label { font-size: 25px; }
+      .map-topline { top: 0.65rem; left: 0.65rem; }
+      .map-topline span { font-size: 0.62rem; }
+      .map-controls { right: 0.65rem; bottom: 0.65rem; }
+      .map-controls button { width: 44px; height: 44px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <span class="eyebrow">Career atlas / 2016 — now</span>
+      <h1>Melih Sahin</h1>
+    </div>
+    <p>System design · ML/AI systems · Reliability &amp; platforms</p>
+  </header>
+
+  <main class="atlas">
+    <section class="map-wrap" aria-label="Interactive career map">
+      <div class="map-topline"><span>Field guide 01</span><span id="zoom-readout">Milestones</span></div>
+      <div class="north" aria-hidden="true"><span>↑</span><small>NORTH</small></div>
+      <div class="map-stage" id="map-stage" tabindex="0" role="application" aria-label="Career atlas. Drag or use arrow keys to move, pinch or scroll to zoom, or select a place for details.">
+        <div class="world" id="world">
+          <svg class="world-art" viewBox="0 0 1000 700" aria-hidden="true">
+            <defs>
+              <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+                <circle cx="3" cy="3" r="1.7" fill="#17292c" opacity=".2" />
+              </pattern>
+              <pattern id="stripes" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+                <rect width="5" height="14" fill="#17292c" opacity=".12" />
+              </pattern>
+            </defs>
+            <rect width="1000" height="700" fill="#d8e9a8" />
+            <rect width="1000" height="700" fill="url(#dots)" />
+            <path class="land" fill="#f3ca49" d="M20 160 Q80 65 205 80 Q270 22 357 75 Q430 63 459 155 Q504 214 456 291 Q413 342 306 314 Q219 365 124 311 Q43 301 20 224Z" />
+            <path class="land" fill="#84c9b0" d="M167 364 Q201 297 302 315 Q385 286 443 342 Q513 366 497 449 Q480 514 391 525 Q331 587 251 541 Q171 546 147 469Z" />
+            <path class="land" fill="#62b8cc" d="M400 421 Q443 351 545 383 Q619 351 676 405 Q744 438 719 520 Q707 584 610 588 Q549 636 469 591 Q396 570 384 504Z" />
+            <path class="land" fill="#f4775d" d="M555 126 Q624 66 712 102 Q789 45 871 100 Q968 105 977 194 Q996 269 918 309 Q858 356 774 311 Q689 346 625 289 Q551 250 555 126Z" />
+            <path fill="url(#stripes)" d="M20 160 Q80 65 205 80 Q270 22 357 75 Q430 63 459 155 Q504 214 456 291 Q413 342 306 314 Q219 365 124 311 Q43 301 20 224Z" />
+            <path fill="url(#stripes)" d="M555 126 Q624 66 712 102 Q789 45 871 100 Q968 105 977 194 Q996 269 918 309 Q858 356 774 311 Q689 346 625 289 Q551 250 555 126Z" />
+            <text class="region-name" x="72" y="122">THE CROSSING</text>
+            <text class="region-name" x="205" y="397">SCHOOL GROUNDS</text>
+            <text class="region-name" x="454" y="466">UNIVERSITY QUAD</text>
+            <text class="region-name" x="707" y="153">FIELDWORK</text>
+            <text class="region-name" x="803" y="284">THE WORKSHOP</text>
+            <path id="trail-edge" class="road-edge"></path>
+            <path id="trail" class="road"></path>
+            <path id="trail-dash" class="road-dash"></path>
+            <g id="detail-roads"></g>
+            <g fill="#17292c">
+              <path d="M76 255l12-24 12 24h-8l-4-9-4 9z" />
+              <path d="M524 139l7-17 8 17h-5l-3-6-3 6z" />
+              <path d="M882 377l9-20 10 20h-6l-4-8-3 8z" />
+              <circle cx="340" cy="166" r="7" /><circle cx="365" cy="177" r="4" />
+              <circle cx="690" cy="520" r="6" /><circle cx="716" cy="535" r="4" />
+            </g>
+          </svg>
+          <div id="places"></div>
+        </div>
+      </div>
+      <div class="map-controls" aria-label="Map zoom">
+        <button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in">+</button>
+        <button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">−</button>
+      </div>
+    </section>
+
+    <aside class="detail-panel" aria-live="polite" aria-atomic="true">
+      <div class="detail-content">
+        <div class="detail-top">
+          <span>Selected location</span>
+          <span id="counter">01 / 07</span>
+        </div>
+        <p class="detail-date" id="detail-date"></p>
+        <h2 id="detail-title"></h2>
+        <p class="detail-type" id="detail-type"></p>
+        <p class="detail-text" id="detail-text"></p>
+      </div>
+      <div>
+        <div class="detail-footer" id="detail-tags"></div>
+        <div class="legend" aria-label="Map legend">
+          <span><i class="swatch"></i>Chapters</span>
+          <span><i class="swatch blue"></i>Milestones</span>
+          <span><i class="swatch coral"></i>Field notes</span>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <ol class="sr-only" id="accessible-list" aria-label="Timeline milestones, oldest to newest"></ol>
+
+  <script>
+    const WORLD = { width: 1000, height: 700 };
+    const events = [
+      { id: "origin", kind: "milestone", date: "2016", short: "Moved to the UK", title: "Moved from Turkey to the UK", type: "Life milestone", text: "Moved to the UK for education and job opportunities.", tags: ["Turkey", "United Kingdom"], x: 100, y: 610, side: "right" },
+      { id: "school", kind: "milestone", date: "2017–2022", short: "Kingston Academy", title: "The Kingston Academy", type: "Education", text: "A levels in Mathematics, Further Mathematics, Physics, and Computer Science.", tags: ["Mathematics", "Computer Science"], x: 260, y: 405, side: "left" },
+      { id: "university", kind: "milestone", date: "2022–2025", short: "Queen Mary degree", title: "BSc Computer Science and Mathematics", type: "Education", text: "Queen Mary University of London. First Class with Honours (81.0%).", tags: ["Computer Science", "Mathematics", "First Class"], x: 430, y: 510, side: "right" },
+      { id: "globant", kind: "milestone", date: "Jun–Aug 2024", short: "Globant internship", title: "Software Engineer Intern, Globant", type: "ML/AI systems engineering", text: "Led a three-person team building a functional multi-agent AI prototype that informed an early commercial AI-agent product.", tags: ["Python", "Multi-agent AI", "Team lead"], x: 615, y: 315, side: "left" },
+      { id: "fyp", kind: "milestone", date: "Oct 2024–May 2025", short: "Final-year project", title: "Handling Randomness in Multi-Agent Scenarios", type: "ML/AI systems engineering", text: "Built and evaluated multi-agent reinforcement-learning systems for a five-player card game. The work showed limited learning and identified observation design as a key problem.", tags: ["PPO", "PyTorch", "PettingZoo"], x: 710, y: 465, side: "right" },
+      { id: "sprift", kind: "milestone", date: "Feb–Aug 2026", short: "Sprift API + UI", title: "Full-stack Engineer, Sprift", type: "System design · full-stack engineering", text: "Built a unified API across property types while preserving two existing endpoints. Also delivered many UI updates, including a dark-to-light website refresh and Figma-to-code implementation.", tags: ["JavaScript", "CSS", "API design", "Swagger"], x: 785, y: 185, side: "left" },
+      { id: "deloitte", kind: "milestone", date: "Sep 2026–present", short: "Deloitte", title: "Graduate Software Engineer, Deloitte", type: "Current role", text: "Current role. Further details are not included in this prototype.", tags: ["Software engineering"], x: 915, y: 85, side: "left" }
+    ];
+
+    const chapters = [
+      { id: "chapter-start", kind: "chapter", date: "2016", short: "The crossing", title: "The crossing", type: "Chapter", text: "From Turkey to the UK.", tags: [], x: 76, y: 286, side: "right" },
+      { id: "chapter-school", kind: "chapter", date: "2017–2022", short: "School grounds", title: "School grounds", type: "Chapter", text: "Foundations at The Kingston Academy.", tags: [], x: 228, y: 462, side: "right" },
+      { id: "chapter-uni", kind: "chapter", date: "2022–2025", short: "University quad", title: "University quad", type: "Chapter", text: "A degree, projects, and student life.", tags: [], x: 490, y: 579, side: "left" },
+      { id: "chapter-work", kind: "chapter", date: "2024–now", short: "The workshop", title: "The workshop", type: "Chapter", text: "Early engineering work across AI, systems, and software.", tags: [], x: 864, y: 331, side: "left" }
+    ];
+
+    const details = [
+      { id: "gmtk", kind: "detail", date: "2022 & 2023", short: "GMTK game jams", title: "GMTK game jams", type: "Game development", text: "Entered with Reverse Escort Mission and Roll of the Dice.", tags: ["Unity", "Teamwork"], parent: "university", x: 350, y: 600, side: "left" },
+      { id: "student-rep", kind: "detail", date: "2023–2025", short: "Course representative", title: "Course representative", type: "University activity", text: "Represented 60+ students in discussions with teaching staff.", tags: ["Communication", "Advocacy"], parent: "university", x: 375, y: 425, side: "left" },
+      { id: "lab-demo", kind: "detail", date: "2023–2025", short: "Lab demonstrator", title: "Lab demonstrator", type: "University activity", text: "Supported first- and second-year Computer Science students.", tags: ["Algorithms", "Teaching"], parent: "university", x: 510, y: 600, side: "right" },
+      { id: "petminder", kind: "detail", date: "Jan–Apr 2024", short: "PetMinder", title: "PetMinder team project", type: "Software engineering", text: "A seven-person team project voted best PetMinder project among roughly six groups.", tags: ["Node.js", "UML", "Teamwork"], parent: "university", x: 375, y: 690, side: "left" },
+      { id: "big-data", kind: "detail", date: "Oct–Dec 2024", short: "Big Data / Spark", title: "Big Data Analysis with Apache Spark", type: "Distributed data", text: "Analysed NYC Taxi and Ethereum datasets of 20M+ records with PySpark.", tags: ["PySpark", "AWS"], parent: "university", x: 570, y: 685, side: "right" },
+      { id: "student-ambassador", kind: "detail", date: "2024–2025", short: "Student ambassador", title: "Student ambassador", type: "University activity", text: "Welcomed prospective students and families at university events.", tags: ["Communication"], parent: "university", x: 560, y: 425, side: "right" },
+      { id: "balans", kind: "detail", date: "Aug–Sep 2025", short: "Onsite manager", title: "Onsite Manager, Balans International", type: "Work experience", text: "Managed logistics for a domestic flat redevelopment in London.", tags: ["Operations", "Coordination"], parent: "sprift", x: 760, y: 325, side: "left" }
+    ];
+
+    const all = [...chapters, ...events, ...details];
+    const stage = document.getElementById("map-stage");
+    const world = document.getElementById("world");
+    const places = document.getElementById("places");
+    const detailRoads = document.getElementById("detail-roads");
+    const readout = document.getElementById("zoom-readout");
+    const zMin = 0.42;
+    const zMax = 2.15;
+    const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let view = { zoom: 0.92, x: 0, y: 0 };
+    let stageSize = { width: 0, height: 0 };
+    let selected = events.find((item) => item.id === "sprift");
+    let animation = 0;
+    let lastGesture = 0;
+    const pointers = new Map();
+    let pinch = null;
+
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+    const fade = (value, from, to) => clamp((value - from) / (to - from), 0, 1);
+
+    function smoothPath(points) {
+      let path = `M ${points[0][0]} ${points[0][1]}`;
+      for (let i = 0; i < points.length - 1; i++) {
+        const p0 = points[i - 1] || points[i];
+        const p1 = points[i];
+        const p2 = points[i + 1];
+        const p3 = points[i + 2] || p2;
+        const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+        const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+        path += ` C ${c1[0]} ${c1[1]}, ${c2[0]} ${c2[1]}, ${p2[0]} ${p2[1]}`;
+      }
+      return path;
+    }
+
+    const route = smoothPath(events.map((item) => [item.x, item.y]).reverse());
+    for (const id of ["trail-edge", "trail", "trail-dash"]) document.getElementById(id).setAttribute("d", route);
+
+    function addPlace(item, index) {
+      const el = document.createElement("div");
+      el.className = `poi${item.id === selected.id ? " selected" : ""}`;
+      el.dataset.kind = item.kind;
+      el.dataset.id = item.id;
+      el.dataset.side = item.side;
+      el.style.left = `${item.x}px`;
+      el.style.top = `${item.y}px`;
+
+      const marker = document.createElement("button");
+      marker.type = "button";
+      marker.className = "marker";
+      marker.setAttribute("aria-label", `${item.title}, ${item.date}. Select location.`);
+      if (item.kind === "milestone") {
+        const number = document.createElement("span");
+        number.className = "pin-number";
+        number.textContent = String(index + 1).padStart(2, "0");
+        marker.append(number);
+      }
+
+      const label = document.createElement("button");
+      label.type = "button";
+      label.className = "poi-label";
+      label.textContent = item.short;
+      label.setAttribute("aria-label", `Open ${item.title}`);
+      label.addEventListener("click", (event) => {
+        event.stopPropagation();
+        select(item, true);
+      });
+      marker.addEventListener("click", (event) => {
+        event.stopPropagation();
+        select(item, true);
+      });
+      el.append(marker, label);
+      places.append(el);
+      item.el = el;
+      item.marker = marker;
+
+      const li = document.createElement("li");
+      li.textContent = `${item.date}: ${item.title}. ${item.text}`;
+      document.getElementById("accessible-list").append(li);
+    }
+
+    chapters.forEach((item, index) => addPlace(item, index));
+    events.forEach((item, index) => addPlace(item, index));
+    details.forEach((item, index) => addPlace(item, index));
+
+    for (const item of details) {
+      const parent = events.find((event) => event.id === item.parent);
+      const road = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      const bend = item.x > parent.x ? 24 : -24;
+      road.setAttribute("d", `M ${parent.x} ${parent.y} C ${parent.x + bend} ${parent.y + 22}, ${item.x - bend} ${item.y - 22}, ${item.x} ${item.y}`);
+      road.setAttribute("class", "detail-road");
+      detailRoads.append(road);
+    }
+
+    function baseScale() {
+      return Math.min(stageSize.width / WORLD.width, stageSize.height / WORLD.height);
+    }
+
+    function measure() {
+      stageSize.width = stage.clientWidth;
+      stageSize.height = stage.clientHeight;
+    }
+
+    function centerWorld() {
+      const scale = baseScale() * view.zoom;
+      view.x = (stageSize.width - WORLD.width * scale) / 2;
+      view.y = (stageSize.height - WORLD.height * scale) / 2;
+    }
+
+    function clampPan() {
+      const scale = baseScale() * view.zoom;
+      const w = WORLD.width * scale;
+      const h = WORLD.height * scale;
+      const margin = 55;
+      view.x = w <= stageSize.width ? (stageSize.width - w) / 2 : clamp(view.x, stageSize.width - w - margin, margin);
+      view.y = h <= stageSize.height ? (stageSize.height - h) / 2 : clamp(view.y, stageSize.height - h - margin, margin);
+    }
+
+    function apply() {
+      const scale = baseScale() * view.zoom;
+      world.style.transform = `translate(${view.x}px, ${view.y}px) scale(${scale})`;
+      const chapterOpacity = 1 - 0.8 * fade(view.zoom, 0.56, 0.95);
+      const milestoneOpacity = fade(view.zoom, 0.57, 0.78);
+      const detailOpacity = fade(view.zoom, 1.15, 1.48);
+      for (const item of all) {
+        const opacity = item.kind === "chapter" ? chapterOpacity : item.kind === "milestone" ? milestoneOpacity : detailOpacity;
+        const x = view.x + item.x * scale;
+        const y = view.y + item.y * scale;
+        const offscreen = x < -260 || x > stageSize.width + 260 || y < -140 || y > stageSize.height + 140;
+        item.el.style.opacity = String(opacity);
+        item.el.style.visibility = opacity < 0.025 || offscreen ? "hidden" : "visible";
+        item.el.style.pointerEvents = opacity < 0.2 || offscreen ? "none" : "auto";
+      }
+      for (const road of detailRoads.children) road.style.opacity = String(detailOpacity);
+      readout.textContent = view.zoom < 0.66 ? "Regions" : view.zoom < 1.45 ? "Milestones" : "Field notes";
+    }
+
+    function focusWorld(x, y, zoom, duration = 420) {
+      const targetZoom = clamp(zoom, zMin, zMax);
+      const startScale = baseScale() * view.zoom;
+      const start = { zoom: view.zoom, x: (stageSize.width / 2 - view.x) / startScale, y: (stageSize.height / 2 - view.y) / startScale };
+      const target = { zoom: targetZoom, x, y };
+      cancelAnimationFrame(animation);
+      if (reducedMotion) {
+        view.zoom = target.zoom;
+        const scale = baseScale() * view.zoom;
+        view.x = stageSize.width / 2 - target.x * scale;
+        view.y = stageSize.height / 2 - target.y * scale;
+        clampPan();
+        apply();
+        return;
+      }
+      const startTime = performance.now();
+      const tick = (now) => {
+        const p = clamp((now - startTime) / duration, 0, 1);
+        const eased = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+        view.zoom = start.zoom * Math.pow(target.zoom / start.zoom, eased);
+        const scale = baseScale() * view.zoom;
+        const fx = start.x + (target.x - start.x) * eased;
+        const fy = start.y + (target.y - start.y) * eased;
+        view.x = stageSize.width / 2 - fx * scale;
+        view.y = stageSize.height / 2 - fy * scale;
+        clampPan();
+        apply();
+        if (p < 1) animation = requestAnimationFrame(tick);
+      };
+      animation = requestAnimationFrame(tick);
+    }
+
+    function updatePanel(item) {
+      document.getElementById("detail-date").textContent = item.date;
+      document.getElementById("detail-title").textContent = item.title;
+      document.getElementById("detail-type").textContent = item.type;
+      document.getElementById("detail-text").textContent = item.text;
+      const position = events.findIndex((event) => event.id === item.id);
+      document.getElementById("counter").textContent = position >= 0
+        ? `${String(position + 1).padStart(2, "0")} / ${String(events.length).padStart(2, "0")}`
+        : "FIELD NOTE";
+      const tags = document.getElementById("detail-tags");
+      tags.replaceChildren();
+      for (const value of item.tags) {
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = value;
+        tags.append(tag);
+      }
+      for (const place of all) place.el.classList.toggle("selected", place.id === item.id);
+    }
+
+    function select(item, fly) {
+      selected = item;
+      updatePanel(item);
+      if (fly) {
+        const desiredZoom = item.kind === "chapter" ? 0.72 : item.kind === "detail" ? 1.7 : 1.18;
+        focusWorld(item.x, item.y, Math.max(view.zoom, desiredZoom));
+      }
+    }
+
+    function zoomAt(screenX, screenY, nextZoom) {
+      const oldScale = baseScale() * view.zoom;
+      const wx = (screenX - view.x) / oldScale;
+      const wy = (screenY - view.y) / oldScale;
+      view.zoom = clamp(nextZoom, zMin, zMax);
+      const newScale = baseScale() * view.zoom;
+      view.x = screenX - wx * newScale;
+      view.y = screenY - wy * newScale;
+      clampPan();
+      apply();
+    }
+
+    function zoomBy(factor) {
+      const s = baseScale() * view.zoom;
+      const fx = (stageSize.width / 2 - view.x) / s;
+      const fy = (stageSize.height / 2 - view.y) / s;
+      focusWorld(fx, fy, view.zoom * factor, 280);
+    }
+
+    document.getElementById("zoom-in").addEventListener("click", () => zoomBy(1.45));
+    document.getElementById("zoom-out").addEventListener("click", () => zoomBy(1 / 1.45));
+
+    stage.addEventListener("wheel", (event) => {
+      event.preventDefault();
+      cancelAnimationFrame(animation);
+      const rect = stage.getBoundingClientRect();
+      zoomAt(event.clientX - rect.left, event.clientY - rect.top, view.zoom * Math.exp(-event.deltaY * 0.0015));
+    }, { passive: false });
+
+    stage.addEventListener("keydown", (event) => {
+      const step = 70;
+      const delta = { ArrowUp: [0, step], ArrowDown: [0, -step], ArrowLeft: [step, 0], ArrowRight: [-step, 0] }[event.key];
+      if (delta) {
+        event.preventDefault();
+        view.x += delta[0];
+        view.y += delta[1];
+        clampPan();
+        apply();
+      } else if (event.key === "+" || event.key === "=") zoomBy(1.45);
+      else if (event.key === "-") zoomBy(1 / 1.45);
+    });
+
+    const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y) || 1;
+    function pinchSnapshot() {
+      const [a, b] = [...pointers.values()];
+      const rect = stage.getBoundingClientRect();
+      return { distance: distance(a, b), x: (a.x + b.x) / 2 - rect.left, y: (a.y + b.y) / 2 - rect.top };
+    }
+
+    stage.addEventListener("pointerdown", (event) => {
+      if (event.target.closest(".map-controls, .marker, .poi-label")) return;
+      cancelAnimationFrame(animation);
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      if (pointers.size === 1) stage.setPointerCapture(event.pointerId);
+      if (pointers.size === 2) pinch = pinchSnapshot();
+    });
+
+    stage.addEventListener("pointermove", (event) => {
+      const point = pointers.get(event.pointerId);
+      if (!point) return;
+      const dx = event.clientX - point.x;
+      const dy = event.clientY - point.y;
+      point.x = event.clientX;
+      point.y = event.clientY;
+      if (pointers.size === 2 && pinch) {
+        const next = pinchSnapshot();
+        zoomAt(next.x, next.y, view.zoom * (next.distance / pinch.distance));
+        view.x += next.x - pinch.x;
+        view.y += next.y - pinch.y;
+        clampPan();
+        apply();
+        pinch = next;
+        lastGesture = Date.now();
+      } else if (pointers.size === 1) {
+        if (Math.hypot(dx, dy) < 1) return;
+        stage.classList.add("dragging");
+        view.x += dx;
+        view.y += dy;
+        clampPan();
+        apply();
+        lastGesture = Date.now();
+      }
+    });
+
+    function endPointer(event) {
+      pointers.delete(event.pointerId);
+      pinch = null;
+      if (!pointers.size) stage.classList.remove("dragging");
+    }
+    stage.addEventListener("pointerup", endPointer);
+    stage.addEventListener("pointercancel", endPointer);
+
+    window.addEventListener("resize", () => {
+      measure();
+      centerWorld();
+      apply();
+    });
+
+    measure();
+    centerWorld();
+    updatePanel(selected);
+    apply();
+  </script>
+</body>
+</html>
