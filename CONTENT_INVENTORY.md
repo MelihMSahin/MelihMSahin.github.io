@@ -34,6 +34,17 @@ The portfolio should present Melih's interest in **system design**, **ML/AI syst
 - **Context only:** Website downtime fell after Melih joined, but his individual impact was modest and causation is unestablished, so do not present it as his result.
 - **Sources:** `LinkedInProfile.pdf`; `Latex CV Long Version/main.tex`; `Latex CV Long Version/sprift.tex`.
 
+### Sprift: Front-End Development and Light-Mode Refresh
+
+**Dates:** February-August 2026  
+**Potential fit:** front-end engineering; product implementation; maintainable software
+
+- **Situation:** Melih worked as a full-stack engineer at Sprift, including a lot of UI updates. The website needed its visual design changed from dark mode to light mode, and Figma/HTML designs needed to be implemented in the product.
+- **Task:** Build and update user interfaces to match the designs while keeping the code modular and maintainable.
+- **Action:** Implemented UI using JavaScript, CSS, and HTML; translated Figma and HTML designs into code; applied clean programming principles by modularizing code, removing magic numbers, and reducing technical debt.
+- **Result / learning:** Changed the website from dark mode to light mode. Learned how to translate Figma and HTML designs into code and strengthened skills in JavaScript, CSS, HTML, modular code, and reducing technical debt. No user feedback or usability metrics are available, so do not claim measured impact.
+- **Source:** Melih's confirmation, 2026-10-21.
+
 ### Final-Year Project: Handling Randomness in Multi-Agent Scenarios
 
 **Dates:** October 2024-May 2025 (report dated 6 May 2025)  
