@@ -10,7 +10,7 @@ This list sets discovery boundaries, not a final implementation contract. Promot
 - A clean, concise, scannable homepage that presents Melih's direction across system design, ML/AI systems engineering, and reliability/platform engineering.
 - Clear, direct paths to professional contact details and the current CV.
 - Selected, verified engineering examples presented in STAR format: situation, task, action (including contribution and decisions), and results and/or learning.
-- A dated timeline that communicates high-level progression and provides a clear way to reach deeper milestone details.
+- A dated timeline whose initial view makes milestone titles (including roles and projects) easy to scan; one step out groups them into major life chapters, while zooming in reveals more detail.
 - A mobile-first, responsive experience, using a 390 CSS-pixel-wide iPhone-class viewport as a reference while supporting other phone sizes and desktop; navigation and content must remain readable and keyboard-accessible.
 - Public content checked for accuracy and sensitive personal information before release.
 
@@ -35,4 +35,4 @@ This list sets discovery boundaries, not a final implementation contract. Promot
 
 ## Completion Check
 
-The first release is complete when a recruiter can quickly understand Melih's engineering direction, review credible examples of his work, and reach his CV or contact details; the timeline gives a clear overview with accessible deeper detail; and the site remains concise, accurate, and usable across screen sizes.
+The first release is complete when a recruiter can quickly understand Melih's engineering direction, review credible examples of his work, and reach his CV or contact details; the timeline's initial view makes key milestones easy to scan and supports broader and deeper views; and the site remains concise, accurate, and usable across screen sizes.

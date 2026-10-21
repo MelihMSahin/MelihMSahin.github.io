@@ -22,7 +22,7 @@ The site should demonstrate technical depth, learning ability, delivery, thought
 
 ## Value Beyond a CV or LinkedIn
 
-- **A layered timeline:** Start with a small number of high-level chapters, then let visitors reveal broader milestones and, at greater detail, specific activities. A map-like zoom interaction is an idea to explore, not a decided implementation.
+- **A layered timeline:** The initial view should be a scannable index of dated milestone titles, including roles and projects. One step out reveals broad life chapters; zooming in reveals activities and story details. This keeps important names visible without forcing visitors into dense descriptions. A literal map-like zoom interaction is still an idea to explore, not a decided implementation.
 - **Project stories:** Explain selected work through its context, Melih's contribution, decisions, technical challenges, outcomes, and learning rather than repeating résumé bullets.
 - **A fuller sense of the person:** Include interests and personal context with restraint, connecting them to curiosity and perspective where it feels genuine without turning every hobby into a work skill.
 - **A navigable record:** Keep relevant facts accessible in clearly divided sections and deeper detail. Initial discovery should use good information architecture, not a site-wide search engine.
@@ -39,7 +39,7 @@ Design mobile-first, using a 390 CSS-pixel-wide iPhone-class viewport as an init
 - Reconcile conflicting or potentially outdated facts before publication. The source priority does not remove the need to verify current dates, roles, links, and contact information.
 - Feature a small set of projects and experiences rather than reproducing every résumé entry at the same prominence. Preserve useful supporting facts in the deeper record.
 - Keep personal interests present but proportionate to the professional purpose.
-- The intended archive is public by default, but personal contact should be professional contact only. Do not publish a home address or other sensitive personal information. Review content before publication; this brief does not assume a private, authenticated archive.
+- The content and personal context in the inventory are approved for public use. Keep the personal email, phone number, and home address private; use a professional forwarding email alias for public contact once it is created. The site is a public portfolio, not a private archive.
 
 ## Initial Scope
 
@@ -51,7 +51,7 @@ Do not begin with a LinkedIn clone, a complete CV transcribed onto one page, a c
 
 - A recruiter can identify Melih's engineering direction and strongest evidence, then reach his CV or contact information without hunting.
 - The homepage remains concise while deeper material is available through clear, predictable navigation.
-- The timeline communicates progression at a glance and supports deliberate movement into more detailed milestones.
+- The timeline's initial view makes key milestone titles and dates scannable; visitors can zoom out to see broad chapters or zoom in for more detail.
 - Project content explains contribution and reasoning, not only technologies used.
 - Personal content adds recognizable human context without diluting the professional message.
 - The experience is designed and verified mobile-first, remains readable and keyboard-accessible across phone sizes, and scales well to desktop.

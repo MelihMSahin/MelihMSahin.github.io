@@ -3,7 +3,7 @@
 **Status:** Draft; revised with Melih's feedback. Not approved copy.  
 **Updated:** 2026-10-21
 
-This bounded inventory captures material that could support the first-release Must-haves. It is not a complete public biography. No personal email, phone number, or street address is reproduced here.
+This bounded inventory captures material that could support the first-release Must-haves. It is not a complete public biography. The facts and personal context recorded here are approved for public use. Personal email, phone number, and street address are excluded; Melih plans to create a forwarding email alias for public contact.
 
 ## Agreed Direction
 
@@ -86,6 +86,8 @@ The portfolio should present Melih's interest in **system design**, **ML/AI syst
 
 ## Timeline (Approved Entries)
 
+**Preferred timeline hierarchy:** The initial view should be one level in from the broad overview: show scannable milestone titles and dates, including roles and projects. Zoom out once to group these into major life chapters (moving to the UK, university and graduation, early engineering career). Zoom in for activity and story details. Avoid hiding the names of important roles or projects until a visitor zooms in. Whether this is implemented as a literal zoomable map remains open.
+
 - **2016:** Moved from Turkey to the UK.
 - **2017-2022:** The Kingston Academy; A levels and GCSEs per the long CV.
 - **2022-2025:** BSc Computer Science and Mathematics, Queen Mary University of London; First Class with Honours (81.0%).
@@ -105,7 +107,7 @@ The original README and long CV mention mathematics and patterns, board/strategy
 
 - Technologies evidenced in the sources include Python, JavaScript, PHP, C#, AWS, Azure, MySQL, PyTorch, Gymnasium, PySpark, Unity, Git, and GitHub. The CV's proficiency labels may be used; specifics to be agreed when the skills section is written.
 - The LinkedIn PDF lists LinkedIn, GitHub, Kaggle, and TryHackMe profiles. Confirm which are current and worth featuring. The personal-site URL in the long CV may be an older route; verify it before use.
-- Confirm the current professional contact method and CV file. Keep personal contact information out of this inventory and do not publish a home address.
+- Public use of the content and profile links in this inventory is approved. Verify links are current before featuring them. Keep the personal email, phone number, and home address private; use a forwarding email alias for public contact when it is created.
 
 ## Source Conflicts and Verification
 
@@ -115,9 +117,18 @@ The original README and long CV mention mathematics and patterns, board/strategy
 - **Reliability evidence:** As a junior, Melih's individual impact was limited, though Sprift downtime fell after he joined. Present reliability/platform engineering as a developing interest backed by relevant experience (serverless AWS, error handling, refactoring, distributed pipelines), not as proven impact.
 - **STAR completeness:** For each selected story, separate team outcomes from individual contribution; no STAR story items remain outstanding.
 
-## Decisions Informed by This Inventory
+## Decisions
 
-1. Which two or three stories best represent the three preferred engineering directions?
-2. Is the Sprift unified API the lead story for system design and reliability/platform engineering?
-3. Which timeline milestones should appear at the highest zoom level?
-4. Which profile links and contact route should be public?
+- **Lead stories (decided):**
+  - System design: Sprift unified API.
+  - ML/AI systems engineering: final-year project (Handling Randomness in Multi-Agent Scenarios).
+  - ML/AI systems engineering in industry: Globant AI agent prototype.
+- **Reliability/platform engineering (decided):** Present as a growing interest with supporting examples (Sprift backward compatibility, final-year project debugging), not a lead story.
+- **Supporting layer (decided):** PetMinder and Big Data Analysis.
+- **Public content (decided):** Facts and personal context in this inventory may be public; exclude personal email, phone number, and home address.
+- **Timeline hierarchy (preferred):** Open on a scannable index of milestone titles and dates; zoom out once for major life chapters and zoom in for activity and story details. Keep key role and project names visible in the initial view.
+
+## Still Open
+
+1. Create the public forwarding email alias.
+2. Verify profile links are current before featuring them.
