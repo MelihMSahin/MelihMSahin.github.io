@@ -57,7 +57,7 @@ An open choice may move directly to `Committed` only when its review gate is sat
 
 ### Decision Record
 
-Until the register exists, the `Existing Direction` section below is the interim status record for current commitments, concepts under test, and open questions. Before recording any additional material design decision, create `DESIGN_DECISIONS.md` and migrate those existing items with their source and status. Use one stable record per material choice, with this template:
+The [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md) register is the authoritative status record for current commitments, concepts under test, and open decisions. Add each new material decision there before it is treated as committed; migrate any newly discovered interim direction with its source and status. Use one stable record per material choice, with this template:
 
 ```text
 ID:
@@ -88,39 +88,11 @@ Resolve open design questions collaboratively, one material decision at a time. 
 
 When a committed decision changes, create or update the linked record, preserve the prior choice as `Superseded` where applicable, and update every affected authoritative specification in the same change. Search for and resolve contradictions instead of retaining obsolete values as active guidance.
 
-## Existing Direction
+## Current Decision State
 
-### Committed Requirements and Direction
+The authoritative record of committed requirements, approved decisions, concepts under test, and open questions is [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md). Do not duplicate decision status or rationale here. Current work should proceed from its open records and respect the phase gates below. In particular, the overworld remains a concept under test rather than an approved layout or interaction.
 
-- **Audience and positioning (project requirements):** Engineering recruiters and hiring teams must quickly understand Melih's direction, inspect credible evidence, and find the CV or professional contact path. Present system design, ML/AI systems engineering, and reliability/platform engineering; describe reliability/platform engineering as a growing interest, not proven impact.
-- **Content depth (project requirement):** Keep the default experience concise and scannable, with deeper material available by choice rather than forcing it into one long page.
-- **Timeline scan (first-release requirement):** The initial view includes seven agreed milestones and keeps titles and dates visible. Additional activities may appear in a supporting layer if they do not crowd that view.
-- **Responsive approach (committed design direction):** Design for phone first, then compose a purposeful desktop experience. Do not merely enlarge or stretch the mobile column.
-- **Accessibility (project requirement):** Target WCAG 2.2 AA. Keyboard, touch, reduced motion, readable contrast, and non-visual access are design requirements, not post-design fixes.
-- **Visual direction (committed high-level choice):** Bold, graphic, game-inspired. The palette, typography, illustration language, and exact game influence remain open.
-
-### Concept Under Test
-
-Use an overworld as the timeline's organizing metaphor:
-
-- Broad life chapters are **lands**.
-- The 2016 move from Turkey to the UK may be a **starter circle** or other introductory marker rather than a full land.
-- Dated milestones are **structures** within lands.
-- Deeper stories and activities are **rooms** within structures.
-
-This is a conceptual content hierarchy, not an approved map shape or interaction. The next design work must test whether it is understandable, scannable, and usable before committing to a literal map.
-
-### Open Design Questions
-
-- Is the overworld a navigable map, a chapter index with illustrated regions, or a hybrid of map and conventional page layout?
-- How do visitors move between lands, structures, and rooms: scrolling, selection, expanding, panning, zooming, or a combination?
-- Does a selected structure open a side panel, an in-world room, a dedicated page, or another treatment?
-- What is the chronology direction and orientation? How does the starting point relate to the newest milestones?
-- What fills desktop space while preserving a clear focal point? Candidate strategies include a detail panel, contextual navigation, or a deliberately wider map composition.
-- How strong should game references be, and which parts should remain editorial and recruiter-focused?
-- Which visual assets are needed, and should landmarks be custom illustrations, photographs, screenshots, or a restrained combination?
-
-Do not resolve these questions by adding more features. Prototype the smallest representative flow that can answer each question.
+Do not resolve open questions by adding more features. Prototype the smallest representative flow that can answer each question.
 
 ## Design Principles
 
@@ -198,7 +170,7 @@ Use one authoritative home for each kind of information. Link sources rather tha
 | `MOSCOW.md` | Agreed first-release priorities, launch boundary, and completion check. | Existing |
 | `CONTENT_INVENTORY.md` | Candidate/approved public content, factual sources, claim limits, privacy boundary, and content-specific decisions. Follow its status labels; a draft is not approved copy. | Existing |
 | `DESIGN_STRATEGY.md` (this file) | Design method, principles, governance, phase sequence, criteria, and artifact responsibilities. It does not approve visual values or replace product/content requirements. | Existing; governing framework |
-| `DESIGN_DECISIONS.md` | Traceable decision register: options, status, rationale, evidence, scope, approval, and change history. Detailed normative specifications live elsewhere. | Create before recording the next material design decision; migrate interim records |
+| `DESIGN_DECISIONS.md` | Authoritative traceable decision register: options, status, rationale, evidence, scope, approval, and change history. Detailed normative specifications live elsewhere. | Existing; update with each material decision |
 | Approved prototypes and test records | Dated, labeled evidence for a specific experiment or approved direction; each is linked from relevant decision records. Experiments are never specifications by implication. | As needed during exploration and validation |
 | `DESIGN_SYSTEM.md` | Normative, implementation-ready rules for approved foundations, layouts, components, responsive behavior, interactions/states, media, and accessibility. | Create after the structural and visual foundations are approved |
 | Implementation tokens | Runtime canonical values consumed by the site, using the repository's chosen implementation pattern. Their documented names and meaning must match `DESIGN_SYSTEM.md`. | During production implementation |

@@ -31,7 +31,7 @@ The site should demonstrate technical depth, learning ability, delivery, thought
 
 The first impression should be clear and professional for recruiters, with a distinct note of curiosity and playfulness. The homepage should behave like a concise portfolio; deeper pages can become more interactive and carry subtle influences from strategy games and exploration. The visual language may evolve with depth, but clarity and consistent navigation take priority over novelty.
 
-Design mobile-first, using a 390 CSS-pixel-wide iPhone-class viewport as an initial reference rather than a fixed canvas. Ensure layouts adapt to narrower and wider phones, then scale up thoughtfully for desktop. Keep the top level brief. Put detail behind intentional links, expandable layers, or dedicated pages so visitors choose how deep to go. Make contact and CV access easy to find. Exact calls to action and the visual treatment remain open decisions.
+Design mobile-first, using a 390 CSS-pixel-wide iPhone-class viewport as an initial reference rather than a fixed canvas. Ensure layouts adapt to narrower and wider phones, then scale up thoughtfully for desktop. Keep the top level brief. Put detail behind intentional links, expandable layers, or dedicated pages so visitors choose how deep to go. Make contact and CV access easy to find. The approved high-level homepage sequence is first-screen message/proof, selected work, timeline overview, then restrained personal context; selected work and CV are co-primary actions, with contact easy to find. See the [design decision register](DESIGN_DECISIONS.md) for scope and open questions. Exact wording, action placement, and visual treatment remain open.
 
 ## Content and Editorial Rules
 
@@ -58,11 +58,9 @@ Do not begin with a LinkedIn clone, a complete CV transcribed onto one page, a c
 
 ## Decisions to Resolve
 
-1. Which locations and company types should the site target first?
-2. How should the three engineering directions and supporting strengths be balanced in the recruiter-facing narrative?
-3. Should the timeline hierarchy use literal zoom, or a simpler interaction that preserves the same overview and detail levels? An HTML prototype will inform this.
-4. How should contact, CV access, and project stories be prioritized on the homepage?
-5. What visual direction and content-update workflow should guide implementation?
+1. What exact first-screen copy should express the committed positioning? See [DS-POS-002](DESIGN_DECISIONS.md#ds-pos-002), [DS-IA-001](DESIGN_DECISIONS.md#ds-ia-001), and [DS-IA-004](DESIGN_DECISIONS.md#ds-ia-004) for the approved hierarchy and proof point; exact wording remains open.
+2. Does the scan-first hybrid timeline add enough value over a simpler chapter-based timeline to justify the extra layer? Compare both with the same seven milestone titles/dates and accessible tasks; see [DS-TL-001](DESIGN_DECISIONS.md#ds-tl-001) and [DS-TL-002](DESIGN_DECISIONS.md#ds-tl-002).
+3. What visual direction and content-update workflow should guide implementation?
 
 ## Technical Direction
 
