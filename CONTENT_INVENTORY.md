@@ -1,7 +1,7 @@
 # Content Inventory
 
 **Status:** Draft; revised with Melih's feedback. Not approved copy.  
-**Updated:** 2026-10-21
+**Updated:** 2026-10-22
 
 This bounded inventory captures material that could support the first-release Must-haves. It is not a complete public biography. The facts and personal context recorded here are approved for public use. Personal email, phone number, and street address are excluded; Melih plans to create a forwarding email alias for public contact.
 
@@ -44,6 +44,21 @@ The portfolio should present Melih's interest in **system design**, **ML/AI syst
 - **Action:** Implemented UI using JavaScript, CSS, and HTML; translated Figma and HTML designs into code; applied clean programming principles by modularizing code, removing magic numbers, and reducing technical debt.
 - **Result / learning:** Changed the website from dark mode to light mode. Learned how to translate Figma and HTML designs into code and strengthened skills in JavaScript, CSS, HTML, modular code, and reducing technical debt. No user feedback or usability metrics are available, so do not claim measured impact.
 - **Source:** Melih's confirmation, 2026-10-21.
+
+### Firebrand: CompanyLens MVP for Deloitte
+
+**Dates:** Online training in the two weeks before the project; project ran 28 September-2 October 2026; **Potential fit:** system design; backend engineering; technical leadership; collaboration and delivery
+
+- **Situation:** As part of Deloitte training delivered through Firebrand, a five-person team built a website MVP for company search and client-onboarding research. The public project repository describes CompanyLens as using an ASP.NET backend, Angular frontend, and SQLite database.
+- **Task:** Build the MVP as a team and present it to Deloitte directors.
+- **Action:** Melih's main role was the backend. He also took a major part in leading technical discussions and systems design. In the two weeks of online training before the project, the team learned Angular, C#, and Azure fundamentals.
+- **Result / learning:** The team presented the MVP to Deloitte directors. Melih reports that the directors responded positively to the project and the team's design discussions and choices. Do not imply a measured outcome, production use, or adoption.
+- **Testimonial evidence:** The Firebrand project manager who oversaw the team supplied the following assessment. The project manager's name was not supplied:
+
+  > Melih is an outstanding talent.Melih reported to me to deliver an MVP for Deloitte through Firebrand.It was obvious to me very early on that Melih is more than a developer, but has an excellent understanding of systems architecture. During the project, I encouraged him to develop these skills, and he excelled; as a result, he was able to become the de facto leader of the project group on a technical lead basis.There is no doubt in my mind that during his early years at Deloitte, he will be exposed to all sorts of interesting projects and will develop into an outstanding Technical Lead/Systems Architect and become an industry leader in the years to come. This young man has so much potential.
+
+- **Testimonial use:** Keep the full wording here as source evidence. Depending on placement, it may be used in full, summarized, or represented by a short verbatim excerpt; do not silently edit wording presented as a direct quote.
+- **Sources:** [Firebrand project repository](https://github.com/Joshiling/firebrand-project) for the project description and technologies; Melih's confirmation, 2026-10-22, for dates, team size, training, role, presentation, and reported director response; testimonial supplied by the Firebrand project manager who oversaw the team.
 
 ### Final-Year Project: Handling Randomness in Multi-Agent Scenarios
 
@@ -106,7 +121,8 @@ The portfolio should present Melih's interest in **system design**, **ML/AI syst
 - **2023-2025:** Course representative; lab demonstrator roles; Mathematics Society events organiser.
 - **2024:** Globant Software Engineer Intern; PetMinder project; Big Data and final-year projects.
 - **2025:** Student Ambassador; Onsite Manager at Balans International Ltd.
-- **2026:** Developer at Sprift (February-August); Graduate Software Engineer at Deloitte (September-present), with no role details for now as it is too recent.
+- **2026:** Developer at Sprift (February-August); Graduate Software Engineer at Deloitte (3 September-present). Keep the initial Deloitte milestone to the role title and start date only.
+  - **Supporting detail:** Deloitte training included two weeks of online learning in Angular, C#, and Azure fundamentals before the Firebrand project (28 September-2 October). The five-person team built and presented the CompanyLens MVP; Melih's main role was backend, and he helped lead technical discussions and systems design. See the STAR candidate above for the director response and testimonial evidence.
 
 Not included for now: the 2021 Director's Assistant role and Zero To Mastery Academy study (February 2023-January 2024), which are in the sources but were not selected. Say if either should be added.
 
@@ -124,7 +140,7 @@ The original README and long CV mention mathematics and patterns, board/strategy
 
 - **Sprift end date:** Resolved: August 2026 (the standalone `sprift.tex` is outdated).
 - **Globant outcome:** Resolved: functional and ready for use, never released or used; claim only that it informed an early commercial AI-agent product. No time-saving claim.
-- **Deloitte:** Resolved: no details for now; timeline shows only title and start.
+- **Deloitte:** The initial timeline milestone shows only role title and start date (3 September 2026). The deeper timeline detail and Firebrand STAR candidate above cover the confirmed training project; do not add project details to the initial milestone.
 - **Reliability evidence:** As a junior, Melih's individual impact was limited, though Sprift downtime fell after he joined. Present reliability/platform engineering as a developing interest backed by relevant experience (serverless AWS, error handling, refactoring, distributed pipelines), not as proven impact.
 - **STAR completeness:** For each selected story, separate team outcomes from individual contribution; no STAR story items remain outstanding.
 
