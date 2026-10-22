@@ -122,14 +122,18 @@ This register is the source of truth for the status, rationale, scope, and histo
 ### DS-TL-001 — Overworld as a Candidate Timeline Metaphor
 
 - **Category / status:** Experiment / `Under test`
-- **Concept to prototype:** A scan-first hybrid: begin with a chronological overview where all seven required milestone titles and dates are visible; offer an optional illustrated overworld layer for exploring broad life chapters; provide deeper milestone stories beyond that. In the overworld concept, broad chapters may be lands, milestones structures, and deeper stories/activities rooms. The 2016 move to the UK may be an introductory marker.
+- **Concept to prototype:** A scan-first hybrid: begin with a chronological overview containing all seven required milestone titles and dates in the same overview layer; on mobile, the overview may continue below the first viewport. Do not require a separate action to reveal required milestones. Offer an optional illustrated overworld layer for exploring broad life chapters, with deeper milestone stories beyond that. In the overworld concept, broad chapters may be lands, milestones structures, and deeper stories/activities rooms. The 2016 move to the UK may be an introductory marker.
 - **Chapter grouping to prototype:** Use three plain-language chronological life stages: **Early Foundations** (UK move and Kingston Academy), **University** (Queen Mary and dated university-period work such as Globant and the final-year project), and **Professional Work** (Sprift and Deloitte/Firebrand). Use cross-links between related projects or themes that span stages. Keep each dated milestone anchored to its actual period; test whether cross-links help visitors without duplicating the timeline.
 - **Leading transition to prototype:** An explicit, descriptive “Explore life chapters” link opens the chapter/overworld view, with a clear “Back to milestones” route. This is a meaningful navigation step, not a generic button-based level switch.
-- **Recency emphasis:** The preceding selected-work section is sufficient to foreground recent work. The timeline overview itself should keep all seven required milestone titles and dates clearly scannable; it does not need a separate recency highlight that weakens the overview's consistent scan.
+- **Recency and future growth:** The preceding selected-work section remains a source of recency emphasis. Also compare an older-to-newer vertical overview with a recent-to-older mobile overview to test whether leading with recent milestones improves mobile scanning and accommodates additional entries. In every candidate, keep all seven required milestones in the same initial overview layer; supporting milestones may be nested when needed for scannability, as allowed by [MOSCOW.md](MOSCOW.md), Should Have.
 - **Conditional chronology constraint:** If a timeline prototype is horizontal, dates progress left to right (older to newer). This does not require the final design to be horizontal.
+- **Responsive orientation candidate:** Compare vertical chronology on mobile with horizontal left-to-right chronology on desktop against a consistent vertical layout at both sizes. This responsive adaptation is a prototype candidate, not an approved final orientation.
 - **Question:** Does the optional overworld add useful context and personality after a clear chronological scan, and if so, does a spatial map or illustrated chapter index make the chapter hierarchy clearer than a conventional chapter-based timeline?
 - **Evidence so far:** The concept is preferred as a direction to prototype in [PROJECT_BRIEF.md](PROJECT_BRIEF.md), Technical Direction. No approved map layout or interaction model is established here.
 - **Comparison:** Compare (1) a scan-first overview with a spatial, selectable illustrated overworld chapter view; (2) the same scan-first overview with an illustrated but non-spatial chapter index; and (3) a simpler chapter-based timeline. Use identical content and tasks. Keep an accessible labeled list/path for spatial content and do not require map gestures.
+- **Orientation comparison:** Evaluate the adaptive orientation candidate (vertical on mobile, horizontal left-to-right on desktop) against a vertical overview on both mobile and desktop, keeping the same milestone content, labels, and interaction tasks. A horizontal candidate must preserve readable labels and must not require sideways page scrolling or gestures.
+- **Vertical chronology comparison:** Test older-to-newer top-to-bottom against newer-to-older top-to-bottom as a separate variable from orientation. Keep every horizontal chronology older-to-newer from left to right.
+- **Mobile recency comparison:** Compare a recent-to-older vertical overview with an older-to-newer overview. In both, all seven Must-have milestones remain in the same overview layer; scroll is acceptable, but a separate reveal action is not part of this candidate. Future supporting entries may be nested if they do not remain scannable.
 - **Milestone navigation to compare:** In the spatial candidate, compare entering a named chapter/land before selecting one of its labeled milestone structures with direct selection of a milestone from the chapter view. In both candidates, provide the visible keyboard-accessible milestone list so meaning and access do not depend on map position.
 - **Cross-period content rule:** Each dated project or role has one chronological home. Related chapters/stories may link to that milestone; do not duplicate the same dated milestone in multiple places in the timeline.
 - **Evaluation:** Check whether visitors can find the seven milestone titles/dates, understand the chapter-to-milestone-to-story relationship, enter and leave a deeper story without losing orientation, and complete the same tasks with keyboard and without map gestures. Review at the agreed phone and desktop sizes; record observations before choosing a model.
@@ -141,6 +145,8 @@ This register is the source of truth for the status, rationale, scope, and histo
 - **Owner input:** The owner chose to compare chapter-first navigation against direct milestone selection in the spatial candidate on 2026-10-22.
 - **Owner input:** The owner chose chronological life stages with cross-links as the leading chapter organization to prototype on 2026-10-22; exact chapter names, memberships, and link treatments remain open.
 - **Owner input:** The owner selected the three candidate prototype chapters—Early Foundations, University, and Professional Work—on 2026-10-22. These labels and memberships are for testing, not final committed chapter names.
+- **Owner input:** The owner chose to test vertical mobile / horizontal left-to-right desktop orientation against a consistently vertical layout on 2026-10-22; neither orientation is final approval.
+- **Owner input:** The owner chose to test both vertical chronology directions on 2026-10-22. This comparison does not alter the left-to-right older-to-newer constraint for horizontal timelines.
 - **Label rule:** Use plain-language chapter labels in prototypes; game-inspired language may be expressed through visual treatment rather than obscure labels.
 - **Change rule:** Promote only a specific, tested model to a committed decision after the owner approves the review gate.
 
@@ -150,24 +156,29 @@ This register is the source of truth for the status, rationale, scope, and histo
 ### DS-IA-001 — First-Screen Message Frame
 
 - **Category / status:** Decision / `Committed`
-- **Decision:** Frame the first screen identity-first: identify Melih as a software engineer, then connect his demonstrated backend/systems-design experience to applied AI/ML as a direction of interest.
+- **Decision:** Use one integrated first-screen headline that identifies Melih as a software engineer and connects his demonstrated backend/systems-design experience to applied AI/ML as a direction of interest.
 - **Rationale:** Establishes a credible current professional identity before presenting the longer-term direction, while remaining consistent with DS-POS-002.
+- **Career-stage wording:** Identify as a “software engineer” without adding “early-career” or “new graduate” to the first-screen identity. Let the dated roles and project context establish experience stage without making junior status the headline.
+- **Headline structure:** Express identity, demonstrated experience, and direction together in one integrated headline, rather than separating “Software Engineer” into its own headline and placing the experience/direction in a supporting sentence.
+- **Leading copy candidate (not final):** “Software engineer with backend and systems-design experience, exploring applied AI/ML.” This is the owner's preferred evidence-first direction among working drafts; exact wording remains open.
 - **Constraints:** Keep all three engineering directions represented; frame reliability/platform as a growing interest; support every claim with verified content.
-- **Scope:** Message hierarchy only. Exact headline wording, evidence blocks, homepage layout, and visual treatment are separate decisions.
+- **Scope:** Message hierarchy and headline structure only. Exact wording, supporting proof, homepage layout, and visual treatment remain open.
 - **Dependencies:** DS-POS-002.
-- **Source:** Owner selection on 2026-10-22; [PROJECT_BRIEF.md](PROJECT_BRIEF.md), Positioning.
+- **Source:** Owner selections on 2026-10-22; [PROJECT_BRIEF.md](PROJECT_BRIEF.md), Positioning and Experience Direction; owner preference among copy candidates.
 - **Approved by:** Mehmet Melih Sahin, 2026-10-22.
 
 <a id="ds-ia-004"></a>
 ### DS-IA-004 — First-Screen Evidence and Supporting-Strength Hierarchy
 
 - **Category / status:** Decision / `Committed`
-- **Decision:** Use Firebrand/CompanyLens as the primary first-screen proof of recent backend and systems-design contribution. Keep applied AI/ML visible as a direction of interest, with the Globant and final-year projects available one level deeper rather than giving them equal first-screen prominence.
+- **Decision:** Use Firebrand/CompanyLens as the primary first-screen proof of recent backend and systems-design contribution. Keep applied AI/ML visible as a direction of interest, with the Globant and final-year projects available one level deeper rather than giving them equal first-screen prominence. Use a short, verbatim, attributed excerpt from Nick O’Rourke’s testimonial near the first-screen proof, with the fuller testimonial and project context inside the CompanyLens story.
 - **Rationale:** Firebrand is recent professional evidence directly relevant to the systems-design direction; the AI/ML work remains important but is older and/or academic. This hierarchy supports the identity-first framing without implying professional AI/ML work at Sprift.
-- **Constraints:** Distinguish individual contribution from team outcomes; do not imply production deployment or measured impact for Firebrand, nor professional AI/ML solution development at Sprift.
-- **Scope:** Relative prominence of first-screen proof points. This does not decide whether to use the testimonial in the hero, exact copy or layout, detailed story format, or overall homepage section ordering.
+- **Approved hero excerpt:** “...has an excellent understanding of systems architecture.” Attribute to Nick O’Rourke, project manager. Retain the full testimonial and context in the CompanyLens story.
+- **Testimonial constraints:** Preserve any excerpt verbatim and with clear attribution; choose a fragment only if it retains the original meaning in context. The testimonial is qualitative corroboration, not measured outcome, production evidence, or proof of seniority.
+- **Other constraints:** Distinguish individual contribution from team outcomes; do not imply production deployment or measured impact for Firebrand, nor professional AI/ML solution development at Sprift.
+- **Scope:** Relative prominence of first-screen proof points and testimonial depth. Exact excerpt selection, visual treatment, detailed story format, and overall homepage section ordering remain separate or open.
 - **Dependencies:** DS-POS-002; DS-IA-001.
-- **Source:** Owner selection on 2026-10-22; [CONTENT_INVENTORY.md](CONTENT_INVENTORY.md), Firebrand, Sprift, Globant, and final-year project stories.
+- **Source:** Owner selections on 2026-10-22; [CONTENT_INVENTORY.md](CONTENT_INVENTORY.md), Firebrand, Sprift, Globant, and final-year project stories.
 - **Approved by:** Mehmet Melih Sahin, 2026-10-22.
 
 <a id="ds-ia-002"></a>
@@ -229,10 +240,14 @@ This register is the source of truth for the status, rationale, scope, and histo
 - **Category / status:** Decision / `Open`
 - **Question:** What chronology direction and orientation best communicate life chapters and dated milestones? How does the beginning relate to the most recent role?
 - **Owner constraint:** If the timeline is horizontal, chronology must run left to right (older to newer). A horizontal layout itself is not required.
-- **Recency decision:** The selected-work section before the timeline provides sufficient emphasis for recent achievements. Keep the timeline's seven required titles and dates clearly scannable without separately elevating recent timeline entries.
+- **Recency baseline and test:** The selected-work section remains a recency cue. The owner requested testing a recent-to-older mobile overview against older-to-newer order to assess mobile scanability and future growth. This reopens the prior no-separate-recency-emphasis direction for testing; it does not approve the new order. All seven Must-have milestones remain in the same initial overview layer, even if some fall below the phone's first viewport.
 - **Scope:** Timeline overview and every deeper level; must remain understandable on phone and desktop and without spatial interpretation. Physical orientation remains open, except that any horizontal chronology must run left to right.
 - **Dependencies:** DS-TL-002.
-- **Next action:** Once the overview and chapter model are prototyped, compare any viable vertical and horizontal arrangements; every horizontal option must progress left to right.
+- **Prototype candidate:** Compare vertical on mobile with horizontal older-to-newer on desktop against vertical on both sizes. Preserve the same milestone sequence and content; the horizontal candidate must not require sideways page scrolling or gestures.
+- **Chronology test:** Compare older-to-newer top-to-bottom with newer-to-older top-to-bottom in vertical candidates as a separate variable. Horizontal chronology remains older-to-newer left-to-right.
+- **Required-milestone exposure:** Every vertical order keeps the seven Must-have milestones within the initial timeline overview; the mobile overview may scroll, but a separate action must not be required to reveal any of them. Supporting entries can be nested when they do not remain scannable.
+- **Owner input:** On 2026-10-22, the owner selected the adaptive-versus-vertical comparison, requested both vertical chronology directions be tested, and chose a recent-first vertical candidate for comparison. These are test choices, not final commitments.
+- **Next action:** Once the overview and chapter model are prototyped, compare these arrangements against the scanability and interaction tasks in DS-TL-001.
 
 ### DS-TL-004 — Milestone Preview and Full-Story Flow
 
@@ -282,6 +297,7 @@ This register is the source of truth for the status, rationale, scope, and histo
 - **Scope:** High-level distribution of game-inspired expression only. It does not prescribe a literal map, game genre, palette, typography, iconography, illustration style, or component values.
 - **Source:** Owner selection on 2026-10-22; [PROJECT_BRIEF.md](PROJECT_BRIEF.md), Experience Direction; [MOSCOW.md](MOSCOW.md), Could Have.
 - **Approved by:** Mehmet Melih Sahin, 2026-10-22.
+
 ### DS-VIS-003 — Palette, Typography, and Graphic/Illustration System
 
 - **Category / status:** Decision / `Open`
