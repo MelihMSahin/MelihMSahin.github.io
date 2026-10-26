@@ -1,5 +1,7 @@
 # Prototype Evaluation Tasks
 
+Serve the repository root over HTTP because each prototype loads the shared milestone JSON with `fetch` (for example, run `python3 -m http.server 8000` from the repository root). Open `/prototypes/scan-overworld/`, `/prototypes/scan-illustrated/`, or `/prototypes/scan-chapters/`.
+
 Run the same tasks on every prototype at **390 CSS px** and a representative desktop width such as **1440 CSS px**. Use the same milestone content and note any viewport-specific differences.
 
 1. Find all seven Must-have milestones and report each title with its displayed date:
