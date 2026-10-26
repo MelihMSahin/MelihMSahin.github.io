@@ -271,6 +271,10 @@ This register is the source of truth for the status, rationale, scope, and histo
 - **Source:** Owner selection on 2026-10-22; examples and candidate relationships in [CONTENT_INVENTORY.md](CONTENT_INVENTORY.md), including Globant during university and Firebrand through Deloitte.
 - **Approved by:** Mehmet Melih Sahin, 2026-10-22.
 
+#### Observations
+
+The shared-data check found all seven required titles, dates, and chapter assignments, with the Firebrand/CompanyLens story nested under Deloitte rather than listed as a second milestone. The inventory does not flag any of these seven dates for verification and explicitly resolves Sprift's end date to August 2026. The neutral stylesheet's text, muted text, link, focus, and border colors measure at least 4.54:1 against white. This check did not establish a timeline layout, preview interaction, task success, or WCAG conformance. No browser is available in the environment, and these shared assets do not include a rendered page, so 390px and desktop rendering and keyboard interaction remain untested.
+
 ### DS-TL-006 — Plain-Language Timeline Chapter Labels
 
 - **Category / status:** Decision / `Committed`

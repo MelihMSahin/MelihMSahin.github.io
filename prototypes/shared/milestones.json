@@ -1,0 +1,62 @@
+{
+  "dateVerificationNote": "CONTENT_INVENTORY.md does not identify any of these seven milestone dates as requiring verification. It explicitly resolves the Sprift end date to August 2026.",
+  "milestones": [
+    {
+      "id": "uk-move",
+      "title": "Moved to the UK",
+      "date": "2016",
+      "chapter": "Early Foundations",
+      "summary": "Moved from Turkey to the UK."
+    },
+    {
+      "id": "kingston-academy",
+      "title": "Kingston Academy",
+      "date": "2017-2022",
+      "chapter": "Early Foundations",
+      "summary": "Attended The Kingston Academy for A levels and GCSEs."
+    },
+    {
+      "id": "queen-mary-degree",
+      "title": "Queen Mary degree",
+      "date": "2022-2025",
+      "chapter": "University",
+      "summary": "Completed a BSc in Computer Science and Mathematics at Queen Mary University of London, earning First Class with Honours (81.0%)."
+    },
+    {
+      "id": "globant-internship",
+      "title": "Globant internship",
+      "date": "June-August 2024",
+      "chapter": "University",
+      "summary": "Built a multi-agent proof of concept for converting meeting content into client-facing presentations."
+    },
+    {
+      "id": "final-year-project",
+      "title": "Final-year project",
+      "date": "October 2024-May 2025",
+      "chapter": "University",
+      "summary": "Built and evaluated reinforcement-learning agents for the card game Exploding Kittens, with partial results."
+    },
+    {
+      "id": "sprift-unified-api",
+      "title": "Sprift unified API",
+      "date": "February-August 2026",
+      "chapter": "Professional Work",
+      "summary": "Built a unified API for all property types while keeping both existing endpoints available and behaving as before."
+    },
+    {
+      "id": "deloitte-role",
+      "title": "Graduate Software Engineer at Deloitte",
+      "date": "3 September 2026",
+      "chapter": "Professional Work",
+      "summary": "Started as a Graduate Software Engineer at Deloitte.",
+      "stories": [
+        {
+          "id": "firebrand-companylens",
+          "title": "Firebrand: CompanyLens MVP",
+          "period": "28 September-2 October 2026",
+          "summary": "A five-person team built and presented a company-search and client-onboarding research MVP to Deloitte directors, with Melih's main role in the backend."
+        }
+      ]
+    }
+  ]
+}
