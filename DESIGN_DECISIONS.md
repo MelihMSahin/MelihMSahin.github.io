@@ -3,7 +3,7 @@
 **Project:** Melih Sahin personal portfolio  
 **Status:** Living decision register  
 **Owner / approver:** Mehmet Melih Sahin  
-**Updated:** 2026-10-22
+**Updated:** 2026-10-26
 
 This register is the source of truth for the status, rationale, scope, and history of material design decisions. Normative design rules belong in the relevant approved specification; product scope and requirements remain in [PROJECT_BRIEF.md](PROJECT_BRIEF.md) and [MOSCOW.md](MOSCOW.md); content evidence and publication rules remain in [CONTENT_INVENTORY.md](CONTENT_INVENTORY.md). The process and record rules are in [DESIGN_STRATEGY.md](DESIGN_STRATEGY.md).
 
@@ -256,6 +256,14 @@ This register is the source of truth for the status, rationale, scope, and histo
 - **Owner input:** On 2026-10-22, the owner selected the adaptive-versus-vertical comparison, requested both vertical chronology directions be tested, and chose a recent-first vertical candidate for comparison. These are test choices, not final commitments.
 - **Next action:** Once the overview and chapter model are prototyped, compare these arrangements against the scanability and interaction tasks in DS-TL-001.
 
+#### Observations
+
+- **Run:** Tested four variants—vertical older-first, vertical recent-first, adaptive older-first, and adaptive recent-first—in headless Chromium at 390 × 900 and 1440 × 900 CSS pixels. The same shared tasks and milestone data were used for each. Additional reflow checks ran at 320, 430, and 1024 pixels.
+- **Overview and chronology:** All seven required titles, dates, and chapter labels appeared together in the overview without a reveal action. At 390 pixels, vertical older-first began with the UK move and Kingston Academy; recent-first began with the Deloitte role and Sprift API. At 1440 pixels, both vertical variants kept their selected order. Both adaptive variants became horizontal on desktop and displayed older-to-newer from left to right; the recent-first choice applied to their phone layout. The page had no horizontal overflow at tested widths, and horizontal card labels wrapped within their cards.
+- **Scannability and growth:** Phone scrolling was needed to scan the full seven-item overview. Recent-first puts the latest role first, while older-first establishes the beginning of the timeline first; this run did not compare human scan time or preference. Ten supporting entries, including four clearly marked dummy fixtures, were grouped under three collapsed chapter summaries. Their contents expanded by keyboard, leaving all seven required milestones in the overview.
+- **Shared tasks and accessibility checks:** Keyboard-only navigation reached each milestone and preview; focus entered the preview heading, Tab reached its close control, and Escape closed it and restored focus to the opener. All tab stops showed visible focus, and each supporting group expanded with Enter. Focus and preview return also survived resizing across the adaptive breakpoint. Reduced motion did not remove content or functionality. At 390 pixels with root text size doubled, all seven milestones remained with no horizontal overflow. Tested text, link, border, focus, and chapter-label color pairs exceeded applicable contrast ratios; the lowest measured pair was the focus ring against the paper background at 5.88:1.
+- **What this did not show:** These automated browser checks do not establish that either order or orientation is easier or preferred for visitors, that nested support content is discoverable, or that labels remain comfortable at every size. They do not establish screen-reader usability or full WCAG 2.2 AA conformance. No option is selected by these observations.
+
 ### DS-TL-004 — Milestone Preview and Full-Story Flow
 
 - **Category / status:** Decision / `Under test`
@@ -268,6 +276,12 @@ This register is the source of truth for the status, rationale, scope, and histo
 - **Source:** Owner proposal and approval to test on 2026-10-22; [PROJECT_BRIEF.md](PROJECT_BRIEF.md), Value Beyond a CV; [MOSCOW.md](MOSCOW.md), Must Have.
 - **Next useful test:** Prototype the overlay-to-story route using Firebrand/CompanyLens; test selecting, previewing, opening the full story, returning, closing via keyboard, and restoring focus across phone and desktop.
 - **Owner input:** The owner approved this as the leading prototype candidate on 2026-10-22; it is not final design approval.
+
+#### Observations
+
+At 390px and 1440px in Chromium, all seven shared titles and dates matched the inventory and neither timeline nor story page overflowed horizontally. Keyboard-only selection opened a dialog with an accessible name and focus on its heading; the native modal kept keyboard focus within the panel, and a click on the dimmed page did not dismiss it. Both the visible close button and Escape closed it and returned focus to the selected milestone. The phone layout measured as a viewport-wide bottom sheet; the desktop layout measured as a right-anchored side panel. The Deloitte preview led to the dedicated CompanyLens story; browser Back returned to the timeline and restored the milestone focus. The story's full Nick O'Rourke testimonial matched the inventory verbatim. Key body, muted, link, and focus colors measured at least 4.5:1 against the page background. With reduced motion emulated at 390px, keyboard opening, Escape dismissal, and focus return passed, with transitions set to 0.01ms. An additional 320px check found no horizontal overflow and confirmed the milestone buttons and wordmark met 44px minimum touch-target dimensions after a flex-shrink adjustment.
+
+These browser checks establish layout and interaction behavior for the tested Chromium viewports, not usability with visitors or WCAG 2.2 AA conformance. Screen-reader output, other browsers, and zoom/text enlargement have not been evaluated. Reduced-motion styling was checked; broader assistive-technology behavior remains untested. The findings apply only to this experiment and do not approve either panel treatment or change this record's status.
 
 ### DS-TL-005 — One Chronological Home with Contextual Cross-Links
 

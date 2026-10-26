@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Timeline orientation and order — experimental variants</title>
+    <link rel="stylesheet" href="../shared/baseline.css">
+    <link rel="stylesheet" href="./timeline-orientation.css">
+    <script type="module" src="./timeline-orientation.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="page-header">
+        <p class="eyebrow">Experimental timeline comparison · not an approved design</p>
+        <h1>Milestones through time</h1>
+        <p class="intro">Compare timeline direction and desktop orientation using the same seven milestones. Every required milestone is visible in this overview; supporting entries are nested below.</p>
+        <nav class="variant-nav" aria-label="Timeline variants">
+          <a href="?orientation=vertical&amp;order=older" data-variant="vertical-older">Vertical · older first</a>
+          <a href="?orientation=vertical&amp;order=recent" data-variant="vertical-recent">Vertical · recent first</a>
+          <a href="?orientation=adaptive&amp;order=older" data-variant="adaptive-older">Vertical phone · horizontal desktop · older first</a>
+          <a href="?orientation=adaptive&amp;order=recent" data-variant="adaptive-recent">Vertical phone · horizontal desktop · recent first</a>
+        </nav>
+        <p class="variant-description" id="variant-description"></p>
+      </header>
+
+      <main>
+        <section aria-labelledby="timeline-heading">
+          <div class="section-heading">
+            <p class="eyebrow">Timeline overview</p>
+            <h2 id="timeline-heading">Seven key milestones</h2>
+          </div>
+          <ol class="timeline" id="timeline" aria-label="Required milestones in chronological order"></ol>
+        </section>
+
+        <section class="supporting-section" aria-labelledby="supporting-heading">
+          <div class="section-heading">
+            <p class="eyebrow">Growth test</p>
+            <h2 id="supporting-heading">Supporting entries</h2>
+          </div>
+          <p class="supporting-intro">Supporting content is grouped under its chapter so the required milestones stay easy to scan. Dummy entries are layout test content, not portfolio facts.</p>
+          <div class="supporting-groups" id="supporting-groups"></div>
+        </section>
+      </main>
+
+      <footer class="page-footer">
+        Content and required dates come from the shared prototype inventory. Visual and interaction choices here are experiments only.
+      </footer>
+
+      <dialog id="milestone-preview" aria-labelledby="preview-title">
+        <div class="dialog-content">
+          <button class="dialog-close" type="button" aria-label="Close milestone preview">Close</button>
+          <p class="eyebrow" id="preview-chapter"></p>
+          <h2 id="preview-title" tabindex="-1"></h2>
+          <p class="preview-date" id="preview-date"></p>
+          <p id="preview-summary"></p>
+        </div>
+      </dialog>
+    </div>
+  </body>
+</html>
