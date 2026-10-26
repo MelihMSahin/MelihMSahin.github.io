@@ -1,0 +1,86 @@
+@import url("../shared/concept-board-base.css");
+
+.editorial-board .hero {
+  border-inline-start: 2px solid var(--ink);
+  padding-inline-start: 1rem;
+}
+
+.editorial-board .hero::after {
+  width: 5rem;
+  height: 0.55rem;
+  border-block: 2px solid var(--ink);
+  background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 9px);
+  content: "";
+}
+
+.editorial-board .work-card {
+  border: 0;
+  border-block-start: 2px solid var(--ink);
+  padding-inline: 0;
+}
+
+.editorial-board .timeline-art {
+  border-block: 1px solid var(--line);
+}
+
+.editorial-board .route {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.editorial-board .route-secondary {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+}
+
+.editorial-board .marker {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.editorial-board .marker-start {
+  fill: var(--ink);
+}
+
+.editorial-board .milestone {
+  border: 0;
+  border-block-start: 1px solid var(--line);
+  padding-inline: 0;
+}
+
+.editorial-board .milestone::before {
+  content: "MARKER " counter(milestone, decimal-leading-zero);
+}
+
+.editorial-board .story-main {
+  border-inline-start: 1px solid var(--line);
+  padding-inline-start: 1rem;
+}
+
+.editorial-board .story-main::before {
+  display: block;
+  width: 100%;
+  height: 0.7rem;
+  margin-block-end: 1.5rem;
+  background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 11px);
+  content: "";
+}
+
+.editorial-board .story-quote {
+  border-inline-start-style: dashed;
+}
+
+@media (min-width: 42rem) {
+  .editorial-board .hero,
+  .editorial-board .story-main {
+    padding-inline-start: 1.5rem;
+  }
+
+  .editorial-board .work-card {
+    min-height: 10rem;
+  }
+}

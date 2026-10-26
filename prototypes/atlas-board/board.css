@@ -1,0 +1,91 @@
+@import url("../shared/concept-board-base.css");
+
+.atlas-board .hero {
+  position: relative;
+}
+
+.atlas-board .hero::after {
+  width: 5rem;
+  height: 0.55rem;
+  border: 1px solid var(--ink);
+  background: repeating-linear-gradient(135deg, transparent 0 5px, var(--line) 5px 6px);
+  content: "";
+}
+
+.atlas-board .work-card {
+  position: relative;
+  padding-inline-start: 1.2rem;
+}
+
+.atlas-board .work-card::before {
+  position: absolute;
+  inset-block: 0.8rem;
+  inset-inline-start: 0;
+  width: 0.3rem;
+  background: repeating-linear-gradient(0deg, var(--ink) 0 4px, transparent 4px 7px);
+  content: "";
+}
+
+.atlas-board .timeline-art {
+  overflow: visible;
+}
+
+.atlas-board .island {
+  fill: var(--soft);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.atlas-board .contour {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+}
+
+.atlas-board .route {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-dasharray: 7 5;
+}
+
+.atlas-board .marker {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.atlas-board .marker-start {
+  fill: var(--ink);
+}
+
+.atlas-board .milestone {
+  border-radius: 0.25rem 1.15rem 0.25rem 0.25rem;
+  background: var(--paper);
+}
+
+.atlas-board .story-main {
+  position: relative;
+}
+
+.atlas-board .story-main::before {
+  float: right;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 0 1rem 1rem;
+  border: 2px solid var(--ink);
+  border-radius: 46% 54% 64% 36% / 53% 37% 63% 47%;
+  background:
+    repeating-linear-gradient(135deg, transparent 0 7px, var(--line) 7px 8px),
+    var(--soft);
+  content: "";
+}
+
+@media (min-width: 42rem) {
+  .atlas-board .work-card {
+    min-height: 12rem;
+    padding: 1.15rem 1.15rem 1.15rem 1.35rem;
+    border-radius: 0.2rem 1.4rem 0.2rem 0.2rem;
+  }
+}
