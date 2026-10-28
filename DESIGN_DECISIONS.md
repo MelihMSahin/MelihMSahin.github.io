@@ -28,15 +28,21 @@ This register is the source of truth for the status, rationale, scope, and histo
 | DS-IA-006 | Selected work follows the first screen | Decision | Committed |
 | DS-IA-002 | Homepage section order | Decision | Committed |
 | DS-IA-003 | Initial target markets and employer context | Decision | Committed |
-| DS-TL-002 | Timeline structure and navigation model | Decision | Open |
-| DS-TL-003 | Timeline chronology and orientation | Decision | Open |
-| DS-TL-004 | Milestone preview and full-story flow | Decision | Under test |
+| DS-TL-002 | Timeline structure and navigation model | Decision | Committed |
+| DS-TL-003 | Timeline chronology and orientation | Decision | Committed |
+| DS-TL-004 | Milestone preview and full-story flow | Decision | Committed |
 | DS-TL-005 | One chronological home with contextual cross-links | Decision | Committed |
 | DS-TL-006 | Plain-language timeline chapter labels | Decision | Committed |
+| DS-TL-007 | Primary spatial milestone selection path | Decision | Open |
+| DS-TL-008 | Overview-to-chapter transition model | Decision | Open |
+| DS-TL-009 | Preview panel presentation by viewport | Decision | Open |
 | DS-RWD-001 | Desktop composition and use of available space | Decision | Open |
+| DS-RWD-002 | Intermediate responsive composition behavior | Decision | Open |
 | DS-VIS-002 | Game influence by experience depth | Decision | Committed |
-| DS-VIS-003 | Palette, typography, and graphic/illustration system | Decision | Open |
-| DS-VIS-004 | Literal atlas versus abstract graphic exploration language | Experiment | Under test |
+| DS-VIS-003 | Graphic/illustration system detail | Decision | Open |
+| DS-VIS-005 | Palette system direction | Decision | Open |
+| DS-VIS-006 | Typography system direction | Decision | Open |
+| DS-VIS-004 | Literal atlas versus abstract graphic exploration language | Decision | Committed |
 | DS-MEDIA-001 | Project and timeline imagery strategy | Decision | Open |
 
 ## Committed Requirements and Decisions
@@ -122,40 +128,42 @@ This register is the source of truth for the status, rationale, scope, and histo
 ### DS-TL-001 — Overworld as a Candidate Timeline Metaphor
 
 - **Category / status:** Experiment / `Under test`
-- **Concept to prototype:** A scan-first hybrid: begin with a chronological overview containing all seven required milestone titles and dates in the same overview layer; on mobile, the overview may continue below the first viewport. Do not require a separate action to reveal required milestones. Offer an optional illustrated overworld layer for exploring broad life chapters, with deeper milestone stories beyond that. In the overworld concept, broad chapters may be lands, milestones structures, and deeper stories/activities rooms. The 2016 move to the UK may be an introductory marker.
+- **Selected direction:** The owner approved a scan-first chronological overview followed by a spatial illustrated overworld for exploring broad life chapters; see committed [DS-TL-002](#ds-tl-002). This experiment remains `Under test` for detailed hierarchy, navigation, responsive composition, and usability. The approval does not settle map geometry, detailed controls, or the exact visual specification.
+- **Concept to prototype:** Begin with a chronological overview containing all seven required milestone titles and dates in the same overview layer; on mobile, the overview may continue below the first viewport. Do not require a separate action to reveal required milestones. Offer the spatial illustrated overworld as an additional chapter-exploration layer, with deeper milestone stories beyond that. In the overworld concept, broad chapters may be lands, milestones structures, and deeper stories/activities rooms. The precise mapping and the role of the 2016 move remain to be decided.
 - **Chapter grouping to prototype:** Use three plain-language chronological life stages: **Early Foundations** (UK move and Kingston Academy), **University** (Queen Mary and dated university-period work such as Globant and the final-year project), and **Professional Work** (Sprift and Deloitte/Firebrand). Use cross-links between related projects or themes that span stages. Keep each dated milestone anchored to its actual period; test whether cross-links help visitors without duplicating the timeline.
 - **Leading transition to prototype:** An explicit, descriptive “Explore life chapters” link opens the chapter/overworld view, with a clear “Back to milestones” route. This is a meaningful navigation step, not a generic button-based level switch.
-- **Recency and future growth:** The preceding selected-work section remains a source of recency emphasis. Also compare an older-to-newer vertical overview with a recent-to-older mobile overview to test whether leading with recent milestones improves mobile scanning and accommodates additional entries. In every candidate, keep all seven required milestones in the same initial overview layer; supporting milestones may be nested when needed for scannability, as allowed by [MOSCOW.md](MOSCOW.md), Should Have.
-- **Conditional chronology constraint:** If a timeline prototype is horizontal, dates progress left to right (older to newer). This does not require the final design to be horizontal.
-- **Responsive orientation candidate:** Compare vertical chronology on mobile with horizontal left-to-right chronology on desktop against a consistent vertical layout at both sizes. This responsive adaptation is a prototype candidate, not an approved final orientation.
-- **Question:** Does the optional overworld add useful context and personality after a clear chronological scan, and if so, does a spatial map or illustrated chapter index make the chapter hierarchy clearer than a conventional chapter-based timeline?
-- **Evidence so far:** The concept is preferred as a direction to prototype in [PROJECT_BRIEF.md](PROJECT_BRIEF.md), Technical Direction. No approved map layout or interaction model is established here.
-- **Comparison:** Compare (1) a scan-first overview with a spatial, selectable illustrated overworld chapter view; (2) the same scan-first overview with an illustrated but non-spatial chapter index; and (3) a simpler chapter-based timeline. Use identical content and tasks. Keep an accessible labeled list/path for spatial content and do not require map gestures.
-- **Orientation comparison:** Evaluate the adaptive orientation candidate (vertical on mobile, horizontal left-to-right on desktop) against a vertical overview on both mobile and desktop, keeping the same milestone content, labels, and interaction tasks. A horizontal candidate must preserve readable labels and must not require sideways page scrolling or gestures.
-- **Vertical chronology comparison:** Test older-to-newer top-to-bottom against newer-to-older top-to-bottom as a separate variable from orientation. Keep every horizontal chronology older-to-newer from left to right.
-- **Mobile recency comparison:** Compare a recent-to-older vertical overview with an older-to-newer overview. In both, all seven Must-have milestones remain in the same overview layer; scroll is acceptable, but a separate reveal action is not part of this candidate. Future supporting entries may be nested if they do not remain scannable.
-- **Milestone navigation to compare:** In the spatial candidate, compare entering a named chapter/land before selecting one of its labeled milestone structures with direct selection of a milestone from the chapter view. In both candidates, provide the visible keyboard-accessible milestone list so meaning and access do not depend on map position.
+- **Recency and future growth:** The approved overview order is recorded in [DS-TL-003](#ds-tl-003): older-to-newer vertically on phones and older-to-newer, left-to-right, horizontally on desktop. Prototype observations comparing the alternatives are retained below; they do not establish human preference. In every layout, keep all seven required milestones in the same initial overview layer; supporting milestones may be nested when needed for scannability, as allowed by [MOSCOW.md](MOSCOW.md), Should Have.
+- **Conditional chronology constraint:** Any horizontal timeline runs left to right, older to newer; the approved responsive orientation is recorded in DS-TL-003.
+- **Responsive orientation:** The existing prototypes compared vertical chronology on mobile with horizontal left-to-right chronology on desktop against a consistent vertical layout at both sizes. DS-TL-003 records the owner's approved direction; the automated comparison itself did not establish preference.
+- **Question:** Within the approved scan-first and spatial-overworld direction, what chapter, milestone, and story hierarchy and navigation patterns are clearest and accessible?
+- **Evidence so far:** The owner approved the high-level structure in DS-TL-002 and prefers chapter-first spatial navigation as a candidate, but has not committed that navigation path. No approved map layout or spatial selection control is established here.
+- **Completed comparison:** The existing prototypes compared (1) a scan-first overview with a spatial, selectable illustrated overworld chapter view; (2) the same scan-first overview with an illustrated but non-spatial chapter index; and (3) a simpler chapter-based timeline. They used identical content and tasks. The checks verified basic rendering and interaction only; they were not participant usability evidence and did not choose the direction.
+- **Orientation comparison:** The existing prototypes compared vertical-on-phone/horizontal-on-desktop against a consistently vertical overview, using the same milestone content and tasks. A horizontal view must preserve readable labels and must not require sideways page scrolling or gestures; the approved orientation is recorded in DS-TL-003.
+- **Vertical chronology comparison:** The existing prototypes compared older-to-newer top-to-bottom with newer-to-older top-to-bottom. The owner's approved responsive chronology is recorded in DS-TL-003; all horizontal chronology remains older-to-newer, left-to-right.
+- **Mobile recency comparison:** The existing prototypes compared a recent-to-older vertical overview with an older-to-newer overview. All seven Must-have milestones remain in the same overview layer; scrolling is acceptable, but a separate reveal action is not. Supporting entries may be nested if they do not remain scannable.
+- **Milestone navigation to compare:** The owner prefers a chapter-first spatial path—enter a named chapter/land, then select one of its labeled milestone structures—as a candidate to keep under test. Direct milestone selection remains the alternative. In either case, provide a visible keyboard-accessible milestone list so meaning and access do not depend on map position.
 - **Cross-period content rule:** Each dated project or role has one chronological home. Related chapters/stories may link to that milestone; do not duplicate the same dated milestone in multiple places in the timeline.
 - **Evaluation:** Check whether visitors can find the seven milestone titles/dates, understand the chapter-to-milestone-to-story relationship, enter and leave a deeper story without losing orientation, and complete the same tasks with keyboard and without map gestures. Review at the agreed phone and desktop sizes; record observations before choosing a model.
 - **Constraints:** Do not repeat the previously rejected constellation. Do not use button-based level switching that feels like a dropdown. Avoid requiring free panning or pinch zoom; all meaningful content needs a keyboard-accessible, non-spatial route.
-- **Scope:** Experiment and prototype only. The named chapter-view transition is the leading candidate to test; no map geometry, chronology orientation, milestone selection control, final transition, or visual asset is committed.
-- **Next useful test:** Build a small representative flow with the seven Must-have milestones and test it against the simpler chapter-based alternative using the same phone/desktop tasks.
+- **Scope:** Experiment and prototype evidence only. The high-level spatial-overworld direction and responsive chronology are committed in DS-TL-002 and DS-TL-003. Chapter-first spatial navigation is a preferred candidate under test, not a committed selection control or transition. Map geometry, detailed controls, and visual assets remain open.
+- **Owner input:** On 2026-10-26, the owner chose chapter-first navigation as the preferred spatial path to keep under test; direct milestone selection remains an alternative. The owner did not approve or commit the path.
+- **Next useful review:** Compare chapter-first and direct selection in the existing [scan-overworld prototype](./prototypes/scan-overworld/) for hierarchy comprehension, extra-step cost, orientation, and keyboard/non-spatial access. The current automated checks do not answer those usability questions. Build no further prototypes unless the owner asks.
 
 #### Observations
 
 - **Method:** Ran the shared prototype tasks in headless Chromium at 390 × 900 and 1440 × 900 CSS pixels for all three variants. The run checked milestone titles, dates, chapter labels, keyboard navigation, preview focus and return, chapter/back routes, reduced-motion behavior, and horizontal overflow.
 - **Common results:** Each variant showed the same seven milestone titles, dates, and chapter assignments in its initial overview, with no reveal step. The seven items fit without horizontal overflow at both tested widths. Keyboard preview opened with focus on its heading; Escape returned focus to its opener. All tab-reachable controls in the overview and chapter views had a visible focus outline. The named chapter link and “Back to milestones” route worked by keyboard. Sample text, link, border, and focus color pairs exceeded the applicable contrast thresholds. Reduced motion did not remove content or interaction.
 - **Spatial comparison:** The map offered a chapter-first route, while its separate keyboard-accessible milestone list offered direct selection. Both routes worked without gestures, and the direct list remained usable with the map hidden. Entering a chapter first adds a navigation step; the list avoids requiring the map. The illustrated index and simple timeline also completed the shared tasks.
-- **What this did not show:** These were automated prototype checks, not participant usability sessions. They do not establish that the overworld improves chapter comprehension, adds meaningful personality, or is preferred over the illustrated index or simple timeline. They also do not establish full WCAG conformance, screen-reader usability, or a final design choice. Evidence about whether the overworld adds value remains inconclusive.
-- **Owner input:** The owner selected the named chapter-view transition as the leading prototype candidate and confirmed on 2026-10-22 that the preceding selected-work section is sufficient to foreground recent work; this is not final approval of the timeline model.
-- **Owner input:** The owner chose to compare spatial map navigation against an illustrated chapter index on 2026-10-22; no option is approved as the final model.
-- **Owner input:** The owner chose to compare chapter-first navigation against direct milestone selection in the spatial candidate on 2026-10-22.
+- **What this did not show:** These were automated prototype checks, not participant usability sessions. They do not establish that the overworld improves chapter comprehension or adds meaningful personality. They also do not establish full WCAG conformance or screen-reader usability. The owner subsequently approved the high-level spatial-overworld direction; the observations themselves did not establish that choice.
+- **Owner input:** The owner selected the named chapter-view transition as the leading prototype candidate and confirmed on 2026-10-22 that the preceding selected-work section is sufficient to foreground recent work. The high-level spatial direction was explicitly approved on 2026-10-26 in DS-TL-002; the exact transition remains open.
+- **Owner input:** The owner chose to compare spatial map navigation against an illustrated chapter index on 2026-10-22. The spatial direction was explicitly approved on 2026-10-26 in DS-TL-002; this comparison did not establish usability.
+- **Owner input:** The owner chose to compare chapter-first navigation against direct milestone selection in the spatial candidate on 2026-10-22, then selected chapter-first as the preferred candidate under test on 2026-10-26. No navigation path is committed.
 - **Owner input:** The owner chose chronological life stages with cross-links as the leading chapter organization to prototype on 2026-10-22; exact chapter names, memberships, and link treatments remain open.
 - **Owner input:** The owner selected the three candidate prototype chapters—Early Foundations, University, and Professional Work—on 2026-10-22. These labels and memberships are for testing, not final committed chapter names.
-- **Owner input:** The owner chose to test vertical mobile / horizontal left-to-right desktop orientation against a consistently vertical layout on 2026-10-22; neither orientation is final approval.
-- **Owner input:** The owner chose to test both vertical chronology directions on 2026-10-22. This comparison does not alter the left-to-right older-to-newer constraint for horizontal timelines.
+- **Owner input:** The owner chose to test vertical mobile / horizontal left-to-right desktop orientation against a consistently vertical layout on 2026-10-22; the adaptive orientation was later committed in DS-TL-003 on 2026-10-26.
+- **Owner input:** The owner chose to test both vertical chronology directions on 2026-10-22, initially committed recent-to-older on phones and older-to-newer, left-to-right, on desktop, then changed the approved direction on 2026-10-26 to older-to-newer on both phone and desktop. The adaptive vertical-phone/horizontal-desktop orientation remains committed.
 - **Label rule:** Use plain-language chapter labels in prototypes; game-inspired language may be expressed through visual treatment rather than obscure labels.
-- **Change rule:** Promote only a specific, tested model to a committed decision after the owner approves the review gate.
+- **Change rule:** Keep detailed behavior and layout under test until reviewed. The high-level direction is committed in DS-TL-002; owner approval does not imply approval of unrecorded details.
 
 ## Information Architecture and Visual Decisions
 
@@ -168,6 +176,7 @@ This register is the source of truth for the status, rationale, scope, and histo
 - **Career-stage wording:** Identify as a “software engineer” without adding “early-career” or “new graduate” to the first-screen identity. Let the dated roles and project context establish experience stage without making junior status the headline.
 - **Headline structure:** Express identity, demonstrated experience, and direction together in one integrated headline, rather than separating “Software Engineer” into its own headline and placing the experience/direction in a supporting sentence.
 - **Leading copy candidate (not final):** “Software engineer with backend and systems-design experience, exploring applied AI/ML.” This is the owner's preferred evidence-first direction among working drafts; exact wording remains open.
+- **Owner input:** On 2026-10-26, the owner reviewed the current wording candidate and deferred committing exact headline text; wording remains open.
 - **Constraints:** Keep all three engineering directions represented; frame reliability/platform as a growing interest; support every claim with verified content.
 - **Scope:** Message hierarchy and headline structure only. Exact wording, supporting proof, homepage layout, and visual treatment remain open.
 - **Dependencies:** DS-POS-002.
@@ -233,28 +242,29 @@ This register is the source of truth for the status, rationale, scope, and histo
 
 ### DS-TL-002 — Timeline Structure and Navigation Model
 
-- **Category / status:** Decision / `Open`
-- **Question:** After the comparative test in DS-TL-001, which timeline structure and navigation model should be committed? How do visitors move between overview, chapter, milestone, and story?
-- **Constraints:** Required milestones and dates must remain scannable; meaningful content must have an accessible non-spatial, non-gesture route; avoid a complex visualization that usability evidence does not support.
-- **Scope:** Timeline hierarchy, orientation controls, selection, navigation, and non-gesture alternatives.
-- **Dependencies:** DS-TL-001; DS-REQ-002; DS-REQ-003.
-- **Source:** [PROJECT_BRIEF.md](PROJECT_BRIEF.md), Value Beyond a CV and Technical Direction; [MOSCOW.md](MOSCOW.md), Must Have and Won't Have.
-- **Current candidate:** Compare three forms described in DS-TL-001: spatial overworld, non-spatial illustrated chapter index, and simpler chapter-based timeline. Lead with chronological life-stage grouping plus project/theme cross-links; within the spatial option, compare chapter-first and direct milestone selection. The named “Explore life chapters” transition and clear return path are the leading entry/exit candidate; none is final approval.
-- **Next action:** Use equivalent content and task evidence from all three forms to decide whether the overworld layer adds enough value and whether spatial navigation helps or hinders.
+- **Category / status:** Decision / `Committed`
+- **Decision:** Use a scan-first hybrid timeline: the initial chronological overview contains all seven Must-have milestone titles and dates in the same overview layer, followed by an optional spatial illustrated overworld for exploring broad life chapters. The spatial view is an additional route into the timeline hierarchy, not a replacement for the required chronological overview. Provide an accessible, labeled non-spatial route to meaningful milestone content; spatial gestures must not be required.
+- **Rationale:** The owner selected the spatial overworld direction to give the timeline a distinctive exploration layer while retaining the direct scan of dated milestones. Existing automated checks established that the candidates rendered and supported basic keyboard interaction, but were not usability evidence; the decision is the owner's approval, not a test result.
+- **Constraints:** Keep all seven required milestones and dates in the initial overview without a reveal step. Use one chronological home per dated milestone and contextual cross-links rather than duplicate timeline entries. Any horizontal chronology runs older-to-newer, left-to-right. Preserve keyboard access and a non-spatial route.
+- **Scope:** High-level timeline structure only: chronological overview plus spatial chapter-exploration layer. This does not decide chapter-first versus direct milestone selection, map geometry, the exact overview-to-overworld transition, landmarks, controls, zoom/pan, chronology orientation, responsive composition, preview/story behavior, or visual style.
+- **Dependencies:** DS-REQ-002; DS-REQ-003. Detailed design choices remain linked to DS-TL-001, DS-TL-003, DS-TL-004, DS-RWD-001, DS-VIS-003, and DS-VIS-004.
+- **Source:** Owner's explicit approval on 2026-10-26; [PROJECT_BRIEF.md](PROJECT_BRIEF.md), Value Beyond a CV and Technical Direction; [MOSCOW.md](MOSCOW.md), Must Have and Won't Have.
+- **Approved by:** Mehmet Melih Sahin, 2026-10-26.
+- **Next action:** Resolve the remaining timeline choices one at a time. Keep unapproved details open; do not build further prototypes unless the owner asks.
 
 ### DS-TL-003 — Timeline Chronology and Orientation
 
-- **Category / status:** Decision / `Open`
-- **Question:** What chronology direction and orientation best communicate life chapters and dated milestones? How does the beginning relate to the most recent role?
-- **Owner constraint:** If the timeline is horizontal, chronology must run left to right (older to newer). A horizontal layout itself is not required.
-- **Recency baseline and test:** The selected-work section remains a recency cue. The owner requested testing a recent-to-older mobile overview against older-to-newer order to assess mobile scanability and future growth. This reopens the prior no-separate-recency-emphasis direction for testing; it does not approve the new order. All seven Must-have milestones remain in the same initial overview layer, even if some fall below the phone's first viewport.
-- **Scope:** Timeline overview and every deeper level; must remain understandable on phone and desktop and without spatial interpretation. Physical orientation remains open, except that any horizontal chronology must run left to right.
+- **Category / status:** Decision / `Committed`
+- **Decision:** Use a responsive chronology: on phone, show a vertical timeline ordered older-to-newer; on desktop, show a horizontal timeline ordered older-to-newer from left to right.
+- **Rationale:** The owner chose to present the timeline's start before its later milestones at both sizes, while adapting its physical orientation to the viewport. Automated checks found the tested candidates rendered without horizontal overflow, but did not measure human scanability or preference; this direction reflects the owner's explicit approval, not a usability finding.
+- **Constraints:** Keep all seven Must-have milestone titles and dates in the same initial overview, with no separate reveal action. Do not require sideways page scrolling or gestures. Any horizontal chronology runs older-to-newer, left-to-right.
+- **Scope:** Timeline overview chronology/orientation for phone and desktop. Exact breakpoint, intermediate-width behavior, detailed layout, and any orientation of the spatial chapter-exploration view remain open.
 - **Dependencies:** DS-TL-002.
-- **Prototype candidate:** Compare vertical on mobile with horizontal older-to-newer on desktop against vertical on both sizes. Preserve the same milestone sequence and content; the horizontal candidate must not require sideways page scrolling or gestures.
-- **Chronology test:** Compare older-to-newer top-to-bottom with newer-to-older top-to-bottom in vertical candidates as a separate variable. Horizontal chronology remains older-to-newer left-to-right.
+- **Evidence considered:** Existing prototype observations compare vertical chronology on both sizes with vertical-on-phone/horizontal-on-desktop, and compare older-first with recent-first vertical chronology. They report the tested content and behavior, not participant preference. See observations below.
 - **Required-milestone exposure:** Every vertical order keeps the seven Must-have milestones within the initial timeline overview; the mobile overview may scroll, but a separate action must not be required to reveal any of them. Supporting entries can be nested when they do not remain scannable.
-- **Owner input:** On 2026-10-22, the owner selected the adaptive-versus-vertical comparison, requested both vertical chronology directions be tested, and chose a recent-first vertical candidate for comparison. These are test choices, not final commitments.
-- **Next action:** Once the overview and chapter model are prototyped, compare these arrangements against the scanability and interaction tasks in DS-TL-001.
+- **Owner input / change history:** On 2026-10-22, the owner selected the adaptive-versus-vertical comparison, requested both vertical chronology directions be tested, and chose a recent-first vertical candidate for comparison. On 2026-10-26, the owner initially approved recent-first on phones with older-to-newer horizontal desktop chronology, then revised the decision to older-to-newer on both phone and desktop while retaining vertical phone and horizontal desktop orientation.
+- **Approved by:** Mehmet Melih Sahin, 2026-10-26.
+- **Next action:** Resolve the remaining intermediate-width and detailed responsive-composition behavior under DS-RWD-001; do not treat prototype checks as user preference evidence.
 
 #### Observations
 
@@ -262,26 +272,25 @@ This register is the source of truth for the status, rationale, scope, and histo
 - **Overview and chronology:** All seven required titles, dates, and chapter labels appeared together in the overview without a reveal action. At 390 pixels, vertical older-first began with the UK move and Kingston Academy; recent-first began with the Deloitte role and Sprift API. At 1440 pixels, both vertical variants kept their selected order. Both adaptive variants became horizontal on desktop and displayed older-to-newer from left to right; the recent-first choice applied to their phone layout. The page had no horizontal overflow at tested widths, and horizontal card labels wrapped within their cards.
 - **Scannability and growth:** Phone scrolling was needed to scan the full seven-item overview. Recent-first puts the latest role first, while older-first establishes the beginning of the timeline first; this run did not compare human scan time or preference. Ten supporting entries, including four clearly marked dummy fixtures, were grouped under three collapsed chapter summaries. Their contents expanded by keyboard, leaving all seven required milestones in the overview.
 - **Shared tasks and accessibility checks:** Keyboard-only navigation reached each milestone and preview; focus entered the preview heading, Tab reached its close control, and Escape closed it and restored focus to the opener. All tab stops showed visible focus, and each supporting group expanded with Enter. Focus and preview return also survived resizing across the adaptive breakpoint. Reduced motion did not remove content or functionality. At 390 pixels with root text size doubled, all seven milestones remained with no horizontal overflow. Tested text, link, border, focus, and chapter-label color pairs exceeded applicable contrast ratios; the lowest measured pair was the focus ring against the paper background at 5.88:1.
-- **What this did not show:** These automated browser checks do not establish that either order or orientation is easier or preferred for visitors, that nested support content is discoverable, or that labels remain comfortable at every size. They do not establish screen-reader usability or full WCAG 2.2 AA conformance. No option is selected by these observations.
+- **What this did not show:** These automated browser checks do not establish that either order or orientation is easier or preferred for visitors, that nested support content is discoverable, or that labels remain comfortable at every size. They do not establish screen-reader usability or full WCAG 2.2 AA conformance. The owner selected the current adaptive older-first arrangement; that approval is not a usability finding.
 
 ### DS-TL-004 — Milestone Preview and Full-Story Flow
 
-- **Category / status:** Decision / `Under test`
-- **Question:** Does a contextual overlay preview followed by a dedicated full-story page provide a useful, accessible balance between quick scanning and substantial case-study detail?
-- **Leading candidate:** Selecting a milestone opens a preview panel over the timeline while the rest of the timeline is dimmed. The panel contains a concise summary and a clear link to a dedicated story page for greater depth and relevant imagery. The story page may use a more focused composition while remaining part of the same design system.
-- **Rationale:** The overlay gives a quick look without immediately taking the visitor away from timeline context; the dedicated page allows detailed situation, contribution, decisions, outcomes/learning, and project imagery without making the preview unwieldy.
-- **Accessibility and interaction constraints:** Treat the dimmed timeline as unavailable while the preview is active; provide an accessible dialog name, sensible focus entry and return, keyboard operation and dismissal, and a clear close control. Do not rely on clicking the dimmed background as the only close method. Exact semantics, close behavior, sizing, and responsive presentation require prototype and accessibility review.
-- **Scope:** Candidate interaction flow only. Panel content limits, phone-vs-desktop treatment, transition animation, exact story-page layout, imagery selection, and visual differentiation remain open.
+- **Category / status:** Decision / `Committed`
+- **Decision:** Selecting a timeline milestone opens a contextual overlay preview. The preview provides a concise introduction and a clear path to a dedicated full-story page; visitors can return to the timeline without losing their place.
+- **Rationale:** The overlay supports a quick look while retaining timeline context, and the dedicated page provides room for the full situation, contribution, decisions, outcomes/learning, and relevant imagery. The owner selected this flow after reviewing the existing prototype; automated checks are not usability evidence.
+- **Accessibility and interaction constraints:** Treat the dimmed timeline as unavailable while the preview is active; provide an accessible dialog name, sensible focus entry and return, keyboard operation and dismissal, and a clear close control. Do not rely on clicking the dimmed background as the only close method.
+- **Scope:** The overview-to-preview-to-story flow and return route. Panel content limits, phone-vs-desktop presentation, transition animation, exact story-page layout, imagery selection, and visual differentiation remain open.
 - **Dependencies:** DS-TL-001; DS-TL-002; DS-REQ-003.
-- **Source:** Owner proposal and approval to test on 2026-10-22; [PROJECT_BRIEF.md](PROJECT_BRIEF.md), Value Beyond a CV; [MOSCOW.md](MOSCOW.md), Must Have.
-- **Next useful test:** Prototype the overlay-to-story route using Firebrand/CompanyLens; test selecting, previewing, opening the full story, returning, closing via keyboard, and restoring focus across phone and desktop.
-- **Owner input:** The owner approved this as the leading prototype candidate on 2026-10-22; it is not final design approval.
+- **Source:** Owner's explicit approval on 2026-10-26; [PROJECT_BRIEF.md](PROJECT_BRIEF.md), Value Beyond a CV; [MOSCOW.md](MOSCOW.md), Must Have.
+- **Approved by:** Mehmet Melih Sahin, 2026-10-26.
+- **Next action:** Resolve the remaining presentation and content details through the relevant open decisions. Do not build further prototypes unless the owner asks.
 
 #### Observations
 
 At 390px and 1440px in Chromium, all seven shared titles and dates matched the inventory and neither timeline nor story page overflowed horizontally. Keyboard-only selection opened a dialog with an accessible name and focus on its heading; the native modal kept keyboard focus within the panel, and a click on the dimmed page did not dismiss it. Both the visible close button and Escape closed it and returned focus to the selected milestone. The phone layout measured as a viewport-wide bottom sheet; the desktop layout measured as a right-anchored side panel. The Deloitte preview led to the dedicated CompanyLens story; browser Back returned to the timeline and restored the milestone focus. The story's full Nick O'Rourke testimonial matched the inventory verbatim. Key body, muted, link, and focus colors measured at least 4.5:1 against the page background. With reduced motion emulated at 390px, keyboard opening, Escape dismissal, and focus return passed, with transitions set to 0.01ms. An additional 320px check found no horizontal overflow and confirmed the milestone buttons and wordmark met 44px minimum touch-target dimensions after a flex-shrink adjustment.
 
-These browser checks establish layout and interaction behavior for the tested Chromium viewports, not usability with visitors or WCAG 2.2 AA conformance. Screen-reader output, other browsers, and zoom/text enlargement have not been evaluated. Reduced-motion styling was checked; broader assistive-technology behavior remains untested. The findings apply only to this experiment and do not approve either panel treatment or change this record's status.
+These browser checks establish layout and interaction behavior for the tested Chromium viewports, not usability with visitors or WCAG 2.2 AA conformance. Screen-reader output, other browsers, and zoom/text enlargement have not been evaluated. Reduced-motion styling was checked; broader assistive-technology behavior remains untested. The owner approved the high-level flow on 2026-10-26; the browser observations do not establish user preference or approve either panel treatment.
 
 ### DS-TL-005 — One Chronological Home with Contextual Cross-Links
 
@@ -305,6 +314,36 @@ The shared-data check found all seven required titles, dates, and chapter assign
 - **Source:** Owner selection on 2026-10-22; [PROJECT_BRIEF.md](PROJECT_BRIEF.md), Experience Direction and Value Beyond a CV.
 - **Approved by:** Mehmet Melih Sahin, 2026-10-22.
 
+### DS-TL-007 — Primary Spatial Milestone Selection Path
+
+- **Category / status:** Decision / `Open`
+- **Question:** In the spatial overworld, should the primary path require entering a chapter first before selecting a milestone, or allow direct milestone selection as the primary route?
+- **Options to evaluate:** Chapter-first path vs direct milestone-first path, while preserving the accessible non-spatial milestone list in both.
+- **Scope:** Primary interaction path inside the spatial chapter view; does not change the committed requirement for a non-spatial route.
+- **Dependencies:** DS-TL-001; DS-TL-002; DS-REQ-003.
+- **Owner input:** On 2026-10-26, the owner selected chapter-first as the preferred candidate under test, not a committed choice.
+- **Next action:** Compare hierarchy comprehension, extra-step cost, and return-orientation clarity in the existing spatial prototype before committing.
+
+### DS-TL-008 — Overview-to-Chapter Transition Model
+
+- **Category / status:** Decision / `Open`
+- **Question:** What exact transition pattern should connect the chronological overview to the chapter/overworld view and back?
+- **Options to evaluate:** Explicit “Explore life chapters” entry plus explicit return vs alternatives with equivalent clarity and keyboard access.
+- **Scope:** Entry/exit controls, labels, and expected back-path behavior between overview and chapter views.
+- **Dependencies:** DS-TL-002; DS-TL-007; DS-REQ-003.
+- **Owner input:** The named entry/return route is the leading candidate, but not committed.
+- **Next action:** Validate the transition labels and backtracking behavior against orientation and keyboard tasks before committing.
+
+### DS-TL-009 — Preview Panel Presentation by Viewport
+
+- **Category / status:** Decision / `Open`
+- **Question:** Within the committed preview-to-story flow, what responsive presentation rules should the preview panel use across phone, intermediate, and desktop widths?
+- **Options to evaluate:** Bottom-sheet, side-panel, or other presentation thresholds and sizing rules that preserve readability and focus behavior.
+- **Scope:** Responsive presentation of the committed preview dialog, not the underlying decision to use preview-to-story flow.
+- **Dependencies:** DS-TL-004; DS-RWD-001; DS-RWD-002; DS-REQ-003.
+- **Owner input:** The prototype demonstrated phone bottom-sheet and desktop side-panel behavior, but no presentation rule set is approved.
+- **Next action:** Define and test viewport thresholds, max widths/heights, and content limits while preserving keyboard and reduced-motion behavior.
+
 ### DS-RWD-001 — Desktop Composition and Use of Available Space
 
 - **Category / status:** Decision / `Open`
@@ -312,7 +351,18 @@ The shared-data check found all seven required titles, dates, and chapter assign
 - **Options to evaluate:** Persistent detail panel, contextual navigation, deliberately wider timeline/map composition, or another evidence-supported treatment.
 - **Scope:** Desktop and intermediate responsive compositions; exact breakpoints remain open until tested against content.
 - **Dependencies:** DS-RESP-001; DS-TL-002; DS-TL-004.
-- **Next action:** Decide after the timeline navigation and detail treatment are prototyped at phone and desktop widths.
+- **Owner input:** On 2026-10-26, the owner deferred choosing a desktop composition and deferred scoping a second prototype round until the remaining first-round decisions have been discussed.
+- **Next action:** Complete the remaining first-round decisions before scoping or building more prototypes. Then compare desktop compositions using the same atlas content and interaction model.
+
+### DS-RWD-002 — Intermediate Responsive Composition Behavior
+
+- **Category / status:** Decision / `Open`
+- **Question:** How should layout and interaction transition between phone and desktop across intermediate widths (for example around 768–1024), including timeline orientation and panel behavior?
+- **Options to evaluate:** Fixed breakpoint switch vs staged transitions for map/index density, panel placement, and spacing.
+- **Scope:** Tablet and intermediate-width responsive behavior across overview, chapter, and preview states.
+- **Dependencies:** DS-RWD-001; DS-TL-003; DS-TL-009; DS-REQ-003.
+- **Owner input:** Added to split this concern from desktop-only composition decisions before round-2 scoping.
+- **Next action:** Decide alongside DS-RWD-001 when second-round responsive comparisons are scoped.
 
 ### DS-VIS-002 — Game Influence by Experience Depth
 
@@ -323,36 +373,56 @@ The shared-data check found all seven required titles, dates, and chapter assign
 - **Source:** Owner selection on 2026-10-22; [PROJECT_BRIEF.md](PROJECT_BRIEF.md), Experience Direction; [MOSCOW.md](MOSCOW.md), Could Have.
 - **Approved by:** Mehmet Melih Sahin, 2026-10-22.
 
-### DS-VIS-003 — Palette, Typography, and Graphic/Illustration System
+### DS-VIS-003 — Graphic/Illustration System Detail
 
 - **Category / status:** Decision / `Open`
-- **Question:** Which color roles, type system, graphic motifs, map/region language, and icon/illustration approach form a coherent and accessible visual system?
+- **Question:** What detailed graphic and illustration rules (map language, landmarks, iconography, strokes/fills, contour density, and labeling conventions) realize the approved atlas direction clearly and accessibly?
 - **Constraints:** Must support the committed high-level direction without reducing clarity, readability, contrast, or professional credibility.
-- **Scope:** Global foundations and their page/component-specific usage. No values are approved by this record.
-- **Dependencies:** DS-VIS-002; DS-VIS-004; a selected structural model under DS-TL-002.
-- **Next action:** Define concrete tokens and visual rules only after the timeline structure and concept-board comparison have been reviewed.
+- **Scope:** Illustration and graphic-system rules for homepage-to-deep-view continuity; does not select palette tokens or typography families/values.
+- **Dependencies:** DS-VIS-002; DS-VIS-004; DS-VIS-005; DS-VIS-006; DS-TL-002.
+- **Owner input:** On 2026-10-26, the owner deferred choosing an atlas illustration treatment; this remains open.
+- **Next action:** Complete the remaining first-round decisions, then compare illustration treatments and label/landmark rules before specifying final tokens.
+
+### DS-VIS-005 — Palette System Direction
+
+- **Category / status:** Decision / `Open`
+- **Question:** Which high-level palette direction best supports recruiter-first readability on the homepage while allowing richer atlas expression deeper in the timeline?
+- **Options to evaluate:** Warm light editorial base with richer atlas palette vs more neutral/minimal alternatives.
+- **Scope:** Palette direction only; exact semantic token values and contrast pairings remain unspecified.
+- **Dependencies:** DS-VIS-002; DS-VIS-004; DS-VIS-003.
+- **Owner input:** On 2026-10-26, the owner selected warm-light-plus-richer-atlas as the preferred candidate under test, not committed.
+- **Next action:** Keep open until round-2 visual comparisons are scoped; commit only after contrast and hierarchy checks.
+
+### DS-VIS-006 — Typography System Direction
+
+- **Category / status:** Decision / `Open`
+- **Question:** What high-level type hierarchy should support professional readability while fitting the atlas direction?
+- **Options to evaluate:** Restrained display face plus readable sans-serif body vs single-sans and serif-heading alternatives.
+- **Scope:** Type direction and hierarchy only; no specific families, licensing, or exact size/line-height tokens selected yet.
+- **Dependencies:** DS-VIS-002; DS-VIS-004; DS-VIS-003.
+- **Owner input:** On 2026-10-26, the owner selected display-plus-sans as the preferred candidate under test, not committed.
+- **Next action:** Keep open until round-2 visual comparisons are scoped; commit only after readability and accessibility checks.
 
 ### DS-VIS-004 — Literal Atlas versus Abstract Graphic Exploration Language
 
-- **Category / status:** Experiment / `Under test`
-- **Question:** Does a literal illustrated atlas/overworld or an abstract editorial graphic system better express the committed depth gradient while keeping the portfolio clear and consistent?
-- **Options to compare:**
-  1. **Literal atlas/overworld:** Illustrated lands, terrain, or places express life chapters and exploration.
-  2. **Abstract editorial graphics:** Paths, markers, labels, and progression cues express exploration without depicting a literal game world.
-- **Evaluation:** Compare concept boards or low-fidelity representative compositions against the same homepage, selected-work, timeline, and story content. Review recruiter clarity, personality, consistency across depth, accessibility, and whether the concept still works if the timeline uses a non-spatial index.
-- **Scope:** Concept exploration only. This does not decide exact game genre, artwork, assets, palette, typography, or final timeline interaction.
+- **Category / status:** Decision / `Committed`
+- **Decision:** Use a literal illustrated atlas/overworld visual language—illustrated lands, terrain, and places—for the spatial chapter-exploration view. Maintain the professional editorial foundation on the homepage and apply stronger exploration motifs deeper in the experience, consistent with DS-VIS-002.
+- **Rationale:** The owner selected the atlas concept to visually reinforce the committed spatial-overworld structure and create a distinctive exploration layer. The paired boards supported comparison but were not tested with recruiters or visitors; this is the owner's design choice, not a usability finding.
+- **Options considered:** Abstract editorial graphics using paths, markers, labels, and progression cues without literal terrain. This remains a useful fallback if literal atlas treatment harms clarity, consistency, or accessibility.
+- **Scope:** High-level visual language for the overworld and related deeper exploration views. This does not decide exact game genre, artwork, assets, palette, typography, map geometry, landmark treatment, or detailed timeline interaction.
 - **Dependencies:** DS-VIS-001; DS-VIS-002; DS-TL-001.
-- **Owner input:** The owner chose to compare both directions on 2026-10-22.
-- **Next useful test:** Create paired visual direction boards after the timeline structure has a stable enough content hierarchy to represent.
+- **Owner input:** The owner chose to compare both directions on 2026-10-22 and explicitly approved the literal atlas direction on 2026-10-26.
+- **Approved by:** Mehmet Melih Sahin, 2026-10-26.
+- **Next action:** Develop remaining visual foundations and detailed illustration guidance through DS-VIS-003 and validate accessibility before design sign-off. Do not build further prototypes unless the owner asks.
 
 #### Observations
 
-- **Prototype:** [Atlas concept board](./prototypes/atlas-board/) and [abstract editorial graphics concept board](./prototypes/editorial-board/), each showing the same provisional homepage first screen, selected work, seven-milestone timeline, and CompanyLens story page. Both use neutral, high-contrast styling to keep the comparison on graphic language; no palette, typeface, or final style is proposed.
+- **Prototype:** [Atlas concept board](./prototypes/atlas-board/) and [abstract editorial graphics concept board](./prototypes/editorial-board/), each showing the same provisional homepage first screen, selected work, seven-milestone timeline, and CompanyLens story page. Both use neutral, high-contrast styling to keep the comparison on graphic language; neither specifies a final palette, typeface, or illustration treatment.
 - **Viewport checks:** Ran both boards' homepage and story page in headless Chromium at 390 × 900 and 1440 × 900 CSS pixels. Neither page had horizontal overflow at either width. The homepage showed all seven milestone entries; the hero used a single column at 390px and two at 1440px, while the timeline composition changed from one column to two. This checks these rendered pages and widths only.
 - **Recruiter clarity:** Both boards keep the same provisional headline, attributed proof excerpt, selected-work hierarchy, seven dated milestones, plain-language chapter labels, and direct CompanyLens story path. The atlas's chapter-land metaphor is visually explicit but could invite spatial interpretation; its text list remains the clear content route. The editorial path is less metaphor-dependent. Neither impression was tested with recruiters or visitors.
 - **Personality and consistency:** The atlas conveys the more literal exploration personality through landforms and contour lines; the editorial direction uses a more restrained progression language of paths and markers. Both keep the first screen editorial and strengthen their motif in the timeline and story. These are prototype comparisons, not findings about preference or final professional fit.
 - **Accessibility and non-spatial use:** Keyboard tab checks at both widths found visible focus on all 10 homepage links and all 8 story-page links in each board; Enter opened the CompanyLens story from the atlas homepage. With reduced motion emulated at both widths, smooth scrolling resolved to `auto` and transitions to `0.01ms`. Each timeline has an ordered text list with milestone titles, dates, and chapter names independent of its illustration, so the atlas does not require spatial navigation and the editorial version remains a non-spatial index. Defined text, link, border, and focus colors measure at least 4.54:1 against white. These checks do not establish WCAG 2.2 AA conformance, screen-reader behavior, touch-target sizing, zoom/reflow, or accessibility in other browsers.
-- **What this did not show:** No evidence establishes which board recruiters understand or prefer, whether atlas imagery adds enough value to justify its extra metaphor, or whether either direction remains effective with real visitors and final assets. No final visual, timeline, palette, or typeface choice follows from this comparison. Broader usability and assistive-technology testing remains open.
+- **What this did not show:** No evidence establishes which board recruiters understand or prefer, whether atlas imagery adds enough value to justify its extra metaphor, or whether the direction remains effective with real visitors and final assets. The owner selected the high-level atlas language, but palette, typeface, artwork, detailed layout, and broader usability and assistive-technology testing remain open.
 
 ### DS-MEDIA-001 — Project and Timeline Imagery Strategy
 
@@ -361,7 +431,8 @@ The shared-data check found all seven required titles, dates, and chapter assign
 - **Constraints:** Media must support, not obscure or substitute for, evidence of actual work; use permitted assets and appropriate text alternatives.
 - **Scope:** Homepage, timeline landmarks, project stories, and responsive media behavior.
 - **Dependencies:** DS-VIS-002; DS-VIS-003.
-- **Next action:** Inventory available, publishable project assets and identify where imagery would help visitors inspect real work.
+- **Owner input:** On 2026-10-26, the owner deferred choosing a media strategy direction and did not select a preferred candidate.
+- **Next action:** Keep this decision open while first-round choices are finalized. Then compare evidence-first and richer-atmosphere media mixes using the same story content and accessibility checks.
 
 ## Adding and Updating Records
 

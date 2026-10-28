@@ -10,7 +10,7 @@ This is the agreed first-release scope. The public email alias and current profi
 - A clean, concise, scannable homepage that presents Melih's direction across system design, ML/AI systems engineering, and reliability/platform engineering. Present reliability/platform engineering as a growing interest, not proven impact.
 - Clear, direct paths to the current CV and professional contact using a forwarding email alias; do not publish personal email, phone number, or home address.
 - Selected, verified engineering examples in STAR format (situation, task, action, result and/or learning), distinguishing Melih's contribution from team outcomes. The lead examples are Sprift full-stack work (including the unified API and UI updates), the final-year project, and the Globant AI prototype.
-- A dated timeline whose initial view clearly shows these milestones: moved to the UK; Kingston Academy; Queen Mary degree; Globant internship; final-year project; Sprift unified API; and current Deloitte role (title and start date only). One step out groups milestones into major life chapters; zooming in reveals more detail.
+- A dated timeline whose initial view clearly shows these milestones: moved to the UK; Kingston Academy; Queen Mary degree; Globant internship; final-year project; Sprift unified API; and current Deloitte role (title and start date only). The phone overview is vertical and older-to-newer; the desktop overview is horizontal and older-to-newer, left to right. One step out groups milestones into major life chapters through a spatial illustrated view; deeper detail is available beyond that. Keep all seven milestones in the initial overview without a separate reveal action.
 - A mobile-first, responsive experience, using a 390 CSS-pixel-wide iPhone-class viewport as a reference while supporting other phone sizes and desktop; navigation and content must remain readable and keyboard-accessible.
 - Public content checked for accuracy; personal email, phone number, and home address remain private.
 
@@ -23,7 +23,7 @@ This is the agreed first-release scope. The public email alias and current profi
 
 ## Could Have
 
-- A map-like, zoomable, or spatial timeline interaction, if it improves understanding over a simpler expandable timeline.
+- Additional map-like interactions such as free panning or zooming are optional and must be justified by clarity and accessibility; the chronological overview remains available without spatial navigation.
 - Subtle game-inspired details or richer interactions in deeper sections.
 - Links between projects, timeline milestones, learning, and personal interests.
 

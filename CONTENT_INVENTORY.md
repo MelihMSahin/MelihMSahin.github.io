@@ -112,7 +112,7 @@ The portfolio should present Melih's interest in **system design**, **ML/AI syst
 
 ## Timeline (Approved Entries)
 
-**Agreed initial milestones:** Moved to the UK; Kingston Academy; Queen Mary degree; Globant internship; final-year project; Sprift unified API; current Deloitte role (title and start date only). Show milestone titles and dates for easy scanning. The preferred metaphor to prototype is an overworld: broad life chapters are lands, the move to the UK can be a starter circle, milestones are structures, and deeper details are rooms within those structures. PetMinder, Big Data, GMTK, and university activities may appear in the same view if it remains scannable, or deeper under relevant education and project milestones. Bold, graphic game-inspired styling is preferred; exact aesthetic and interaction are still open.
+**Agreed initial milestones:** Moved to the UK; Kingston Academy; Queen Mary degree; Globant internship; final-year project; Sprift unified API; current Deloitte role (title and start date only). Show milestone titles and dates for easy scanning. The high-level spatial-overworld structure and literal atlas visual language are approved; the responsive chronology is older-to-newer vertically on phones and older-to-newer, left-to-right, horizontally on desktop. See [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md) for scope and status. Exact chapter-to-landmark mapping, map geometry, visual details, and spatial navigation remain open; chapter-first is currently a preferred path under test, not a committed interaction. PetMinder, Big Data, GMTK, and university activities may appear in the same view if it remains scannable, or deeper under relevant education and project milestones.
 
 - **2016:** Moved from Turkey to the UK.
 - **2017-2022:** The Kingston Academy; A levels and GCSEs per the long CV.
@@ -154,8 +154,8 @@ The original README and long CV mention mathematics and patterns, board/strategy
 - **Supporting layer (decided):** PetMinder and Big Data Analysis.
 - **Public content (decided):** Facts and personal context in this inventory may be public; exclude personal email, phone number, and home address.
 - **Timeline content (decided):** The initial view includes seven agreed milestones; keep key role and project names visible for scanning.
-- **Overworld concept (to prototype):** Chapter lands contain milestone structures; structures lead to detail rooms. The arrival in the UK may be a starter circle. This is a conceptual direction, not a settled implementation.
-- **Visual direction (decided):** Bold, graphic game-inspired style. Exact map aesthetic remains open.
+- **Overworld structure (approved at high level):** Use a spatial illustrated overworld for broad life chapters, with a literal atlas visual language. Chapter lands, milestone structures, detail rooms, and the role of the move to the UK remain concepts to refine; see [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md) for committed scope and open interaction choices.
+- **Visual direction (decided):** Bold, graphic game-inspired style with a literal illustrated atlas language for the spatial overworld. Exact palette, illustration style, map geometry, landmarks, and assets remain open.
 
 ## Still Open
 

@@ -22,7 +22,7 @@ The site should demonstrate technical depth, learning ability, delivery, thought
 
 ## Value Beyond a CV or LinkedIn
 
-- **A layered timeline:** The initial view should be a scannable index of dated milestone titles, including roles and projects. One step out reveals broad life chapters; zooming in reveals activities and story details. This keeps important names visible without forcing visitors into dense descriptions. A literal map-like zoom interaction is still an idea to explore, not a decided implementation.
+- **A layered timeline:** Start with a scannable chronological index of dated milestone titles, including roles and projects, with all seven Must-have milestones visible in the same overview layer. The approved high-level direction adds a spatial illustrated overworld for exploring broad life chapters, with deeper milestone stories beyond that. The exact hierarchy, map layout, controls, and zoom/pan behavior remain undecided; do not require gestures or a separate reveal action for required milestones.
 - **Project stories:** Explain selected work through its context, Melih's contribution, decisions, technical challenges, outcomes, and learning rather than repeating résumé bullets.
 - **A fuller sense of the person:** Include interests and personal context with restraint, connecting them to curiosity and perspective where it feels genuine without turning every hobby into a work skill.
 - **A navigable record:** Keep relevant facts accessible in clearly divided sections and deeper detail. Initial discovery should use good information architecture, not a site-wide search engine.
@@ -59,23 +59,23 @@ Do not begin with a LinkedIn clone, a complete CV transcribed onto one page, a c
 ## Decisions to Resolve
 
 1. What exact first-screen copy should express the committed positioning? See [DS-POS-002](DESIGN_DECISIONS.md#ds-pos-002), [DS-IA-001](DESIGN_DECISIONS.md#ds-ia-001), and [DS-IA-004](DESIGN_DECISIONS.md#ds-ia-004) for the approved hierarchy and proof point; exact wording remains open.
-2. Does the scan-first hybrid timeline add enough value over a simpler chapter-based timeline to justify the extra layer? Compare both with the same seven milestone titles/dates and accessible tasks; see [DS-TL-001](DESIGN_DECISIONS.md#ds-tl-001) and [DS-TL-002](DESIGN_DECISIONS.md#ds-tl-002).
-3. What visual direction and content-update workflow should guide implementation?
+2. How should the approved scan-first timeline and spatial overworld be detailed and validated? Resolve the remaining hierarchy, navigation, chronology, responsive, and accessibility choices; see [DS-TL-001](DESIGN_DECISIONS.md#ds-tl-001), [DS-TL-002](DESIGN_DECISIONS.md#ds-tl-002), and related records.
+3. What detailed visual foundations and content-update workflow should guide implementation?
 
 ## Technical Direction
 
 - **Framework:** Astro with TypeScript, producing a static site with reusable components. A Node-based build workflow is acceptable.
 - **Content:** Markdown for project stories and longer text; structured data (JSON or YAML) for dated timeline entries and their relationships, kept in the repository. No CMS or backend.
 - **Hosting:** GitHub Pages, deployed with GitHub Actions.
-- **Prototype:** Build a static HTML/CSS/JavaScript prototype at the 390px mobile reference width and a representative desktop width to test timeline scannability, hierarchy, and navigation before implementation. Compare vertical chronology at both sizes with vertical mobile / horizontal desktop chronology; any horizontal version runs left to right and must not require sideways page scrolling or gestures. Test older-to-newer versus recent-to-older order in vertical candidates, including whether a recent-first mobile view scales better as milestones grow. Keep all seven Must-have milestones in the same initial overview layer; scrolling is acceptable on phones, but do not require a separate action to reveal a required milestone. Supporting entries may be nested if they do not remain scannable. Keep identical milestones and tasks across candidates. Its markup and styles should be easy to port into Astro components.
-- **Prototype feedback:** Button-based level switching felt like extending a dropdown. The constellation concept was rejected. The overworld concept remains preferred; the first map layout needs a more considered shape, spacing, and label placement.
-- **Overworld metaphor to prototype:** Broad life chapters are lands; the move to the UK can be a starter circle; dated milestones are structures within the lands; deeper detail is explored as rooms within those structures. This is a conceptual hierarchy, not a committed map layout or interaction model.
-- **Visual direction:** Bold, graphic game-inspired style is preferred. The specific overworld aesthetic, region shapes, and landmark treatment remain open for iteration.
+- **Existing prototypes:** The static HTML/CSS/JavaScript prototypes compared timeline structure, chronology, and orientation at a 390px mobile reference width and representative desktop size. The approved overview is vertical and older-to-newer on phones, and horizontal, older-to-newer from left to right on desktop. It must not require sideways page scrolling or gestures. All seven Must-have milestones stay in the same initial overview layer; scrolling is acceptable on phones, but no separate reveal action is allowed. Supporting entries may be nested if they do not remain scannable. Automated browser checks do not establish usability. Do not build further prototypes unless requested.
+- **Prototype feedback:** Button-based level switching felt like extending a dropdown. The constellation concept was rejected. The owner approved the spatial overworld as the timeline's high-level chapter-exploration direction; map shape, spacing, label placement, and interaction remain open.
+- **Overworld direction:** Broad life chapters are explored through a spatial illustrated view after the chronological overview. The owner approved this high-level direction, not a specific map layout or interaction model. Chapters-as-lands, milestones-as-structures, and detail-as-rooms remain concepts to refine; the role of the move to the UK is also open.
+- **Visual direction:** A bold, graphic game-inspired style and a literal illustrated atlas language for the overworld are approved at concept level. Exact region shapes, illustration style, landmarks, palette, and assets remain open for iteration; see the [design decision register](DESIGN_DECISIONS.md).
 - **Layout principle:** Design the phone layout first, then compose a deliberate desktop layout (for example a persistent detail panel and a deeper level of detail) rather than stretching the mobile column.
 - **Not decided:** Whether the map uses free panning, zoom, tap-to-enter lands or structures, or another accessible interaction. Details may be shown in a panel or inside a structure; test these options.
 
 ## Next Steps
 
 1. Verify the selected profile links and create a professional forwarding email alias before launch.
-2. Prototype the overworld metaphor at phone and desktop sizes; test whether chapters-as-lands, milestones-as-structures, and detail-as-rooms stay scannable and accessible.
+2. Resolve remaining hierarchy, navigation, responsive, and accessibility decisions for the approved direction. Do not build further prototypes unless requested.
 3. Implement the finalized first-release priorities in [MOSCOW.md](MOSCOW.md), using verified content from the [inventory](CONTENT_INVENTORY.md).
