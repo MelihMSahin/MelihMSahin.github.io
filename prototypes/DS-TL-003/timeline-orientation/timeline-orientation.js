@@ -146,7 +146,7 @@ function render(milestones) {
 }
 
 async function loadMilestones() {
-  const response = await fetch(new URL("../shared/milestones.json", import.meta.url));
+  const response = await fetch(new URL("../../shared/milestones.json", import.meta.url));
   if (!response.ok) throw new Error(`Could not load shared milestones (${response.status})`);
   const inventory = await response.json();
   render(inventory.milestones);

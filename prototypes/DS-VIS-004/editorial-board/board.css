@@ -1,4 +1,4 @@
-@import url("../shared/concept-board-base.css");
+@import url("../../shared/concept-board-base.css");
 
 .editorial-board .hero {
   border-inline-start: 2px solid var(--ink);

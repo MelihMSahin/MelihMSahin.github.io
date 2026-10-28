@@ -103,7 +103,7 @@ function restoreFromStory() {
 window.addEventListener("pageshow", restoreFromStory);
 
 async function initialize() {
-  const response = await fetch("../shared/milestones.json");
+  const response = await fetch("../../shared/milestones.json");
   if (!response.ok) {
     throw new Error(`Could not load shared milestones (${response.status})`);
   }
