@@ -3,7 +3,7 @@
 **Project:** Melih Sahin personal portfolio  
 **Status:** Governing framework defined; visual and interaction specifications are not yet approved.
 **Owner:** Mehmet Melih Sahin  
-**Updated:** 2026-10-22
+**Updated:** 2026-10-28
 
 ## Purpose
 
@@ -22,7 +22,7 @@ Use the Design Council's **Double Diamond** to organize the work, with human-cen
 3. **Develop:** Explore and prototype multiple structural and visual solutions. Test them against the same content and tasks.
 4. **Deliver:** Refine the chosen direction, document the complete system, test it at target viewports, and approve it before product implementation.
 
-Do not use the Double Diamond as a rigid waterfall. Test early, revisit assumptions when evidence disagrees, and record why decisions change. Existing HTML files are experiments, not production implementation or approved design.
+Apply the Double Diamond **recursively**: each phase in the [Design Work Plan](#design-work-plan) is worked as a series of small rounds of the [Decision Loop](#the-decision-loop), each of which discovers, defines, develops, and delivers a few decisions and then feeds what it learned back into the register. Do not use the Double Diamond as a rigid waterfall. Test early, revisit assumptions when evidence disagrees, and record why decisions change. Existing HTML files are experiments, not production implementation or approved design.
 
 ### Reference Guides
 
@@ -50,6 +50,8 @@ Distinguish these records so that a proposal cannot quietly become a rule:
 
 - **`Open`:** No option has been approved. Options and missing evidence may be listed.
 - **`Under test`:** One or more options are being evaluated. Record the question, prototype or method, and evidence needed to decide.
+- **`Inconclusive`:** A round tested the decision but the evidence was not enough to commit. Record what was learned, what is missing, and the later round (in the same phase) that will retry it.
+- **`Deferred to end of phase`:** The owner deliberately parked the decision within the current phase, usually because it depends on, or is best judged alongside, decisions still to be made. Revisit it in the phase's closing round. If it is still unresolved there, it may be handed to development **only with explicit owner confirmation**, recorded with the owner, consequence, and next action; otherwise it blocks the phase exit.
 - **`Committed`:** The owner approved a specific choice and its scope. Record the approval and the evidence or rationale supporting it.
 - **`Superseded`:** A previously committed choice has been replaced. Preserve its record and link the replacement; do not erase decision history.
 
@@ -63,9 +65,14 @@ The [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md) register is the authoritative sta
 ID:
 Title:
 Category: Constraint | Decision | Assumption | Experiment
-Status: Open | Under test | Committed | Superseded
+Status: Open | Under test | Inconclusive | Deferred to end of phase | Committed | Superseded
+Phase / round(s):
+Parent / child records (child decisions that support or help conclude this one):
+Discovered from (round, test, or record that raised it):
 Question / decision statement:
 Current choice (leave unset until committed):
+Preferred direction (owner leaning, uncommitted; clearly labelled when used as a prototype input):
+Outcome of latest round (committed / inconclusive and what is missing / deferred and why):
 User need and linked requirement(s):
 Options considered, including rejected options:
 Evidence and its source; limitations or uncertainty:
@@ -92,7 +99,7 @@ When a committed decision changes, create or update the linked record, preserve 
 
 The authoritative record of committed requirements, approved decisions, concepts under test, and open questions is [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md). Do not duplicate decision status or rationale here. Current work should proceed from its open records and respect the phase gates below. In particular, the overworld remains a concept under test rather than an approved layout or interaction.
 
-Do not resolve open questions by adding more features. Prototype the smallest representative flow that can answer each question.
+Do not resolve open questions by adding more features. Prototype the smallest representative flow that can answer each question, as part of an owner-approved round of the [Decision Loop](#the-decision-loop).
 
 ## Design Principles
 
@@ -107,9 +114,26 @@ Do not resolve open questions by adding more features. Prototype the smallest re
 9. **Honest motion and feedback.** Movement should help users understand navigation or state. Respect reduced-motion settings and provide non-animated alternatives.
 10. **Real content drives design.** Validate the layouts with the agreed milestones and story candidates, not lorem ipsum or an artificially empty map.
 
+## The Decision Loop
+
+Decisions are settled by repeating one loop, a **round**, until the register is complete. Every phase below is worked as a series of rounds. Each round is explicitly approved by the owner before prototyping starts.
+
+1. **Select.** Choose 1–3 related, foundational decisions for the round. A decision is eligible when it is `Open`, `Inconclusive`, or `Deferred to end of phase` and its dependencies are `Committed` (or are included in the same round as children). Prefer the decision with the most downstream dependants, then the most independent one. Record the round in the round log in [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md).
+2. **Frame.** For each selected decision state the question, binding constraints, shared evaluation criteria and tasks, real content, and what evidence would be enough to decide.
+3. **Prototype.** Build one shared prototype set for the round in `prototypes/R<nn>-<slug>/`. Build it from committed decisions, plus owner *preferred directions* where needed (labelled as uncommitted). Vary only the selected decisions across options, and use the smallest representative flow that answers the questions. Label it experimental and record what it cannot establish; automated checks are not usability evidence.
+4. **Evaluate.** Compare the options against the shared criteria: task success, scanning and orientation, keyboard and non-spatial route, responsive fit, accessibility, evidence integrity, and personality. Record observations separately from owner preference and from recommendations.
+5. **Resolve.** The owner decides for each selected decision:
+   - **Committed:** record the choice, scope, and rationale.
+   - **Inconclusive:** record what is missing and the later round in the same phase that retries it.
+   - **Deferred to end of phase:** record why, and revisit in the phase's closing round. If still unresolved then, hand-off to development needs explicit owner confirmation.
+6. **Harvest.** Whatever the outcome, use the feedback and results to find further decisions the project needs: new records, or **child records** that support or help conclude a parent. Also reopen or supersede any committed record whose assumption the evidence challenges. Check coverage against the [design-system checklist](#design-system-specification-checklist) and [MOSCOW.md](MOSCOW.md) so the register stays as comprehensive as possible. Add new records as `Open` with a `Discovered from` reference.
+7. **Update and repeat.** In one change, update the register, status summary, dependency links, round log, and any affected authoritative document, then return to step 1 and pick the next most foundational or independent decision.
+
+A phase ends when its exit check (the review gate below) is met and no `Inconclusive` or `Deferred to end of phase` record remains without an owner-confirmed hand-off. Harvest may reopen an earlier phase.
+
 ## Design Work Plan
 
-Use the phases to organize work, not as a one-way waterfall. A review gate is a decision point, not an automatic approval. Do not proceed to high-fidelity visual specification until the preceding content and interaction decisions are stable enough to test. If evidence later challenges a premise, reopen the relevant earlier work and record why.
+Use the phases to organize work, not as a one-way waterfall. Each phase runs the [Decision Loop](#the-decision-loop) for the decisions that belong to it; its **review gate** is the phase exit check, not an automatic approval. Do not proceed to high-fidelity visual specification until the preceding content and interaction decisions are stable enough to test. If evidence later challenges a premise, reopen the relevant earlier work and record why. Phases whose decisions are already committed in the register need only a short closing round to harvest gaps.
 
 ### Phase 1: Design Brief and Success Measures
 

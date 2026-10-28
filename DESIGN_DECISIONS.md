@@ -3,11 +3,13 @@
 **Project:** Melih Sahin personal portfolio  
 **Status:** Living decision register  
 **Owner / approver:** Mehmet Melih Sahin  
-**Updated:** 2026-10-26
+**Updated:** 2026-10-28
 
 This register is the source of truth for the status, rationale, scope, and history of material design decisions. Normative design rules belong in the relevant approved specification; product scope and requirements remain in [PROJECT_BRIEF.md](PROJECT_BRIEF.md) and [MOSCOW.md](MOSCOW.md); content evidence and publication rules remain in [CONTENT_INVENTORY.md](CONTENT_INVENTORY.md). The process and record rules are in [DESIGN_STRATEGY.md](DESIGN_STRATEGY.md).
 
 `Committed` means the owner approved the specific choice and scope recorded here. A prototype or recommendation is not approval. Do not infer a value or behavior that is not explicitly stated in a committed record.
+
+Besides `Open`, `Under test`, `Committed`, and `Superseded`, a decision may be `Inconclusive` (tested without enough evidence; retried in a named later round) or `Deferred to end of phase` (parked within a phase and revisited in its closing round; handing it to development needs explicit owner confirmation). Decisions are settled in rounds of the loop defined in [DESIGN_STRATEGY.md](DESIGN_STRATEGY.md#the-decision-loop). Existing records keep their current status; the new fields below apply as records are next touched.
 
 ## Status Summary
 
@@ -434,8 +436,20 @@ The shared-data check found all seven required titles, dates, and chapter assign
 - **Owner input:** On 2026-10-26, the owner deferred choosing a media strategy direction and did not select a preferred candidate.
 - **Next action:** Keep this decision open while first-round choices are finalized. Then compare evidence-first and richer-atmosphere media mixes using the same story content and accessibility checks.
 
+## Round Log
+
+Each round selects 1–3 foundational decisions, builds one shared prototype set, and records the outcome and any decisions harvested. The sequence below is provisional, derived from the dependency links; the owner approves each round before it starts, and harvesting may add or reorder rounds.
+
+| Round | Phase | Decisions | Prototype | Status | Outcome / harvested decisions |
+| --- | --- | --- | --- | --- | --- |
+| R1 | 3 | DS-TL-007, DS-TL-008 | Start from [scan-overworld](./prototypes/DS-TL-001/scan-overworld/) | Proposed | — |
+| R2 | 3 / 5 | DS-RWD-001, DS-RWD-002 | `prototypes/R02-*/` | Proposed | — |
+| R3 | 3 / 5 | DS-TL-009 | `prototypes/R03-*/` | Proposed | — |
+| R4 | 4 | DS-VIS-003 | `prototypes/R04-*/` | Proposed | — |
+| R5 | 4 | DS-VIS-005, DS-VIS-006, DS-MEDIA-001 | `prototypes/R05-*/` | Proposed | — |
+
 ## Adding and Updating Records
 
-Use the record fields and lifecycle in [DESIGN_STRATEGY.md](DESIGN_STRATEGY.md), with stable IDs and links to requirements, evidence, specifications, prototypes, and validation. Add an item to the status summary when creating it. When a decision changes, preserve the old record as `Superseded`, link its replacement, and update affected authoritative artifacts in the same change. Do not copy detailed token values or component rules into this register.
+Use the record fields and lifecycle in [DESIGN_STRATEGY.md](DESIGN_STRATEGY.md), with stable IDs and links to requirements, evidence, specifications, prototypes, and validation, including `Phase / round(s)`, `Parent / child records`, `Discovered from`, `Preferred direction`, and `Outcome of latest round`. Add an item to the status summary and the round log when creating or scheduling it. When a decision changes, preserve the old record as `Superseded`, link its replacement, and update affected authoritative artifacts in the same change. Do not copy detailed token values or component rules into this register.
 
 Unless a record says otherwise, the project owner is its decision owner and approver. Open records remain unapproved; their next actions are discovery or discussion steps, not implied decisions.
